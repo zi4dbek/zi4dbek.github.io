@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>免费图床：Backblaze B2+Cloudflare图床 | zi4dbek的小站</title><meta name="author" content="zi4dbek"><meta name="copyright" content="zi4dbek"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简介Backblaze B2是一种经济实惠的云存储服务，允许用户在云中存储无限的数据。它的运作方式类似于Amazon S3和Microsoft Azure，但成本仅为它们的五分之一。 Backblaze B2提供一个免费套餐，包含以下优惠：     10GB的存储空间，适合存放一些重要文件或媒体资料。    每天1GB的流量，可便捷上传、下载数据或通过网络浏览文件。   S3兼容的API，方便将B">
+<meta property="og:type" content="website">
+<meta property="og:title" content="免费图床：Backblaze B2+Cloudflare图床">
+<meta property="og:url" content="http://zi4dbek.github.io/1/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9ABackblaze-B2-Cloudflare%E5%9B%BE%E5%BA%8A.html">
+<meta property="og:site_name" content="zi4dbek的小站">
+<meta property="og:description" content="简介Backblaze B2是一种经济实惠的云存储服务，允许用户在云中存储无限的数据。它的运作方式类似于Amazon S3和Microsoft Azure，但成本仅为它们的五分之一。 Backblaze B2提供一个免费套餐，包含以下优惠：     10GB的存储空间，适合存放一些重要文件或媒体资料。    每天1GB的流量，可便捷上传、下载数据或通过网络浏览文件。   S3兼容的API，方便将B">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/01/23/s523GujheD61anz.png">
+<meta property="article:published_time" content="2023-09-30T10:51:00.000Z">
+<meta property="article:modified_time" content="2024-08-31T08:58:05.523Z">
+<meta property="article:author" content="zi4dbek">
+<meta property="article:tag" content="免费图床">
+<meta property="article:tag" content="图床">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/01/23/s523GujheD61anz.png"><link rel="shortcut icon" href="/"><link rel="canonical" href="http://zi4dbek.github.io/1/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9ABackblaze-B2-Cloudflare%E5%9B%BE%E5%BA%8A.html"><link rel="preconnect" href="//cdnjs.cloudflare.com"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-XDJBQ3FVPC"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XDJBQ3FVPC');
+</script><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;e6098f6756c1425498041b88f7cf4a0c&quot;}"></script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdnjs.cloudflare.com/ajax/libs/egjs-infinitegrid/4.11.1/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '免费图床：Backblaze B2+Cloudflare图床',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-08-31 16:58:05'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="referrer" content="same-origin"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="zi4dbek的小站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2024/01/06/mcwqoPxpdhC6J5A.gif" onerror="onerror=null;src='/img/404.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="zi4dbek的小站"><span class="site-name">zi4dbek的小站</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">免费图床：Backblaze B2+Cloudflare图床</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Backblaze B2是一种经济实惠的云存储服务，允许用户在云中存储无限的数据。它的运作方式类似于Amazon S3和Microsoft Azure，但成本仅为它们的五分之一。</p>
+<p>Backblaze B2提供一个免费套餐，包含以下优惠：</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>10GB的存储空间，适合存放一些重要文件或媒体资料。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>每天1GB的流量，可便捷上传、下载数据或通过网络浏览文件。</strong></td>
+</tr>
+<tr>
+<td><strong>S3兼容的API，方便将Backblaze B2集成到应用程序或服务中。</strong></td>
+</tr>
+<tr>
+<td><strong>支持多种工具和软件，如Cloudflare CDN、Veeam备份、NAS设备等，提升数据的安全性、可用性及传输速度。</strong></td>
+</tr>
+</tbody></table>
+</blockquote>
+<p>如果超出免费额度，Backblaze B2的费用仍然非常低廉：</p>
+<table>
+<thead>
+<tr>
+<th><strong>每月$0.005&#x2F;GB的存储费用，比Amazon S3和Microsoft Azure便宜超过80%。</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>每月$0.01&#x2F;GB的下载费用，比Amazon S3和Microsoft Azure便宜逾88%。</strong></td>
+</tr>
+</tbody></table>
+<p>因此，无论是用于开发应用、数据备份，还是存档媒体内容，Backblaze B2都是一个理想选择。它不仅提供云存储的便利性和灵活性，还能帮助节省开支。</p>
+<p>特别值得一提的是，Backblaze与Cloudflare是Bandwidth Alliance的成员，<strong>二者之间的数据传输是免费的</strong>。而Cloudflare的免费计划没有流量限制，这意味着你可以大幅节省流量成本，同时不必担心超出免费额度。</p>
+<p><strong>因此，Backblaze B2特别适合用作图床，性价比极高！</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657495..png" alt="img"></p>
+<h1 id="Backblaze-Cloudflare配置"><a href="#Backblaze-Cloudflare配置" class="headerlink" title="Backblaze + Cloudflare配置"></a>Backblaze + Cloudflare配置</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>你需要以下资源：</p>
+<table>
+<thead>
+<tr>
+<th>一个 <a target="_blank" rel="noopener" href="https://www.backblaze.com/">Backblaze</a> 账户（使用邮箱注册）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>一个 <strong><a target="_blank" rel="noopener" href="https://www.cloudflare.com/">Cloudflare</a></strong> 账户（使用邮箱注册）</td>
+</tr>
+<tr>
+<td>一个<strong>稳定</strong>的<strong>国际</strong>互联网环境</td>
+</tr>
+</tbody></table>
+<h2 id="创建存储桶并添加解析"><a href="#创建存储桶并添加解析" class="headerlink" title="创建存储桶并添加解析"></a>创建存储桶并添加解析</h2><p><strong>创建存储桶</strong>只需按以下简单步骤操作：</p>
+<table>
+<thead>
+<tr>
+<th>首先，登录Backblaze网站，点击”My Account”（个人账号信息），进入设置页面。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>接着，点击“Buckets”选项，选择“Create a Bucket”（创建存储桶）按钮。</strong></td>
+</tr>
+</tbody></table>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657496..png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>接下来，为存储桶命名。为了安全起见，建议避免使用常见或有意义的词汇作为存储桶名称。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最后，设置存储桶的公开性。一般情况下，选择“Public”（公开）即可，因为选择私有可能涉及复杂的权限问题。首次设置为public可能需要邮箱验证。</td>
+</tr>
+</tbody></table>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657497..png" alt="202309301819030"></p>
+<p>成功创建存储桶后，可以上传你想存储和分享的文件，并获取它们的访问地址。</p>
+<p>接着，点击“upload&#x2F;download”（上传&#x2F;下载），进入文件管理页面。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657498..png" alt="202309301820142"></p>
+<p>你可以在此上传文件并查看URL。我这里上传了一个logo图片，用来获取桶的地址。例如：</p>
+<p>找到<strong>Friendly URL</strong>，并记录其中的主机名，如<code>f003.backblazeb2.com</code>。</p>
+<p>然后进入Cloudflare管理页面，选择你的域名，在DNS中添加CNAME记录，将想替代桶域名的二级域名指向刚才的主机名。例如，我这里使用的是file.xxx。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657499..png" alt="img"></p>
+<p>至此，你已经成功创建存储桶并添加了解析。</p>
+<h2 id="调整与优化"><a href="#调整与优化" class="headerlink" title="调整与优化"></a>调整与优化</h2><h3 id="SSL优化"><a href="#SSL优化" class="headerlink" title="SSL优化"></a>SSL优化</h3><p>为了确保桶之间通信的完整性，需要将SSL设置更改为“严格”（Full）。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657500..png" alt="img"></p>
+<h3 id="URL重写"><a href="#URL重写" class="headerlink" title="URL重写"></a>URL重写</h3><p>为避免桶名暴露在公共场合导致流量滥用，可以通过Cloudflare进行URL重写。<strong>点击规则-转换规则-重写URL</strong>，添加一个规则。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657501..png" alt="img"></p>
+<p>添加的规则为：当路径为<code>/file/bucket_name</code>且主机名为刚才的二级域名时，进行重写。例如：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657501..png" alt="img"></p>
+<p>你可以直接使用可视化编辑器按图示操作，或通过输入表达式添加如下规则：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TEXT</span><br><span class="line">复制代码</span><br><span class="line">http.request.uri.path ne &quot;/file/&#123;bucketName&#125;&quot; and http.host eq &quot;&#123;your_domain&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在路径重写处，添加如下代码并修改为你的bucket_name和域名：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TEXT</span><br><span class="line">复制代码</span><br><span class="line">concat(&quot;/file/&#123;bucketName&#125;&quot;,http.request.uri.path)</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657502..png" alt="img"></p>
+<p>此配置实现了 <code>&#123;your_domain&#125;/xxx.jpg</code> -&gt; <code>Friendly domain/file/&#123;bucketName&#125;/xxx.jpg</code> 的转换，既保护了桶名称，又缩短了URL。</p>
+<p>当然，你可以根据需要自定义转换规则。</p>
+<h3 id="删除HTTP标头（可选）"><a href="#删除HTTP标头（可选）" class="headerlink" title="删除HTTP标头（可选）"></a>删除HTTP标头（可选）</h3><p>响应时可能会带有一些信息，为了避免暴露桶信息，可以通过Cloudflare删除某些无用的HTTP标头（HTTP Header）。例如，打开一张图片，在F12网络中查看HTTP响应头。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657503..png" alt="img"></p>
+<p>这些<strong>x-bz</strong>开头的都是敏感信息，可以通过Cloudflare删除。</p>
+<p>在<strong>规则-转换规则-修改响应头</strong>处，添加一个规则以删除这些无用信息。</p>
+<p>如图所示，设置规则：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657504..png" alt="img"></p>
+<h1 id="PicGO配置"><a href="#PicGO配置" class="headerlink" title="PicGO配置"></a>PicGO配置</h1><p>Picgo 是一个开源图片上传工具，支持多种图床服务，包括通过S3插件支持Backblaze B2。Picgo支持Windows、MacOS和Linux系统，界面简洁，功能丰富。你可以通过快捷键、拖拽、剪贴板等方式上传图片，还可对图片进行压缩、裁剪、水印处理。Picgo还会自动生成图片URL和Markdown代码，方便在网上引用图片。</p>
+<p>Backblaze B2可以通过PicGO快速上传并生成外链和代码，大大提高了使用效率。以下是配置PicGO上传到桶中的步骤。</p>
+<p>PicGO下载地址：<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">https://github.com/Molunerfinn/PicGo/releases</a></p>
+<p>安装好PicGO并安装S3插件后，在配置页面中，配置名随意填写；</p>
+<p>然后，密钥ID和密钥需要从Backblaze控制面板获取。进入控制面板，点击左侧的Application Keys，生成新的密钥并填写到PicGO中。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657505.webp" alt="img"></p>
+<p>文件路径可根据需要进行配置，如<code>&#123;year&#125;/&#123;month&#125;/&#123;md5&#125;.&#123;extName&#125;</code>，表示路径为年&#x2F;月&#x2F;md5.扩展名的形式。以下是一些可参考的路径变量：</p>
+<table>
+<thead>
+<tr>
+<th>payload</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#123;year&#125;</code></td>
+<td>当前日期 - 年</td>
+</tr>
+<tr>
+<td><code>&#123;month&#125;</code></td>
+<td>当前日期 - 月</td>
+</tr>
+<tr>
+<td><code>&#123;day&#125;</code></td>
+<td>当前日期 - 日</td>
+</tr>
+<tr>
+<td><code>&#123;fullName&#125;</code></td>
+<td>完整文件名（含扩展名）</td>
+</tr>
+<tr>
+<td><code>&#123;fileName&#125;</code></td>
+<td>文件名（不含扩展名）</td>
+</tr>
+<tr>
+<td><code>&#123;extName&#125;</code></td>
+<td>扩展名（不含<code>.</code>）</td>
+</tr>
+<tr>
+<td><code>&#123;md5&#125;</code></td>
+<td>图片 MD5 计算值</td>
+</tr>
+<tr>
+<td><code>&#123;sha1&#125;</code></td>
+<td>图片 SHA1 计算值</td>
+</tr>
+<tr>
+<td><code>&#123;sha256&#125;</code></td>
+<td>图片 SHA256 计算值</td>
+</tr>
+</tbody></table>
+<p>权限一般设置为public-read，因为桶设置为public。</p>
+<p>接下来是地区设置，这取决于Backblaze B2桶中的Endpoint地址。例如，地址为<code>s3.us-west-003.backblazeb2.com</code>，则地区填写<code>us-west-003</code>。</p>
+<p>你还可以填写自定义域名，如刚才在CloudFlare中添加的CDN域名。其他设置保持不变，这样配置就完成了。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657506..png" alt="img"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408311657507..png" alt="img"></p>
+<h1 id="做到这一步，恭喜你配置完成了，教程完结，撒花！"><a href="#做到这一步，恭喜你配置完成了，教程完结，撒花！" class="headerlink" title="做到这一步，恭喜你配置完成了，教程完结，撒花！"></a>做到这一步，恭喜你配置完成了，教程完结，撒花！</h1></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2024/01/06/mcwqoPxpdhC6J5A.gif" onerror="this.onerror=null;this.src='/img/404.png'" alt="avatar"/></div><div class="author-info__name">zi4dbek</div><div class="author-info__description">zi4dbek的小破站</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zi4dbek"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/08/25/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AAzure-Repo/" title="免费图床：Azure Repo">免费图床：Azure Repo</a><time datetime="2024-08-25T15:06:54.000Z" title="发表于 2024-08-25 23:06:54">2024-08-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/13/Office-365-E5-%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%8F%8A%E6%B0%B8%E4%B9%85%E7%BB%AD%E6%9C%9F/" title="Office 365 E5 账号申请及永久续期">Office 365 E5 账号申请及永久续期</a><time datetime="2024-01-13T10:51:46.000Z" title="发表于 2024-01-13 18:51:46">2024-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/12/Hexo-%E5%BB%BA%E7%AB%99%E6%89%8B%E5%86%8C/" title="Hexo 建站手册">Hexo 建站手册</a><time datetime="2024-01-12T11:26:45.000Z" title="发表于 2024-01-12 19:26:45">2024-01-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/13/%E5%9B%BE%E5%BA%8A%E6%9D%82%E8%B0%88%EF%BC%9APicGo-%E5%AE%89%E8%A3%85%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E6%8F%92%E4%BB%B6%EF%BC%8C%E5%87%8F%E5%B0%91%E5%9B%BE%E5%BA%8A%E5%8E%9F%E5%9B%BE%E5%A4%A7%E5%B0%8F/" title="图床杂谈：PicGo 安装图片压缩插件，减少图床原图大小">图床杂谈：PicGo 安装图片压缩插件，减少图床原图大小</a><time datetime="2023-10-13T15:35:00.000Z" title="发表于 2023-10-13 23:35:00">2023-10-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/05/%E5%90%84%E5%AE%B6%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94/" title="各大博客平台的图片处理方式"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://jsd.cdn.noisework.cn/gh/zi4dbek/zi4dbek.github.io@img/202408301923251.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="各大博客平台的图片处理方式"/></a><div class="content"><a class="title" href="/2023/10/05/%E5%90%84%E5%AE%B6%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94/" title="各大博客平台的图片处理方式">各大博客平台的图片处理方式</a><time datetime="2023-10-05T14:54:00.000Z" title="发表于 2023-10-05 22:54:00">2023-10-05</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"><span class="card-category-list-name">网站搭建</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/%E5%8D%9A%E5%AE%A2/"><span class="card-category-list-name">博客</span><span class="card-category-list-count">1</span></a></li></ul></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"><span class="card-category-list-name">免费图床</span><span class="card-category-list-count">3</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/"><span class="card-category-list-name">图床</span><span class="card-category-list-count">3</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9B%BE%E5%BA%8A/"><span class="card-category-list-name">图床</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9B%BE%E5%BA%8A/%E5%8D%9A%E5%AE%A2/"><span class="card-category-list-name">博客</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9B%BE%E5%BA%8A/%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94/"><span class="card-category-list-name">图片处理方式对比</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9B%BE%E5%BA%8A/%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"><span class="card-category-list-name">图片处理</span><span class="card-category-list-count">1</span></a></li></ul></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"><span class="card-category-list-name">图片处理</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/"><span class="card-category-list-name">图片压缩</span><span class="card-category-list-count">1</span></a></li></ul></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BE%AE%E8%BD%AF/"><span class="card-category-list-name">微软</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/"><span class="card-category-list-name">白嫖</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/E5%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%92%8C%E7%BB%AD%E6%9C%9F/"><span class="card-category-list-name">E5账号申请和续期</span><span class="card-category-list-count">1</span></a></li></ul></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/" style="font-size: 1.35em; color: rgb(185, 91, 190)">免费图床</a><a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 1.45em; color: rgb(58, 33, 133)">图床</a><a href="/tags/%E5%BE%AE%E8%BD%AF/" style="font-size: 1.15em; color: rgb(121, 145, 177)">微软</a><a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 1.15em; color: rgb(134, 161, 47)">白嫖</a><a href="/tags/E5%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%92%8C%E7%BB%AD%E6%9C%9F/" style="font-size: 1.15em; color: rgb(14, 26, 124)">E5账号申请和续期</a><a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 1.25em; color: rgb(113, 20, 166)">图片处理</a><a href="/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" style="font-size: 1.15em; color: rgb(84, 121, 91)">图片压缩</a><a href="/tags/Hexo/" style="font-size: 1.15em; color: rgb(86, 156, 80)">Hexo</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.25em; color: rgb(156, 159, 130)">博客</a><a href="/tags/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/" style="font-size: 1.15em; color: rgb(42, 147, 42)">网站搭建</a><a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94/" style="font-size: 1.15em; color: rgb(79, 32, 35)">图片处理方式对比</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">2024年08月</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">2024年01月</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">2023年10月</span><span class="card-archive-list-count">4</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">7</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-08-31T09:33:19.417Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By zi4dbek</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>备案号：�ICP备1999����号-�</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-butterfly/4.13.0/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-butterfly/4.13.0/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-butterfly/4.13.0/js/tw_cn.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.8.8/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const initGitalk = () => {
+    const gitalk = new Gitalk(Object.assign({
+      clientID: '862f5508904d0d2252a0',
+      clientSecret: 'd915aba8d5b2e4a4a50c493748f77474a8b77fc7',
+      repo: 'zi4dbek.github.io',
+      owner: 'zi4dbek',
+      admin: ['zi4dbek'],
+      id: '980a07626300e82c7af93d62417a07c9',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async() => {
+    if (typeof Gitalk === 'function') initGitalk()
+    else {
+      await getCSS('https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.css')
+      await getScript('https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js')
+      initGitalk()
+    }
+  }
+  
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  if ('Gitalk' === 'Gitalk' || !true) {
+    if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-butterfly/4.13.0/js/search/local-search.min.js"></script></div></div></body></html>
