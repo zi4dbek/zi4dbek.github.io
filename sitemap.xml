@@ -339,6 +339,13 @@
   </url>
   
   <url>
+    <loc>http://zi4dbek.github.io/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/</loc>
+    <lastmod>2024-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://zi4dbek.github.io/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/</loc>
     <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -360,21 +367,14 @@
   </url>
   
   <url>
-    <loc>http://zi4dbek.github.io/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/E5%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%92%8C%E7%BB%AD%E6%9C%9F/</loc>
+    <loc>http://zi4dbek.github.io/categories/%E5%9B%BE%E5%BA%8A/</loc>
     <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://zi4dbek.github.io/categories/%E5%BE%AE%E8%BD%AF/OneDrive/%E7%99%BD%E5%AB%96/</loc>
-    <lastmod>2024-09-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://zi4dbek.github.io/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/</loc>
+    <loc>http://zi4dbek.github.io/categories/Google/</loc>
     <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -388,14 +388,14 @@
   </url>
   
   <url>
-    <loc>http://zi4dbek.github.io/categories/%E5%9B%BE%E5%BA%8A/</loc>
+    <loc>http://zi4dbek.github.io/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/E5%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%92%8C%E7%BB%AD%E6%9C%9F/</loc>
     <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://zi4dbek.github.io/categories/Google/</loc>
+    <loc>http://zi4dbek.github.io/categories/%E5%BE%AE%E8%BD%AF/OneDrive/%E7%99%BD%E5%AB%96/</loc>
     <lastmod>2024-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
