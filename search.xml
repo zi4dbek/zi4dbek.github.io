@@ -66,35 +66,6 @@
     
     
     <entry>
-      <title>如何注册Google账号</title>
-      <link href="/2024/01/12/%E5%A6%82%E4%BD%95%E6%B3%A8%E5%86%8CGoogle%E8%B4%A6%E5%8F%B7/"/>
-      <url>/2024/01/12/%E5%A6%82%E4%BD%95%E6%B3%A8%E5%86%8CGoogle%E8%B4%A6%E5%8F%B7/</url>
-      
-        <content type="html"><![CDATA[<p>必要准备：<br>网络连接工具：确保可以访问谷歌官网。<br>可接收验证码的手机号：最好是没有注册过谷歌的号码。<br>浏览器：推荐使用谷歌浏览器，并开启无痕模式。<br>注册步骤：<br>打开谷歌官网：</p><p>访问 Google。<br>点击右上角的“登录”按钮。</p><p>创建账号：</p><p>在登录页面，点击“创建账号”并选择“为我自己创建”。</p><p>填写信息：</p><p>输入你的名字、用户名和密码。如果用户名不可用，页面会提示可用的组合。</p><p>验证手机号：</p><p>在手机号前加上国家区号，例如中国号码前加“+86”。<br>注意：有时会遇到“此电话号码无法用于验证”的提示。</p><p>解决“无法用于验证”问题：<br>更改浏览器语言：</p><p>关闭谷歌浏览器，重新打开。<br>点击右上角的三个点，选择“设置”。<br>在设置中找到“语言”选项。</p><p>切换语言为英文：</p><p>点击“添加语言”，选择“英语（美国）”。<br>勾选“以这种语言显示 Google Chrome”。</p><p>重启浏览器并重新注册：</p><p>重启浏览器后，界面会显示为英文。<br>按照之前的步骤再次尝试注册，大多数情况下可以顺利进行到验证码接收步骤。</p><p>更换网络 IP（如有必要）：</p><p>如果仍然无法注册，建议更换网络工具的 IP 再次尝试。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Google </category>
-          
-          <category> 账号注册 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Google </tag>
-            
-            <tag> 账号注册 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hexo 建站手册</title>
       <link href="/2024/01/12/Hexo-%E5%BB%BA%E7%AB%99%E6%89%8B%E5%86%8C/"/>
       <url>/2024/01/12/Hexo-%E5%BB%BA%E7%AB%99%E6%89%8B%E5%86%8C/</url>
@@ -132,7 +103,7 @@
       <link href="/2023/12/16/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AGitee/"/>
       <url>/2023/12/16/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AGitee/</url>
       
-        <content type="html"><![CDATA[<ol><li>创建 Gitee 账号<br>登录 Gitee 官网 创建账号。</li></ol><p><img src="https://i1.wp.com/s2.loli.net/2023/10/03/ZDl3zmSfO9E5AeU.png" alt=""></p><p>设置个性化域名，这个随意即可。</p><ol start="2"><li>创建一个新仓库<br>点击创建新仓库。</li></ol><p><img src="https://i1.wp.com/s2.loli.net/2023/10/03/6draENODUmvRgy3.png" alt=""></p><p>在设置中，选择是否添加 README 文件，配置分支模型。</p><p><img src="https://i1.wp.com/s2.loli.net/2023/10/03/dUiYcKqSP3eIzop.png" alt=""></p><p>进入管理设置，滚动到最下方，将仓库设置为开源，并保存。【一定要设置为开源】</p><p><img src="https://i1.wp.com/s2.loli.net/2023/10/03/ubXsp4UMLYIZ3PQ.png" alt=""></p><p><img src="https://i1.wp.com/s2.loli.net/2023/10/03/9kgr68V5cTjNpXw.png" alt=""></p><p>获取 Gitee 令牌：在 Gitee 的【个人设置】-&gt;【安全设置】-&gt;【私人令牌】中生成令牌，选择最基本的权限并输入登录密码。</p><p><img src="https://i1.wp.com/s2.loli.net/2023/10/03/IWDzSJN1kOhCvsp.png" alt=""></p><p>生成令牌后，将其复制下来以备后用。</p><p><img src="https://i1.wp.com/s2.loli.net/2023/10/03/RgouirDTYn1pewa.png" alt=""></p><ol start="3"><li>下载安装 PicGo<br>从 PicGo Release 页面 下载并安装 PicGo。</li></ol><p>安装 Gitee 插件。</p><p>安装完成后，打开 PicGo，看到如下界面：<img src="https://i1.wp.com/s2.loli.net/2023/10/03/DOuqCMPd8GbyL5c.png" alt=""></p><p>配置 PicGo 的 Gitee 插件参数：</p><p>owner：填写仓库 URL 中 <a href="http://gitee.com/">http://gitee.com/</a> 和 /仓库名 之间的部分<br>repo：填写仓库地址后缀<br>token：填写复制的 Gitee 私人令牌<br>其他设置保持默认，点击确定。如果你只有一个仓库，可以将其设置为默认仓库。</p><p>看到这里基本上你就已经搭建好了，不过为了方便还是要继续设置一些东西</p><p><img src="https://i1.wp.com/s2.loli.net/2023/10/03/CFmH7EMJtxDc2uk.png" alt=""></p><p>自定义快捷键设置为自己常用的，更新助手可以关闭，上传前是否重命名根据个人需求配置。</p><p><img src="https://i1.wp.com/s2.loli.net/2023/10/03/SUjr96XLFb7v5fq.png" alt=""></p><p><img src="https://i1.wp.com/s2.loli.net/2023/10/03/AJsLoDb9EdCvkeh.png" alt=""></p><ol start="4"><li>使用方法和效率小技巧<br>使用截图工具进行截图。QQ 截图的快捷键是 Ctrl+Alt+A，电脑自带截图工具通常使用 PrtSc。<br>使用设置的快捷键 Ctrl+Shift+P 将图片快速上传到图床。<br>在需要使用图片的地方，直接使用 Ctrl+V 进行粘贴。<br>到此为止，你已经搭建好了自己的图床。</li></ol>]]></content>
+        <content type="html"><![CDATA[<h3 id="在gitee中创建仓库"><a class="header-anchor" href="#在gitee中创建仓库">¶</a>在gitee中创建仓库</h3><p>按照常规创建仓库的方式创建一个专门用于图床的仓库</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/pvFt8EJju23MgfQ.png" alt="img"></p><h3 id="获取token"><a class="header-anchor" href="#获取token">¶</a>获取token</h3><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/qYVEzvkCI52tjWi.png" alt="img"></p><h3 id="在PicGO中安装gitee插件"><a class="header-anchor" href="#在PicGO中安装gitee插件">¶</a>在PicGO中安装gitee插件</h3><h4 id="安装"><a class="header-anchor" href="#安装">¶</a>安装</h4><h4 id="img"><a class="header-anchor" href="#img">¶</a><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/lKsvgEtIMRVG2nS.png" alt="img"></h4><h4 id="配置插件"><a class="header-anchor" href="#配置插件">¶</a>配置插件</h4><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/e4CiMmgEPFR2caf.png" alt="img">这里需要注意的是repo的名字中大小写字母需要完全一致且是仓库路径。否则会报404错误。</p><h4 id="上传图片"><a class="header-anchor" href="#上传图片">¶</a>上传图片</h4><p>至此，图床系统搭建完成。</p><p>文章参考自<a href="https://nokiasonic.github.io/2020/12/10/%E4%BD%BF%E7%94%A8github%E5%8F%8Agitee%E6%9D%A5%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A%E7%B3%BB%E7%BB%9F/">这里</a></p>]]></content>
       
       
       <categories>
@@ -190,48 +161,11 @@
     
     
     <entry>
-      <title>各大博客平台的图片处理方式</title>
-      <link href="/2023/10/05/%E5%90%84%E5%AE%B6%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94/"/>
-      <url>/2023/10/05/%E5%90%84%E5%AE%B6%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94/</url>
-      
-        <content type="html"><![CDATA[<p>一、背景知识介绍<br>1、Markdown 和图床<br>（1）Markdown<br>Markdown 是一种标记语言，通过简单的标注，可以使文本具有一定格式。例如在文本前加上# ，就是一级标题。</p><p>使用 Markdown 能让写作者更关注与内容，而不是格式的调整，并且同样的标记，在各平台显示效果都是一样的。 这一点有点像 Java，支持跨平台。因此，Markdown 受到众多技术开发者的追捧，没错，你现在看见的这篇文字就是 Markdown 写的。</p><p>（2）图床<br>在我看来，Markdown 与图床的关系，就好比面包和牛奶。</p><p>只吃面包肯定会觉得口干舌燥，但是加上牛奶就不一样了，不仅不觉得口干，还会觉得更加美味。写文章也是如此，通篇的文字会让读者觉得无聊，但是在文章中加上相应的图片，便会使得文章更加添彩。 而图床就是存储图片的地方。</p><p>Markdown 中添加图片，其实就是将图片的链接使用固定格式的标注，如下：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">头像</span>](<span class="link">https://i2.hdslb.com/bfs/face/d91ddc4a53daa5c83302ce77cbb3e746a5e0aafb.png</span>)</span><br></pre></td></tr></table></figure><p>显示的效果如下：</p><p><img src="https://i2.hdslb.com/bfs/face/d91ddc4a53daa5c83302ce77cbb3e746a5e0aafb.png" alt="头像"></p><h2 id="二、对比各家的处理方式"><a class="header-anchor" href="#二、对比各家的处理方式">¶</a>二、对比各家的处理方式</h2><h2 id="1、知乎专栏"><a class="header-anchor" href="#1、知乎专栏">¶</a>1、知乎专栏</h2><p>知乎专栏默认是不支持 Markdown 格式编辑文章的，但是可以导入 md 文件。无论是哪种方式，知乎都会将文章中的图片上传到自己的服务器。</p><p>图片链接类似这种：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://pic3.zhimg.com/v2-e3aa974990edfbc655a578dfab04c973_1200x500.png</span><br></pre></td></tr></table></figure><h2 id="2、掘金"><a class="header-anchor" href="#2、掘金">¶</a>2、掘金</h2><p>掘金只支持 Markdown 方式编辑文章，会把图片上传到自己的服务器。</p><p>图片链接类似这种：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://user-gold-cdn.xitu.io/2019/3/2/1693d5c70a6cfca9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1</span><br></pre></td></tr></table></figure><h2 id="3、简书"><a class="header-anchor" href="#3、简书">¶</a>3、简书</h2><p>简书可以使用富文本或者 Markdown 编辑文章，但是他很魔性，在使用 Markdown 编写文章时，有的图片会上传到自己的服务器，有的则不会，暂时没找到有什么规律。</p><p>图片链接类似这种：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://upload-images.jianshu.io/upload_images/121172-5979c9bd0054b6cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/803/format/webp</span><br></pre></td></tr></table></figure><h2 id="4、CSDN"><a class="header-anchor" href="#4、CSDN">¶</a>4、CSDN</h2><p>CSDN 可以使用富文本或者 Markdown 编辑文章，但是很刚，任何图片都不会转存。</p><p>综上所述，我认为知乎和掘金的处理方式最好，把图片转存到自己的服务器，防止出现原图片链接失效后显示不出图片，影响用户阅读体验的情况。毕竟，<strong>数据才是最重要的资源</strong>。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 图床 </category>
-          
-          <category> 博客 </category>
-          
-          <category> 图片处理方式对比 </category>
-          
-          <category> 图片处理 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 博客 </tag>
-            
-            <tag> 图床 </tag>
-            
-            <tag> 图片处理方式对比 </tag>
-            
-            <tag> 图片处理 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>免费图床：PostImage</title>
       <link href="/2023/10/04/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9APostImage/"/>
       <url>/2023/10/04/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9APostImage/</url>
       
-        <content type="html"><![CDATA[<ol><li><h3 id="简介"><a class="header-anchor" href="#简介">¶</a>简介</h3><p><a href="https://postimages.org/">Postimage</a> 是一款来自国外的图片上传与托管工具，提供免费版和付费版，支持通过网页、Windows客户端和浏览器插件上传图片。其免费版具有以下限制：</p><ul><li>热链的图片最大缩放至1280像素</li><li>单张图片最大支持24MB (3MB) 上传</li></ul><h3 id="环境搭建"><a class="header-anchor" href="#环境搭建">¶</a>环境搭建</h3><ol><li><p>搜索并安装 <code>postimage</code> 插件</p><p><img src="https://s2.loli.net/2024/10/12/rfS7uIRblYnUJGB.png" alt="1"></p></li><li><p>访问 <a href="https://postimages.org/">Postimage官网</a> 注册账号</p><p><img src="https://s2.loli.net/2024/10/12/8kzR2XSGBmJ1ehN.png" alt="2"></p></li><li><p>前往 <a href="https://postimages.org/login/api">API页面</a> 获取 <code>API KEY</code>，点击生成并复制</p><p><img src="https://s2.loli.net/2024/10/12/faQ5XSe46IHY3OF.png" alt="3"></p></li><li><p>在设置中填写相关信息</p><p><img src="https://s2.loli.net/2024/10/12/6nt4gcOW7aS9XAE.png" alt="4"></p><ul><li><p><code>API Key</code>：填入刚复制的密钥</p></li><li><p><code>图片分配</code>：相当于文件夹名称，例如配置为 postimage 时，图片将会存储在 image 文件夹中</p><p><img src="https://s2.loli.net/2024/10/12/UTq6xPW21G5j7wF.png" alt="5"></p></li></ul></li><li><p>点击确定，完成设置！</p></li></ol></li></ol>]]></content>
+        <content type="html"><![CDATA[<h2 id="简介"><a class="header-anchor" href="#简介">¶</a>简介</h2><p><a href="https://postimages.org/">Postimage</a>是一款来自国外的图片上传/托管工具，分为免费版和付费版，支持<code>网页/win端/浏览器插件</code>上传图片。其免费版的限制如下：</p><ul><li>热链接图片缩放至1280px</li><li>最大上传 24Mb (3MB) 的图片</li></ul><h2 id="环境搭建"><a class="header-anchor" href="#环境搭建">¶</a>环境搭建</h2><ol><li><p>搜索插件 <code>postimage</code> 安装</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/68747470733a2f2f696d6167652e6b72696e732e636c6f75642f312e6a7067" alt="1"></p></li><li><p>前往 <a href="https://postimages.org/">官网</a> 注册账号</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/68747470733a2f2f696d6167652e6b72696e732e636c6f75642f322e6a7067" alt="2"></p></li><li><p>在 <a href="https://postimages.org/login/api">这里</a> 获取 <code>API KEY</code>，点击生成后复制下来</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/68747470733a2f2f696d6167652e6b72696e732e636c6f75642f332e6a7067" alt="3"></p></li><li><p>在设置中填写相关信息</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/68747470733a2f2f696d6167652e6b72696e732e636c6f75642f342e6a7067" alt="4"></p><ul><li><p><code>API Key</code>：刚刚你复制的那串字符</p></li><li><p><code>图片分配</code>：可以看成文件夹，比如上述配置 postimage 就会把图片存储在 image 文件夹下</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/68747470733a2f2f696d6167652e6b72696e732e636c6f75642f352e6a7067" alt="5"></p></li></ul></li><li><p>点击确定，设置完成！</p><p>教程来自<a href="https://github.com/Redns/picgo-plugin-postimage">插件官方仓库</a></p></li></ol>]]></content>
       
       
       <categories>
@@ -260,7 +194,7 @@
       <link href="/2023/10/02/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AWeibo%E5%9B%BE%E5%BA%8A%E8%BD%AC%E7%A7%BB%E8%87%B3Github/"/>
       <url>/2023/10/02/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AWeibo%E5%9B%BE%E5%BA%8A%E8%BD%AC%E7%A7%BB%E8%87%B3Github/</url>
       
-        <content type="html"><![CDATA[<p><strong>本文将介绍一些迁移方案，也强烈建议使用weibo做图床的朋友尽快迁移。</strong></p><h1>利用GitHub当免费图床</h1><blockquote><p>没有面包，吃蛋糕不就好了？</p></blockquote><p>反正Blog就是用GitHub搭建，干脆一不做二不休，直接拿GitHub当图床便是：</p><p>打开<a href="https://github.com/">GitHub</a>，点右上角新建仓库。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215871..png" alt="img"></p><p>起一个名字，如<code>pic</code> ，设为公开（私密将无法外链显示），点击<code>Create repository</code>。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215872..png" alt="img"></p><p>然后进入网页 <a href="https://github.com/settings/tokens">github.com/settings/tokens</a>，点击<code>Generate new token</code>。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215873..png" alt="img"></p><p>填写令牌描述，如<code>pic</code>；设置里勾选<code>repo</code>，拉到网页底部，点击<code>Generate token</code> 生成令牌。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215875..png" alt="img"></p><p><strong>※务必复制保存这串令牌备用，GitHub只会显示这一次。</strong></p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215876..png" alt="img"></p><p>GitHub配置结束。</p><h1>使用PicGo传图到GitHub</h1><p><a href="https://github.com/Molunerfinn/PicGo">PicGo</a>是一款支持多图床上传的客户端软件，功能强大。</p><p>根据你的系统下载安装对应的<a href="https://github.com/Molunerfinn/PicGo/releases">PicGo</a>版本，打开软件并展开右侧<code>图床设置</code>；</p><p>进入<a href="https://nodejs.org/en/">GitHub图床</a>，在设置里依次填入：</p><ul><li><p>仓库名。</p><p>填写<code>你的GitHub用户名/pic</code>，也就是上一步建立的GitHub仓库；</p></li><li><p>分支名。</p><p>填写<code>master</code>即可；</p></li><li><p>Token。</p><p>填写上一步获取的GitHub令牌。</p></li></ul><p>点击<code>确定</code>，并<code>设为默认图床</code>。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215877..png" alt="img"></p><p>然后进入PicGo的上传区，拖拽图片即可上传，上传完成会根据底部选择的<code>链接格式</code>，自动复制对应格式的文本到剪贴板。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215878..png" alt="img"></p><p>现在，你已经能拿GitHub当图床使了：</p><ul><li>不仅能通过<a href="https://desktop.github.com/">GitHub </a>网页直接访问图床仓库，简单管理已上传的图片；</li><li>也可以安装<a href="https://desktop.github.com/">GitHub Desktop</a>将仓库克隆到本地，在本地管理/修改图片后再推送回去。</li></ul><p><strong>但必须注意，上传大体积图片务必压缩，不然载入速度感人，体积控制在200kb内最佳。</strong></p><p>图片压缩工具推荐使用：</p><ul><li><a href="https://imageoptim.com/api">imageoptim</a>；</li><li><a href="https://github.com/meowtec/Imagine/releases">imagine</a>；</li><li><a href="https://www.weibo.com/">weibo</a>。<s>传上去再扒下来图片会自动压缩，继续白嫖Weibo服务器。</s></li></ul><h1>批量迁移Weibo外链图片</h1><p>上文解决了未来的图床需求。</p><p>但旧文引用的weibo图片还在集体403，总得抢救一下：</p><p>同样打开PicGo，进入右侧<code>插件设置</code>，输入<code>pic-migrater</code>搜索安装<a href="https://github.com/PicGo/picgo-plugin-pic-migrater">picgo-plugin-pic-migrater</a>插件。</p><p>首次安装该插件会提示安装<a href="https://nodejs.org/en/">Node.js</a>，同样安装即可。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215879..png" alt="img"></p><p>安装完成重启软件，点击插件右下角的齿轮图标，<code>选择文件</code>。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215880..png" alt="img"></p><p>在弹出对话框内打开你想转移图片的文章**（必须是Markdown格式）**。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215881..png" alt="img"></p><p>软件会自动抓取文内所有Weibo图片，并上传至PicGo的<strong>默认图床</strong>（如上文设置的github），同时自动将文内的Weibo外链替换成新图床。</p><p><strong>——一键批量迁移所有文内图片，且不会改变文章内容，完全无痛。</strong></p><p>迁移完成后会以<code>旧文件名_new.md</code>的文件名生成新文章到同目录，确认文章内容无误后替换掉旧文章即可。</p><p><strong>必须注意：</strong></p><ul><li><p>该插件<strong>仅支持Markdown</strong>编写的文章，请将文章或图片链接写成Markdown再使用。</p><p>也推荐借此机会学习一下Markdown，语法非常简单；编写软件推荐<a href="https://www.typora.io/">Typora</a>，傻瓜易用。</p></li><li><p>插件支持大批量操作，点击<code>选择文件夹</code>就能扫描<strong>某文件夹内</strong>的<strong>所有文章</strong>并批量迁移。</p><p><strong>但不推荐使用该功能</strong>，一旦图片迁移失败，你会搞不清到底是哪篇失败，直接抓瞎，老老实实一篇一篇迁移就好。</p></li><li><p>如果你的单篇文章较长（&gt;3000字），且图片数量不少（&gt;10张），建议将文章<strong>拆分</strong>成几份再迁移。</p><p><strong>否则同样有概率迁移失败。</strong></p></li><li><p><strong>时刻关注右下角通知</strong>，出现迁移失败就赶紧检查，一两张失败推荐扒下来手动上传，数量过多就拆分文章重试。</p></li></ul><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215882..png" alt="img"></p><ul><li>手动上传偶尔也会失败，<strong>修改一下图片文件名</strong>再传即可。</li></ul><p>整个Blog的图床问题至此彻底解决。</p><h1>解决weibo外链图片的403错误</h1><p>自己的Blog图片是迁移了，但别人的可不一定。</p><p>一些引用Weibo图片又来不及迁移的地方（如论坛帖子）照样403，这时我们可以Ban掉referrer临时救急。</p><p>安装Chrome扩展如<a href="https://chrome.google.com/webstore/detail/referer-control/hnkcfpcejkafcihlgbojoidoihckciin">Referer Control</a>，进入扩展设置：</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215883..png" alt="img"></p><ul><li><code>site filter</code>内填入<code>sinaimg.cn</code>；</li><li><code>referer setting</code>选择<code>Block</code>。</li></ul><p>之后Weibo的外链图片就会正常显示。</p><p>Weibo测试图片（1.3MB，GIF）：</p><p><img src="https://i0.wp.com/wx3.sinaimg.cn/large/741f9461ly1g2hgoq61w3g20eg085b29.png" alt="img"></p><h1>其它图床推荐</h1><p>GitHub算是目前<strong>免费图床</strong>里最稳定，且最便利的一个。</p><p>然而Weibo之前才“教育完”我们：</p><blockquote><p>鸡蛋不要放在一个篮子里。</p></blockquote><p>所以额外推荐几个当作备胎。</p><h4 id="OneDrive"><a class="header-anchor" href="#OneDrive">¶</a>OneDrive</h4><p>没错，就是巨硬的<a href="https://onedrive.live.com/">OneDrive</a>。</p><p>将图片上传OneDrive，右键，选择<code>嵌入</code>，网页右侧就会生成链接。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215884..png" alt="img"></p><p>普通图片直接引用张贴即可；如果是GIF动图，则需要<strong>删除链接末尾的高宽设置</strong>，比如我这张末尾的<code>?width=520&amp;height=293&amp;cropmode=none</code>，否则GIF不会动。</p><p>OneDrive测试图片（1.3MB，GIF）：</p><p><img src="https://hsiqlg.bn.files.1drv.com/y4m2IMh7hR7hi8Yh4P1MXlsXIlNB9Zi9lQpPv8ayAlaO1po1bbtnWJP8PQTYxsBn4rgzMtdg7LSIthtk0CtswyEs9SrnargT9xVJcU-hj_i8JW8myD8GUKjMaEfy3hjFNbdkliMCmI4V6pNYaHMWIdFtuH6oJM3uJtqDo0zWkFYyRRtyCKIeepZ_MxHe6n79UfKDOwMUY0SxkEzZzDQFgsppw" alt="img"></p><p>而OneDrive初始容量有5GB，存点Blog图片完全够用。</p><p>同时没有流量限制，还能直接像管理网盘那样，分类/移动/重命名自己的图片，<strong>且不影响已生成的外链</strong>，非常方便。</p><p><strong>所以大可将Blog图片备份在OneDrive，顺便获取嵌入链接当作第二图床，一举两得。</strong></p><h4 id="SM-MS-Upload-cc"><a class="header-anchor" href="#SM-MS-Upload-cc">¶</a><a href="http://SM.MS/Upload.cc">SM.MS/Upload.cc</a></h4><p><a href="https://sm.ms/">SM.MS</a>&amp;<a href="https://smms.app">备用域名</a>是码农圈儿里相对知名的一个图床。</p><p>因为开放API，<a href="http://xn--PicGoSM-fw3kf0b80e795f37d3rh8t7d3fa47su4byw9gby8e.MS">上文使用的PicGo甚至直接集成了SM.MS</a>，并将其放在首位。</p><p><strong>服务优秀，目前免费，外链秒开。</strong></p><p>我们<s>可爱</s>又熟悉但不愿透露姓名的某位还是其团队成员之一。</p><p><strong>缺点也是有的：</strong></p><ul><li><p><strong>存在内容审查。</strong></p><p>尤其政治敏感内容与色情图片，按内部成员说法，审查方式为AI自动+人工审核，不算宽松。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408292215885..png" alt="img"></p></li><li><p><strong>因不可抗力暂时撤掉了国内CDN。</strong></p><p>稳定时外链秒开，拥挤时刷不出图片。<a href="http://xn--weiboSM-lr4kymp90atwndkgeow9rtba350al7eo53ettl5ngsrc1z1a591jukk.MS">由于昨天有相当数量的人数迁移weibo图片到SM.MS</a>，一段时间慢到令人发指，今天也不算乐观。</p></li><li><p><strong>图片一次只能上传10张。</strong></p><p>想用PicGo批量迁移Weibo图片到SM.MS的可以歇了，一旦文章图片超过10张，多出的图片直接迁移失败。</p></li><li><p><strong>没有历史记录。</strong></p></li></ul><p>除此之外一切美好。</p><p><s>SM.MS</s>Gitee测试图片（1.3MB，GIF，图片已经404了，换了Gitee源）：</p><h2 id="img"><a class="header-anchor" href="#img">¶</a><img src="https://gitee.com/zi4dbek-org/img/raw/master/img/202310041423451.png" alt="img"></h2><p>与SM.MS类似，免费图床还有<a href="https://upload.cc/">Upload.cc</a>。</p><p><strong>审查相对宽松，服务稳定，并提供一个简单的历史记录。</strong></p><p>Upload.cc测试图片（1.3MB，GIF）：</p><p><img src="https://upload.cc/i1/2019/04/27/MYKjnx.png" alt="img"></p><p><strong>※使用任何图床，务必阅读<a href="https://upload.cc/terms">使用条款</a>，请勿上传违规内容。</strong></p><hr><p>无论<a href="https://sm.ms/">SM.MS</a>还是<a href="https://upload.cc/">Upload.cc</a>。</p><p>用作论坛帖子之类的<strong>临时</strong>图床都非常合适，但对于<strong>需要长期保存</strong>的重要内容（如Blog图片），请慎重考虑。</p><p><strong>——就像Weibo，免费服务没有义务对用户负责，体量不大的私人图床更可能随时闭门谢客。</strong></p><p>所以本次图床迁移，个人首选用的GitHub，备选用的OneDrive。</p><p>哪怕未来巨硬关服务，也不至于瞬间暴毙连个迁移/存档的机会都没有。</p>]]></content>
+        <content type="html"><![CDATA[<h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4><h4 id="微博图床在几年前开启了防盗链，导致大量引用图片全部遭殃，本站未受影响（未使用微博图床），但也给出搭建图床到GitHub的方式"><a class="header-anchor" href="#微博图床在几年前开启了防盗链，导致大量引用图片全部遭殃，本站未受影响（未使用微博图床），但也给出搭建图床到GitHub的方式">¶</a><strong>微博图床在几年前开启了防盗链，导致大量引用图片全部遭殃，本站未受影响（未使用微博图床），但也给出搭建图床到GitHub的方式</strong></h4><h3 id="1-搭建过程"><a class="header-anchor" href="#1-搭建过程">¶</a>1.搭建过程</h3><h4 id="1-登录你的-GitHub-账号，创建一个新的仓库；"><a class="header-anchor" href="#1-登录你的-GitHub-账号，创建一个新的仓库；">¶</a>1. 登录你的 GitHub 账号，创建一个新的仓库；</h4><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812486.png" alt=""></p><h4 id="2-填写仓库信息，只需选择一个合适的仓库名，确保仓库设置为-public，其他设置保持默认即可；"><a class="header-anchor" href="#2-填写仓库信息，只需选择一个合适的仓库名，确保仓库设置为-public，其他设置保持默认即可；">¶</a>2. 填写仓库信息，只需选择一个合适的仓库名，确保仓库设置为 public，其他设置保持默认即可；</h4><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812487.png" alt=""></p><h4 id="3-创建成功后，你会看到如下界面，这意味着图床已经创建完成。接下来，我们来看看如何上传图片；"><a class="header-anchor" href="#3-创建成功后，你会看到如下界面，这意味着图床已经创建完成。接下来，我们来看看如何上传图片；">¶</a>3. 创建成功后，你会看到如下界面，这意味着图床已经创建完成。接下来，我们来看看如何上传图片；</h4><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812488.png" alt=""></p><h3 id="2-上传图片"><a class="header-anchor" href="#2-上传图片">¶</a>2. 上传图片</h3><p>虽然图床已经搭建完成，但通过传统方式向 GitHub 上传图片相对繁琐。这里推荐使用一个开源图床工具——PicGo，作为图片上传工具。</p><p>PicGo 的安装步骤简单明了，你可以前往其 <a href="https://molunerfinn.com/PicGo/">官网</a> 下载对应的版本并进行安装。接下来我们重点介绍如何使用 PicGo 上传图片。安装完成后，打开软件，其主界面如下：<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812489.png" alt=""></p><h4 id="1-首先，需要在-GitHub-上创建一个-token；"><a class="header-anchor" href="#1-首先，需要在-GitHub-上创建一个-token；">¶</a>1. 首先，需要在 GitHub 上创建一个 token；</h4><p>依次打开 <code>Settings -&gt; Developer settings -&gt; Personal access tokens</code>，然后点击 <code>Generate new token</code>；<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812490.png" alt=""></p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812491.png" alt=""></p><h4 id="2-填写并勾选相关信息，然后点击-Generate-token；"><a class="header-anchor" href="#2-填写并勾选相关信息，然后点击-Generate-token；">¶</a>2. 填写并勾选相关信息，然后点击 <code>Generate token</code>；</h4><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812492.png" alt=""></p><h4 id="3-Token-生成后，请注意它只会显示一次，所以最好将其复制并保存至备忘录，以便后续使用。否则，下次需要重新生成；"><a class="header-anchor" href="#3-Token-生成后，请注意它只会显示一次，所以最好将其复制并保存至备忘录，以便后续使用。否则，下次需要重新生成；">¶</a>3. Token 生成后，请注意它只会显示一次，所以最好将其复制并保存至备忘录，以便后续使用。否则，下次需要重新生成；</h4><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812493.png" alt=""></p><h4 id="4-配置-PicGo，依次打开-图床设置-GitHub-图床；"><a class="header-anchor" href="#4-配置-PicGo，依次打开-图床设置-GitHub-图床；">¶</a>4. 配置 PicGo，依次打开 <code>图床设置 -&gt; GitHub 图床</code>；</h4><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812494.png" alt=""></p><p>填写相关信息后，点击 <code>确定</code> 即可。若要将其设为默认图床，点击“设为默认图床”按钮；<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812495.png" alt=""></p><h4 id="5-通过上传区上传图片（可使用-Ctrl-V-或将图片拖拽到软件内），也可以通过快捷键（默认快捷键为-Ctrl-Shift-P）上传图片；"><a class="header-anchor" href="#5-通过上传区上传图片（可使用-Ctrl-V-或将图片拖拽到软件内），也可以通过快捷键（默认快捷键为-Ctrl-Shift-P）上传图片；">¶</a>5. 通过上传区上传图片（可使用 Ctrl+V 或将图片拖拽到软件内），也可以通过快捷键（默认快捷键为 Ctrl+Shift+P）上传图片；</h4><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812496.png" alt=""></p><h3 id="5-加速访问"><a class="header-anchor" href="#5-加速访问">¶</a>5. 加速访问</h3><p>你可能会发现，上传到 GitHub 的图片有时加载较慢，甚至无法加载。这时，可以使用 <a href="https://www.jsdelivr.com">jsDelivr</a> 和 <a href="https://i0.wp.com">WordPress图片缓存</a> 进行免费加速。设置方法非常简单，只需在 PicGo 图床配置中添加如下自定义域名即可：</p><ol><li><a href="https://i0.wp.com/cdn.jsdelivr.net/gh/%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BB%93%E5%BA%93%E5%90%8D">https://i0.wp.com/cdn.jsdelivr.net/gh/用户名/仓库名</a><br>例如，我的域名为 <a href="https://i0.wp.com/cdn.jsdelivr.net/gh/zi4dbek-org/img">https://i0.wp.com/cdn.jsdelivr.net/gh/zi4dbek-org/img</a><br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812497.png" alt=""></li></ol><h3 id="6-总结"><a class="header-anchor" href="#6-总结">¶</a>6. 总结</h3><p>通过本文的步骤，你应该已经成功搭建了一个免费图床。本文主要内容包括以下几个部分：</p><ol><li>前言</li><li>准备工作</li><li>搭建过程</li><li>上传图片</li><li>加速访问</li><li>总结</li></ol>]]></content>
       
       
       <categories>
@@ -405,7 +339,7 @@
       <link href="/2023/09/16/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9Asm-ms/"/>
       <url>/2023/09/16/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9Asm-ms/</url>
       
-        <content type="html"><![CDATA[<h3 id="图床网站推荐：sm-ms"><a class="header-anchor" href="#图床网站推荐：sm-ms">¶</a>图床网站推荐：<a href="https://sm.ms/">sm.ms</a></h3><table><thead><tr><th>提示：若主域名无法访问，可使用备用链接。仍然无法访问的情况下，建议使用科学上网。</th></tr></thead></table><h4 id="官方备用链接："><a class="header-anchor" href="#官方备用链接：">¶</a>官方备用链接：</h4><p><a href="https://smms.app">https://smms.app</a></p><p>用户无需注册即可免费使用该服务，</p><p>但建议注册（免费），</p><p>以便管理自己上传的图片。</p><p>每个文件大小限制为5 MB，</p><p>每次最多可上传10个文件。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810135.png" alt=""><br>上传后，网站会提供多种格式的复制选项：<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810136.png" alt=""></p><table><thead><tr><th>提示：广告内容已被模糊处理</th></tr></thead></table><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810137.png" alt=""></p><p><strong>通常我们需要的是image URL链接</strong></p><h3 id="会员服务（无广告）（月度-年度-终身）"><a class="header-anchor" href="#会员服务（无广告）（月度-年度-终身）">¶</a>会员服务（无广告）（月度/年度/终身）</h3><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810138.png" alt=""><br>开发者应该来自中国香港，</p><p>定价以HKD（香港元）计算。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810139.png" alt=""><br>59港元≈54.84人民币，</p><p>对于一个月的会员价格来说，确实不便宜。</p><p>这些钱足够用来搭建一个自己的服务器了。</p><p>不过对于一些不太熟悉技术的人来说，</p><p>花钱省事，何乐而不为？</p><p>更何况，域名备案和CDN加速的配置费时费力。</p><p>注册用户还可获得5GB的免费空间，</p><p>个人认为，足够使用三到五年。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810140.png" alt=""><br>图片管理面板可以查看和删除已上传的图片：<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810141.png" alt=""><br>删除图片时的弹窗设计非常熟悉，<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810142.png" alt=""><br>看起来很像复制时的弹窗。</p><p>在Google Play上也有相关应用：<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810144.png" alt=""><br>用户可以通过手机上传和查看图片。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810145.png" alt=""><br>对于无法访问Google Play商店的朋友，</p><p>可以通过以下链接下载安卓版应用：</p><p>[btn href=“<a href="https://github.com/zi4dbek-org/storge/raw/main/SM.MS.apk">https://github.com/zi4dbek-org/storge/raw/main/SM.MS.apk</a>” type=&quot; orange &quot; ico=“”]安卓APK下载链接[/btn]</p><p>在V2EX上找到了一篇陈年老帖，</p><p>作者在2015年就启动了这个项目，</p><p>平台已有8年的历史，希望能够持续运营。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810146.png" alt=""></p><table><thead><tr><th><a href="https://www.v2ex.com/t/182703?p=2">https://www.v2ex.com/t/182703?p=2</a></th></tr></thead></table><p>从更新记录来看，图床仍在持续更新与维护，<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810147.png" alt=""><br>2017年便已全站强制启用HTTPS，值得称赞！<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810148.png" alt=""></p><p>题外话：笔者网站图片加载速度较慢，</p><p>听闻七牛云图床体验不错，遂</p><p>兴致勃勃地进行注册与配置，然而最终发现，</p><p>七牛云图床仅支持备案的域名进行图片加速，</p><p>且其提供的临时域名只能使用一个月。</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="图床网站推荐：sm-ms"><a class="header-anchor" href="#图床网站推荐：sm-ms">¶</a>图床网站推荐：<a href="https://sm.ms/">sm.ms</a></h3><table><thead><tr><th>提示：若主域名无法访问，可使用备用链接。仍然无法访问的情况下，建议使用科学上网。</th></tr></thead></table><h4 id="官方备用链接："><a class="header-anchor" href="#官方备用链接：">¶</a>官方备用链接：</h4><p><a href="https://smms.app">https://smms.app</a></p><p>每个文件大小限制为5 MB，</p><p>每次最多可上传10个文件。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810135.png" alt=""><br>上传后，网站会提供多种格式的复制选项：<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810136.png" alt=""></p><table><thead><tr><th>提示：广告内容已被模糊处理</th></tr></thead></table><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810137.png" alt=""></p><p><strong>通常我们需要的是image URL链接</strong></p><h3 id="会员服务（无广告）（月度-年度-终身）"><a class="header-anchor" href="#会员服务（无广告）（月度-年度-终身）">¶</a>会员服务（无广告）（月度/年度/终身）</h3><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810138.png" alt=""><br>开发者应该来自中国香港，</p><p>定价以HKD（香港元）计算。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810139.png" alt=""><br>59港元≈54.84人民币，</p><p>对于一个月的会员价格来说，确实不便宜。</p><p>这些钱足够用来搭建一个自己的服务器了。</p><p>不过对于一些不太熟悉技术的人来说，</p><p>花钱省事，何乐而不为？</p><p>更何况，域名备案和CDN加速的配置费时费力。</p><p>注册用户还可获得5GB的免费空间，</p><p>个人认为，足够使用三到五年。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810140.png" alt=""><br>图片管理面板可以查看和删除已上传的图片：<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810141.png" alt=""><br>删除图片时的弹窗设计非常熟悉，<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810142.png" alt=""><br>看起来很像复制时的弹窗。</p><p>在Google Play上也有相关应用：<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810144.png" alt=""><br>用户可以通过手机上传和查看图片。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810145.png" alt=""><br>对于无法访问Google Play商店的朋友，</p><p>可以通过以下链接下载安卓版应用：</p><p>[btn href=“<a href="https://github.com/zi4dbek-org/storge/raw/main/SM.MS.apk">https://github.com/zi4dbek-org/storge/raw/main/SM.MS.apk</a>” type=&quot; orange &quot; ico=“”]安卓APK下载链接[/btn]</p><p>在V2EX上找到了一篇陈年老帖，</p><p>作者在2015年就启动了这个项目，</p><p>平台已有8年的历史，希望能够持续运营。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810146.png" alt=""></p><table><thead><tr><th><a href="https://www.v2ex.com/t/182703?p=2">https://www.v2ex.com/t/182703?p=2</a></th></tr></thead></table><p>从更新记录来看，图床仍在持续更新与维护，<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810147.png" alt=""><br>2017年便已全站强制启用HTTPS，值得称赞！<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311810148.png" alt=""></p><p>题外话：笔者网站图片加载速度较慢，</p><p>听闻七牛云图床体验不错，遂</p><p>兴致勃勃地进行注册与配置，然而最终发现，</p><p>七牛云图床仅支持备案的域名进行图片加速，</p><p>且其提供的临时域名只能使用一个月。</p>]]></content>
       
       
       <categories>
@@ -422,39 +356,6 @@
             <tag> 免费图床 </tag>
             
             <tag> 图床 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>OneDrive 无限容量变形记第三话：无限的魔爪伸向电脑硬盘，利用OneDrive扩容你的电脑，并且还可以根据需要分出热库冷库</title>
-      <link href="/2023/09/09/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%B8%89%E8%AF%9D%EF%BC%9A%E6%97%A0%E9%99%90%E7%9A%84%E9%AD%94%E7%88%AA%E4%BC%B8%E5%90%91%E7%94%B5%E8%84%91%E7%A1%AC%E7%9B%98%EF%BC%8C%E5%88%A9%E7%94%A8OneDrive%E6%89%A9%E5%AE%B9%E4%BD%A0%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%8C%E5%B9%B6%E4%B8%94%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E5%88%86%E5%87%BA%E7%83%AD%E5%BA%93%E5%86%B7%E5%BA%93/"/>
-      <url>/2023/09/09/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%B8%89%E8%AF%9D%EF%BC%9A%E6%97%A0%E9%99%90%E7%9A%84%E9%AD%94%E7%88%AA%E4%BC%B8%E5%90%91%E7%94%B5%E8%84%91%E7%A1%AC%E7%9B%98%EF%BC%8C%E5%88%A9%E7%94%A8OneDrive%E6%89%A9%E5%AE%B9%E4%BD%A0%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%8C%E5%B9%B6%E4%B8%94%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E5%88%86%E5%87%BA%E7%83%AD%E5%BA%93%E5%86%B7%E5%BA%93/</url>
-      
-        <content type="html"><![CDATA[<h1>最近总能看到某应用的广告，声称可以挂载阿里云盘和115网盘进行使用</h1><p>需要安装一个额外的软件，直接使用Windows自带的OneDrive同步功能难道不香吗？</p><p>套用这个应用的广告语：OneDrive的空间有多大，你的硬盘空间就有多大。</p><p>那么，OneDrive的空间到底有多大呢？而且它还支持多账户和多文档库同步。</p><p>例如，我这里目前有一个个人版的OneDrive，还有一个公司Office 365的OneDrive。 <img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812529.png" alt="OneDrive"></p><p>不过，由于OneDrive文档库中的文件过多，每次打开时都需要很长时间来检查和更改。此外，考虑到将来文件数量会越来越多，可能会对性能造成一些影响。</p><p>因此，最近我尝试了一种新的方法，将资料分为冷、热两部分进行存储。</p><h2 id="热：经常使用的资料"><a class="header-anchor" href="#热：经常使用的资料">¶</a>热：经常使用的资料</h2><p>这些资料依然保存在OneDrive中，作为常用文件使用。</p><h2 id="冷：不常使用的资料"><a class="header-anchor" href="#冷：不常使用的资料">¶</a>冷：不常使用的资料</h2><p>一年可能只打开一次的文件，我们需要为这些文件建立一个“冷库”。</p><p>首先，打开OneDrive，创建一个新的文档库，命名为冷库。 <img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812530.png" alt="创建冷库"></p><p>然后将热库中的不常用资料移动到冷库中进行保存。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812531.png" alt="移动资料"></p><p>接着，打开冷库并进行同步（按照OneDrive的指示一步步操作即可）。 <img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812533.png" alt="同步"></p><p>在资源管理器中打开后，热库和冷库都能看到。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812534.png" alt="资源管理器"></p><p>如果需要进一步区分，可以再创建冷二库、冷三库、冷四库等。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 微软 </category>
-          
-          <category> OneDrive </category>
-          
-          <category> 白嫖 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 微软 </tag>
-            
-            <tag> OneDrive </tag>
-            
-            <tag> 白嫖 </tag>
             
         </tags>
       
@@ -485,9 +386,42 @@
             
             <tag> 微软 </tag>
             
+            <tag> 白嫖 </tag>
+            
             <tag> OneDrive </tag>
             
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>OneDrive 无限容量变形记第三话：无限的魔爪伸向电脑硬盘，利用OneDrive扩容你的电脑，并且还可以根据需要分出热库冷库</title>
+      <link href="/2023/09/09/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%B8%89%E8%AF%9D%EF%BC%9A%E6%97%A0%E9%99%90%E7%9A%84%E9%AD%94%E7%88%AA%E4%BC%B8%E5%90%91%E7%94%B5%E8%84%91%E7%A1%AC%E7%9B%98%EF%BC%8C%E5%88%A9%E7%94%A8OneDrive%E6%89%A9%E5%AE%B9%E4%BD%A0%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%8C%E5%B9%B6%E4%B8%94%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E5%88%86%E5%87%BA%E7%83%AD%E5%BA%93%E5%86%B7%E5%BA%93/"/>
+      <url>/2023/09/09/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%B8%89%E8%AF%9D%EF%BC%9A%E6%97%A0%E9%99%90%E7%9A%84%E9%AD%94%E7%88%AA%E4%BC%B8%E5%90%91%E7%94%B5%E8%84%91%E7%A1%AC%E7%9B%98%EF%BC%8C%E5%88%A9%E7%94%A8OneDrive%E6%89%A9%E5%AE%B9%E4%BD%A0%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%8C%E5%B9%B6%E4%B8%94%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E5%88%86%E5%87%BA%E7%83%AD%E5%BA%93%E5%86%B7%E5%BA%93/</url>
+      
+        <content type="html"><![CDATA[<h1>最近总能看到某应用的广告，声称可以挂载阿里云盘和115网盘进行使用</h1><p>需要安装一个额外的软件，直接使用Windows自带的OneDrive同步功能难道不香吗？</p><p>套用这个应用的广告语：OneDrive的空间有多大，你的硬盘空间就有多大。</p><p>那么，OneDrive的空间到底有多大呢？而且它还支持多账户和多文档库同步。</p><p>例如，我这里目前有一个个人版的OneDrive，还有一个公司Office 365的OneDrive。 <img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812529.png" alt="OneDrive"></p><p>不过，由于OneDrive文档库中的文件过多，每次打开时都需要很长时间来检查和更改。此外，考虑到将来文件数量会越来越多，可能会对性能造成一些影响。</p><p>因此，最近我尝试了一种新的方法，将资料分为冷、热两部分进行存储。</p><h2 id="热：经常使用的资料"><a class="header-anchor" href="#热：经常使用的资料">¶</a>热：经常使用的资料</h2><p>这些资料依然保存在OneDrive中，作为常用文件使用。</p><h2 id="冷：不常使用的资料"><a class="header-anchor" href="#冷：不常使用的资料">¶</a>冷：不常使用的资料</h2><p>一年可能只打开一次的文件，我们需要为这些文件建立一个“冷库”。</p><p>首先，打开OneDrive，创建一个新的文档库，命名为冷库。 <img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812530.png" alt="创建冷库"></p><p>然后将热库中的不常用资料移动到冷库中进行保存。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812531.png" alt="移动资料"></p><p>接着，打开冷库并进行同步（按照OneDrive的指示一步步操作即可）。 <img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812533.png" alt="同步"></p><p>在资源管理器中打开后，热库和冷库都能看到。</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812534.png" alt="资源管理器"></p><p>如果需要进一步区分，可以再创建冷二库、冷三库、冷四库等。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微软 </category>
+          
+          <category> OneDrive </category>
+          
+          <category> 白嫖 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微软 </tag>
+            
             <tag> 白嫖 </tag>
+            
+            <tag> OneDrive </tag>
             
         </tags>
       
@@ -500,7 +434,7 @@
       <link href="/2023/09/08/%E7%BB%88%E4%BA%8E%E7%9C%8B%E8%A7%81%E5%9B%9E%E5%A4%B4%E9%92%B1%E4%BA%86-%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9%E6%94%AF%E6%8C%81%E7%99%BD%E5%AB%96-%E8%BF%98%E6%98%AF%E4%BC%81%E4%B8%9A%E7%BA%A7%E4%BA%A7%E5%93%81%EF%BC%8C%E9%82%AE%E7%AE%B1%E3%80%81%E7%BD%91%E7%9B%98%E3%80%81IM%E3%80%81%E5%9C%A8%E7%BA%BF%E4%BC%9A%E8%AE%AE%E4%B8%80%E5%BA%94%E4%BF%B1%E5%85%A8/"/>
       <url>/2023/09/08/%E7%BB%88%E4%BA%8E%E7%9C%8B%E8%A7%81%E5%9B%9E%E5%A4%B4%E9%92%B1%E4%BA%86-%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9%E6%94%AF%E6%8C%81%E7%99%BD%E5%AB%96-%E8%BF%98%E6%98%AF%E4%BC%81%E4%B8%9A%E7%BA%A7%E4%BA%A7%E5%93%81%EF%BC%8C%E9%82%AE%E7%AE%B1%E3%80%81%E7%BD%91%E7%9B%98%E3%80%81IM%E3%80%81%E5%9C%A8%E7%BA%BF%E4%BC%9A%E8%AE%AE%E4%B8%80%E5%BA%94%E4%BF%B1%E5%85%A8/</url>
       
-        <content type="html"><![CDATA[<h1>许多高B格外企中都在使用微软的Microsoft 365，但同样高B格的价格让很多中小企业望而却步，作者经过一年的测试发现，其实微软官方也是支持Microsoft 365 白嫖的。</h1><h2 id="而且是使用时间无限，用户数量无限，存储空间无限，这可是真无限，真白嫖"><a class="header-anchor" href="#而且是使用时间无限，用户数量无限，存储空间无限，这可是真无限，真白嫖">¶</a>而且是使用时间无限，用户数量无限，存储空间无限，这可是真无限，真白嫖</h2><h2 id="这要从去年疫情期间推出的Teams-Exploratory版说起。"><a class="header-anchor" href="#这要从去年疫情期间推出的Teams-Exploratory版说起。">¶</a>这要从去年疫情期间推出的Teams Exploratory版说起。</h2><p>注意我们要说的不是Teams 免费版，那个功能缺失太多了<br><a href="https://docs.microsoft.com/zh-cn/microsoftteams/manage-freemium">https://docs.microsoft.com/zh-cn/microsoftteams/manage-freemium</a><br>这个其实是 Teams 探索版<br><a href="https://docs.microsoft.com/zh-cn/microsoftteams/teams-exploratory">https://docs.microsoft.com/zh-cn/microsoftteams/teams-exploratory</a><br>二者区别可以参考官方文档<br>那 Teams Exploratory版里有什么呢，请看<br>•Exchange Online（计划 1)<br>•Microsoft Teams<br>•SharePoint Online（计划 1，包括OneDrive）<br>•适用于 Microsoft 365 或 Office 365 的 Power Automate<br>•MyAnalytics 提供的见解<br>•Microsoft Forms（计划 1）<br>•Microsoft Planner<br>•Microsoft 搜索<br>•Microsoft StaffHub<br>•适用于 Microsoft 365 和 Office 365 E1 SKU 的 Microsoft Stream<br>•适用于 Microsoft 365 或 Office 365 的移动设备管理<br>•适用于 Office 365 的 Office 移动应用<br>•Office Online<br>•适用于 Microsoft 365 或 Office 365 的 PowerApps<br>•Sway<br>•待办事项（计划 1）<br>•Whiteboard（计划 1）<br>•Yammer 企业版<br>有 Exchange, SharePoint，Teams，还要啥自行车啊<br>简单的来说，想到于白嫖了一套 Office 365 E1<br>50G 邮箱+IM+在线会议+每个人1T的OneDrive网盘+几乎无限的团队空间+在线版Office<br>为什么是无限呢，因为团队空间是根据许可证数量计算的，而Teams Exploratory版可是无限白嫖，数量无限制，空间自然不限制</p><h1>我们先来看如何申请</h1><ol><li>白嫖的先决条件，就是你需要有一个付费的Office 365账户，在下面的链接里选一个你喜欢的版本申请试用（不是白嫖吗，咋还付费了呢，请接着看）<br><a href="https://www.microsoft.com/zh-cn/microsoft-365/business/compare-all-microsoft-365-business-products?&amp;activetab=tab:primaryr2">https://www.microsoft.com/zh-cn/microsoft-365/business/compare-all-microsoft-365-business-products?&amp;activetab=tab:primaryr2</a></li><li>然后在管理中心新建一个账户，注意不要给这个用户分配任何许可证<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812857.png" alt=""></li><li>用这个账户去打开 <a href="https://teams.microsoft.com">https://teams.microsoft.com</a></li><li>这时，再打开管理中心，你就会发现100个Teams Exploratory版的许可证，可以随意分配给用户了<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812858.png" alt=""><br><code>哎？刚刚不是说无限么？现在怎么就100个了？</code><br>等你分配完这100个，重复步骤2和3，新建空账户、登录Teams，许可证就会变成200了，以此类推<br>#关于使用时间<br>那能用多长时间呢，官方文档说是一年，作者等了一年才写这篇文章，就是想看看一年后会怎么样，结果发现根本没有时间限制，可以继续用。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812859.png" alt=""></li></ol><h1>关于付费账户</h1><h2 id="试用账户不用花钱但是就能用30天，过期之后试用账户会和白嫖版一起到期"><a class="header-anchor" href="#试用账户不用花钱但是就能用30天，过期之后试用账户会和白嫖版一起到期">¶</a>试用账户不用花钱但是就能用30天，过期之后试用账户会和白嫖版一起到期</h2><p>不对啊，你不是说没有时间限制么，别急别急<br>你可以把你的试用账户升级为付费账户，简单的说就是交钱，买个最便宜的400块钱一年的基础版，相当于花一个账户的钱免费无限用<br>不要着急付款！不要着急付款！不要着急付款！请继续往下看！！！<br>作者等了一年的另外一个收获就是：第二年根本不用续费，请看图，所有许可证都过期了，但是Exploratory版可以继续使用</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812860.png" alt="202309082146469"><br><strong>我们做个大胆的假设，就是你只付第一个月的36块钱，然后不续费，是不是也可以呢？</strong><br>但因为舍不得这36块钱，所以我没试过，有兴趣的可以试试，或者发给我36块钱红包我也可以帮着大家试试<br>所以，看到没有，36块钱，使用时间无限，用户数量无限，存储空间无限，这可是真无限 真白嫖啊！<br>哪怕你不需要邮件、不需要在线会议、不需要IM，白嫖一个无限容量的OneDrive网盘不香么？</p>]]></content>
+        <content type="html"><![CDATA[<h1>许多高B格外企中都在使用微软的Microsoft 365，但同样高B格的价格让很多中小企业望而却步，作者经过一年的测试发现，其实微软官方也是支持Microsoft 365 白嫖的。</h1><h2 id="而且是使用时间无限，用户数量无限，存储空间无限，这可是真无限，真白嫖"><a class="header-anchor" href="#而且是使用时间无限，用户数量无限，存储空间无限，这可是真无限，真白嫖">¶</a>而且是使用时间无限，用户数量无限，存储空间无限，这可是真无限，真白嫖</h2><h2 id="这要从疫情期间推出的Teams-Exploratory版说起。"><a class="header-anchor" href="#这要从疫情期间推出的Teams-Exploratory版说起。">¶</a>这要从疫情期间推出的Teams Exploratory版说起。</h2><p>注意我们要说的不是Teams 免费版，那个功能缺失太多了<br><a href="https://docs.microsoft.com/zh-cn/microsoftteams/manage-freemium">https://docs.microsoft.com/zh-cn/microsoftteams/manage-freemium</a><br>这个其实是 Teams 探索版<br><a href="https://docs.microsoft.com/zh-cn/microsoftteams/teams-exploratory">https://docs.microsoft.com/zh-cn/microsoftteams/teams-exploratory</a><br>二者区别可以参考官方文档<br>那 Teams Exploratory版里有什么呢，请看<br>•Exchange Online（计划 1)<br>•Microsoft Teams<br>•SharePoint Online（计划 1，包括OneDrive）<br>•适用于 Microsoft 365 或 Office 365 的 Power Automate<br>•MyAnalytics 提供的见解<br>•Microsoft Forms（计划 1）<br>•Microsoft Planner<br>•Microsoft 搜索<br>•Microsoft StaffHub<br>•适用于 Microsoft 365 和 Office 365 E1 SKU 的 Microsoft Stream<br>•适用于 Microsoft 365 或 Office 365 的移动设备管理<br>•适用于 Office 365 的 Office 移动应用<br>•Office Online<br>•适用于 Microsoft 365 或 Office 365 的 PowerApps<br>•Sway<br>•待办事项（计划 1）<br>•Whiteboard（计划 1）<br>•Yammer 企业版<br>有 Exchange, SharePoint，Teams，还要啥自行车啊<br>简单的来说，想到于白嫖了一套 Office 365 E1<br>50G 邮箱+IM+在线会议+每个人1T的OneDrive网盘+几乎无限的团队空间+在线版Office<br>为什么是无限呢，因为团队空间是根据许可证数量计算的，而Teams Exploratory版可是无限白嫖，数量无限制，空间自然不限制</p><h1>我们先来看如何申请</h1><ol><li>白嫖的先决条件，就是你需要有一个付费的Office 365账户，在下面的链接里选一个你喜欢的版本申请试用（不是白嫖吗，咋还付费了呢，请接着看）<br><a href="https://www.microsoft.com/zh-cn/microsoft-365/business/compare-all-microsoft-365-business-products?&amp;activetab=tab:primaryr2">https://www.microsoft.com/zh-cn/microsoft-365/business/compare-all-microsoft-365-business-products?&amp;activetab=tab:primaryr2</a></li><li>然后在管理中心新建一个账户，注意不要给这个用户分配任何许可证<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812857.png" alt=""></li><li>用这个账户去打开 <a href="https://teams.microsoft.com">https://teams.microsoft.com</a></li><li>这时，再打开管理中心，你就会发现100个Teams Exploratory版的许可证，可以随意分配给用户了<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812858.png" alt=""><br><code>哎？刚刚不是说无限么？现在怎么就100个了？</code><br>等你分配完这100个，重复步骤2和3，新建空账户、登录Teams，许可证就会变成200了，以此类推<br>#关于使用时间<br>那能用多长时间呢，官方文档说是一年，作者等了一年才写这篇文章，就是想看看一年后会怎么样，结果发现根本没有时间限制，可以继续用。<br><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812859.png" alt=""></li></ol><h1>关于付费账户</h1><h2 id="试用账户不用花钱但是就能用30天，过期之后试用账户会和白嫖版一起到期"><a class="header-anchor" href="#试用账户不用花钱但是就能用30天，过期之后试用账户会和白嫖版一起到期">¶</a>试用账户不用花钱但是就能用30天，过期之后试用账户会和白嫖版一起到期</h2><p>不对啊，你不是说没有时间限制么，别急别急<br>你可以把你的试用账户升级为付费账户，简单的说就是交钱，买个最便宜的400块钱一年的基础版，相当于花一个账户的钱免费无限用<br>不要着急付款！不要着急付款！不要着急付款！请继续往下看！！！<br>作者等了一年的另外一个收获就是：第二年根本不用续费，请看图，所有许可证都过期了，但是Exploratory版可以继续使用</p><p><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408311812860.png" alt="202309082146469"><br><strong>我们做个大胆的假设，就是你只付第一个月的36块钱，然后不续费，是不是也可以呢？</strong><br>但因为舍不得这36块钱，所以我没试过，有兴趣的可以试试，或者发给我36块钱红包我也可以帮着大家试试<br>所以，看到没有，36块钱，使用时间无限，用户数量无限，存储空间无限，这可是真无限 真白嫖啊！<br>哪怕你不需要邮件、不需要在线会议、不需要IM，白嫖一个无限容量的OneDrive网盘不香么？</p>]]></content>
       
       
       <categories>
@@ -547,9 +481,9 @@
             
             <tag> 微软 </tag>
             
-            <tag> OneDrive </tag>
-            
             <tag> 白嫖 </tag>
+            
+            <tag> OneDrive </tag>
             
         </tags>
       
