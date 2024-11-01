@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OneDrive 无限容量变形记第三话：无限的魔爪伸向电脑硬盘，利用OneDrive扩容你的电脑，并且还可以根据需要分出热库冷库 | zi4dbek的小站</title><meta name="author" content="zi4dbek"><meta name="copyright" content="zi4dbek"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最近总能看到某应用的广告，声称可以挂载阿里云盘和115网盘进行使用 需要安装一个额外的软件，直接使用Windows自带的OneDrive同步功能难道不香吗？ 套用这个应用的广告语：OneDrive的空间有多大，你的硬盘空间就有多大。 那么，OneDrive的空间到底有多大呢？而且它还支持多账户和多文档库同步。 例如，我这里目前有一个个人版的OneDrive，还有一个公司Office 365的One">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OneDrive 无限容量变形记第三话：无限的魔爪伸向电脑硬盘，利用OneDrive扩容你的电脑，并且还可以根据需要分出热库冷库">
+<meta property="og:url" content="https://zi4dbek.github.io/posts/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%B8%89%E8%AF%9D%EF%BC%9A%E6%97%A0%E9%99%90%E7%9A%84%E9%AD%94%E7%88%AA%E4%BC%B8%E5%90%91%E7%94%B5%E8%84%91%E7%A1%AC%E7%9B%98%EF%BC%8C%E5%88%A9%E7%94%A8OneDrive%E6%89%A9%E5%AE%B9%E4%BD%A0%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%8C%E5%B9%B6%E4%B8%94%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E5%88%86%E5%87%BA%E7%83%AD%E5%BA%93%E5%86%B7%E5%BA%93/index.html">
+<meta property="og:site_name" content="zi4dbek的小站">
+<meta property="og:description" content="最近总能看到某应用的广告，声称可以挂载阿里云盘和115网盘进行使用 需要安装一个额外的软件，直接使用Windows自带的OneDrive同步功能难道不香吗？ 套用这个应用的广告语：OneDrive的空间有多大，你的硬盘空间就有多大。 那么，OneDrive的空间到底有多大呢？而且它还支持多账户和多文档库同步。 例如，我这里目前有一个个人版的OneDrive，还有一个公司Office 365的One">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/mcwqoPxpdhC6J5A.gif">
+<meta property="article:published_time" content="2023-09-09T11:27:00.000Z">
+<meta property="article:modified_time" content="2024-10-19T06:37:01.304Z">
+<meta property="article:author" content="zi4dbek">
+<meta property="article:tag" content="微软">
+<meta property="article:tag" content="白嫖">
+<meta property="article:tag" content="OneDrive">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/mcwqoPxpdhC6J5A.gif"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zi4dbek.github.io/posts/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%B8%89%E8%AF%9D%EF%BC%9A%E6%97%A0%E9%99%90%E7%9A%84%E9%AD%94%E7%88%AA%E4%BC%B8%E5%90%91%E7%94%B5%E8%84%91%E7%A1%AC%E7%9B%98%EF%BC%8C%E5%88%A9%E7%94%A8OneDrive%E6%89%A9%E5%AE%B9%E4%BD%A0%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%8C%E5%B9%B6%E4%B8%94%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E5%88%86%E5%87%BA%E7%83%AD%E5%BA%93%E5%86%B7%E5%BA%93/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="stylesheet" href="/css/index.css?v=5.1.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-XDJBQ3FVPC"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-XDJBQ3FVPC')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-XDJBQ3FVPC', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;e6098f6756c1425498041b88f7cf4a0c&quot;}"></script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OneDrive 无限容量变形记第三话：无限的魔爪伸向电脑硬盘，利用OneDrive扩容你的电脑，并且还可以根据需要分出热库冷库',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-19 14:37:01'
+}</script><meta name="referrer" content="same-origin"><link rel="stylesheet" href="https://fakecaptcha.netlify.app/fakeCAPTCHA/fakeCAPTCHA.css"><script src="https://fakecaptcha.netlify.app/fakeCAPTCHA/fakeCAPTCHA.js"></script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="zi4dbek的小站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/mcwqoPxpdhC6J5A.gif" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div><div class="menus_item"><a class="site-page" href="/Sponsor/"><i class="fa-fw fa-solid fa-circle-dollar-to-slot"></i><span> 捐助笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">zi4dbek的小站</span></a><a class="nav-page-title" href="/"><span class="site-name">OneDrive 无限容量变形记第三话：无限的魔爪伸向电脑硬盘，利用OneDrive扩容你的电脑，并且还可以根据需要分出热库冷库</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div><div class="menus_item"><a class="site-page" href="/Sponsor/"><i class="fa-fw fa-solid fa-circle-dollar-to-slot"></i><span> 捐助笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">OneDrive 无限容量变形记第三话：无限的魔爪伸向电脑硬盘，利用OneDrive扩容你的电脑，并且还可以根据需要分出热库冷库</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-09T11:27:00.000Z" title="发表于 2023-09-09 19:27:00">2023-09-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.304Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BE%AE%E8%BD%AF/">微软</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BE%AE%E8%BD%AF/OneDrive/">OneDrive</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BE%AE%E8%BD%AF/OneDrive/%E7%99%BD%E5%AB%96/">白嫖</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>最近总能看到某应用的广告，声称可以挂载阿里云盘和115网盘进行使用</h1>
+<p>需要安装一个额外的软件，直接使用Windows自带的OneDrive同步功能难道不香吗？</p>
+<p>套用这个应用的广告语：OneDrive的空间有多大，你的硬盘空间就有多大。</p>
+<p>那么，OneDrive的空间到底有多大呢？而且它还支持多账户和多文档库同步。</p>
+<p>例如，我这里目前有一个个人版的OneDrive，还有一个公司Office 365的OneDrive。 <img src="/images/2c890c7dda17d8fe70556792250ff4af5fb08846.png" alt="OneDrive"></p>
+<p>不过，由于OneDrive文档库中的文件过多，每次打开时都需要很长时间来检查和更改。此外，考虑到将来文件数量会越来越多，可能会对性能造成一些影响。</p>
+<p>因此，最近我尝试了一种新的方法，将资料分为冷、热两部分进行存储。</p>
+<h2 id="热：经常使用的资料"><a class="header-anchor" href="#热：经常使用的资料">¶</a>热：经常使用的资料</h2>
+<p>这些资料依然保存在OneDrive中，作为常用文件使用。</p>
+<h2 id="冷：不常使用的资料"><a class="header-anchor" href="#冷：不常使用的资料">¶</a>冷：不常使用的资料</h2>
+<p>一年可能只打开一次的文件，我们需要为这些文件建立一个“冷库”。</p>
+<p>首先，打开OneDrive，创建一个新的文档库，命名为冷库。 <img src="/images/636e6e44702a464dfc197c5a3dbb9e83db840f45.png" alt="创建冷库"></p>
+<p>然后将热库中的不常用资料移动到冷库中进行保存。</p>
+<p><img src="/images/d1d9273a07dbfee8086be596afae4fdac3e437db.png" alt="移动资料"></p>
+<p>接着，打开冷库并进行同步（按照OneDrive的指示一步步操作即可）。 <img src="/images/5ec18d76a781c2f5588e0073459703d43143af76.png" alt="同步"></p>
+<p>在资源管理器中打开后，热库和冷库都能看到。</p>
+<p><img src="/images/168e9b04ba7a469dfbacda3e64901cda632daf11.png" alt="资源管理器"></p>
+<p>如果需要进一步区分，可以再创建冷二库、冷三库、冷四库等。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://zi4dbek.github.io">zi4dbek</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://zi4dbek.github.io/posts/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%B8%89%E8%AF%9D%EF%BC%9A%E6%97%A0%E9%99%90%E7%9A%84%E9%AD%94%E7%88%AA%E4%BC%B8%E5%90%91%E7%94%B5%E8%84%91%E7%A1%AC%E7%9B%98%EF%BC%8C%E5%88%A9%E7%94%A8OneDrive%E6%89%A9%E5%AE%B9%E4%BD%A0%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%8C%E5%B9%B6%E4%B8%94%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E5%88%86%E5%87%BA%E7%83%AD%E5%BA%93%E5%86%B7%E5%BA%93/">https://zi4dbek.github.io/posts/OneDrive-无限容量变形记第三话：无限的魔爪伸向电脑硬盘，利用OneDrive扩容你的电脑，并且还可以根据需要分出热库冷库/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://zi4dbek.github.io" target="_blank">zi4dbek的小站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BE%AE%E8%BD%AF/">微软</a><a class="post-meta__tags" href="/tags/%E7%99%BD%E5%AB%96/">白嫖</a><a class="post-meta__tags" href="/tags/OneDrive/">OneDrive</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/mcwqoPxpdhC6J5A.gif" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/Sponsor/#%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/WeChat.ico" alt="微信|WeChat"/></a><div class="post-qr-code-desc">微信|WeChat</div></li><li class="reward-item"><a href="/Sponsor/#%E6%94%AF%E4%BB%98%E5%AE%9D" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/Alipay.ico" alt="支付宝|Alipay"/></a><div class="post-qr-code-desc">支付宝|Alipay</div></li><li class="reward-item"><a href="/Sponsor/#PayPal" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/PayPal.ico" alt="PayPal"/></a><div class="post-qr-code-desc">PayPal</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9Asm-ms/" title="免费图床：sm.ms"><img class="cover" src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202409282151131.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">免费图床：sm.ms</div></div><div class="info-2"><div class="info-item-1">¶图床网站推荐：sm.ms    提示：若主域名无法访问，可使用备用链接。仍然无法访问的情况下，建议使用科学上网。    ¶官方备用链接： https://smms.app 每个文件大小限制为5 MB， 每次最多可上传10个文件。  上传后，网站会提供多种格式的复制选项：     提示：广告内容已被模糊处理     通常我们需要的是image URL链接 ¶会员服务（无广告）（月度/年度/终身）  开发者应该来自中国香港， 定价以HKD（香港元）计算。  59港元≈54.84人民币， 对于一个月的会员价格来说，确实不便宜。 这些钱足够用来搭建一个自己的服务器了。 不过对于一些不太熟悉技术的人来说， 花钱省事，何乐而不为？ 更何况，域名备案和CDN加速的配置费时费力。 注册用户还可获得5GB的免费空间， 个人认为，足够使用三到五年。  图片管理面板可以查看和删除已上传的图片：  删除图片时的弹窗设计非常熟悉，  看起来很像复制时的弹窗。 在Google Play上也有相关应用：  用户可以通过手机上传和查看图片。  对于无法访问Google...</div></div></div></a><a class="pagination-related" href="/posts/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%BA%8C%E8%AF%9D%EF%BC%9A%E7%BB%99%E7%BD%91%E7%9B%98%E6%89%A9%E5%AE%B9%E8%BF%99%E4%BB%B6%E4%BA%8B%E5%85%B6%E5%AE%9E%E5%BE%88%E7%AE%80%E5%8D%95%EF%BC%8C%E8%BF%99%E6%AC%A1%E6%88%91%E4%BB%AC%E4%B8%8D%E5%8F%AA%E6%98%AFOneDrive%E6%97%A0%E9%99%90%E7%A9%BA%E9%97%B4%EF%BC%8CTeams%E5%92%8CSharePoint%E7%A9%BA%E9%97%B4%E4%B9%9F%E6%98%AF%E6%97%A0%E9%99%90%E7%9A%84/" title="OneDrive-无限容量变形记第二话：给网盘扩容这件事其实很简单，这次我们不只是OneDrive无限空间，Teams和SharePoint空间也是无限的"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">OneDrive-无限容量变形记第二话：给网盘扩容这件事其实很简单，这次我们不只是OneDrive无限空间，Teams和SharePoint空间也是无限的</div></div><div class="info-2"><div class="info-item-1">上次我们讨论了OneDrive空间的不同档位：1TB、5TB、25TB和无限。那么，如何将初始的1TB空间升级到无限呢？让我们一步步来看。 ¶升级第一步：从1TB到5TB 这个升级很简单，管理员只需直接更改设置即可。您可以在SharePoint...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%B8%80%E8%AF%9D%EF%BC%9AOneDrive%E8%BF%99%E8%BE%86%E8%BD%A6%E5%88%B0%E5%BA%95%E8%83%BD%E8%A3%85%E5%A4%9A%E5%B0%91%E8%B4%A7/" title="OneDrive 无限容量变形记第一话：OneDrive这辆车到底能装多少货"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-02</div><div class="info-item-2">OneDrive 无限容量变形记第一话：OneDrive这辆车到底能装多少货</div></div><div class="info-2"><div class="info-item-1">注意：本文提到的OneDrive空间指的是企业版Office 365中的OneDrive服务，而不是个人版OneDrive或家庭版Office 365 ¶如果你想拥有本文中提到的各种存储空间，首先需要拥有一个企业版Office 365订阅。获得订阅的方法如下： 方法一：花钱购买Office 365 方法二：免费获取Office 365 现在回到今天的主题： ¶OneDrive空间有多大？ 如果我们将OneDrive比作一辆车： 最初，它就像一辆小汽车，只能容纳1TB（TB/吨）。 如果你有更高级的权限，那么就可以申请升级为一辆装载5TB的小型货运火车。 如果5TB依然不够用，那就可以换成一节载重25TB的动车。 不过，一节车厢的容量还是有限的，最大只能载重25TB。 再需要更多空间时，加挂更多车厢是不可避免的。 好消息是，我们可以无限地加挂车厢，最终组建成一个名为OneDrive的庞大列车组。...</div></div></div></a><a class="pagination-related" href="/posts/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%BA%8C%E8%AF%9D%EF%BC%9A%E7%BB%99%E7%BD%91%E7%9B%98%E6%89%A9%E5%AE%B9%E8%BF%99%E4%BB%B6%E4%BA%8B%E5%85%B6%E5%AE%9E%E5%BE%88%E7%AE%80%E5%8D%95%EF%BC%8C%E8%BF%99%E6%AC%A1%E6%88%91%E4%BB%AC%E4%B8%8D%E5%8F%AA%E6%98%AFOneDrive%E6%97%A0%E9%99%90%E7%A9%BA%E9%97%B4%EF%BC%8CTeams%E5%92%8CSharePoint%E7%A9%BA%E9%97%B4%E4%B9%9F%E6%98%AF%E6%97%A0%E9%99%90%E7%9A%84/" title="OneDrive-无限容量变形记第二话：给网盘扩容这件事其实很简单，这次我们不只是OneDrive无限空间，Teams和SharePoint空间也是无限的"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-09</div><div class="info-item-2">OneDrive-无限容量变形记第二话：给网盘扩容这件事其实很简单，这次我们不只是OneDrive无限空间，Teams和SharePoint空间也是无限的</div></div><div class="info-2"><div class="info-item-1">上次我们讨论了OneDrive空间的不同档位：1TB、5TB、25TB和无限。那么，如何将初始的1TB空间升级到无限呢？让我们一步步来看。 ¶升级第一步：从1TB到5TB 这个升级很简单，管理员只需直接更改设置即可。您可以在SharePoint...</div></div></div></a><a class="pagination-related" href="/posts/Office-365-E5-%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%8F%8A%E6%B0%B8%E4%B9%85%E7%BB%AD%E6%9C%9F/" title="Office 365 E5 账号申请及永久续期"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-13</div><div class="info-item-2">Office 365 E5 账号申请及永久续期</div></div><div class="info-2"><div class="info-item-1"> ¶最新信息：微软收紧了申请政策，现在新加入的账号会提示没有资格加入，以前注册的不受影响。  ¶仓库安全警示 由于 GitHub 存在漏洞，攻击者可以通过 Pull Request 执行挖矿程序，因此建议您删除原先 Fork 的代码，并使用导入私有仓库的方法再运行 Action 任务。 ¶续订成功通知（示例）  Office 365 E5 是微软为开发者提供的一个临时管理账号服务，该服务可供任何人申请。此账号的最大优势在于可以分配 25 个子账号，每个子账号都拥有 5TB 的 OneDrive 存储空间 和完整的 Office 客户端 使用权限。 首次申请后，可以免费使用 90 天。到期后，利用微软的机制并通过 GitHub Action 或腾讯云函数等平台设置定时任务，可以实现 自动续期，从而达到长期使用的目的。 ¶申请步骤  打开 申请链接，使用您的微软账号进行登录。如果还没有账号，可以根据页面提示进行注册。    登录成功后，进入信息填写页面。选择 国家，随意填写 公司 名称，勾选 接受条款，然后点击 下一步。    进入个性化体验页面后，随意选择几个必选项，然后点击...</div></div></div></a><a class="pagination-related" href="/posts/%E7%BB%88%E4%BA%8E%E7%9C%8B%E8%A7%81%E5%9B%9E%E5%A4%B4%E9%92%B1%E4%BA%86-%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9%E6%94%AF%E6%8C%81%E7%99%BD%E5%AB%96-%E8%BF%98%E6%98%AF%E4%BC%81%E4%B8%9A%E7%BA%A7%E4%BA%A7%E5%93%81%EF%BC%8C%E9%82%AE%E7%AE%B1%E3%80%81%E7%BD%91%E7%9B%98%E3%80%81IM%E3%80%81%E5%9C%A8%E7%BA%BF%E4%BC%9A%E8%AE%AE%E4%B8%80%E5%BA%94%E4%BF%B1%E5%85%A8/" title="终于看见回头钱了 微软官方支持白嫖 还是企业级产品，邮箱、网盘、IM、在线会议一应俱全"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-08</div><div class="info-item-2">终于看见回头钱了 微软官方支持白嫖 还是企业级产品，邮箱、网盘、IM、在线会议一应俱全</div></div><div class="info-2"><div class="info-item-1">许多高B格外企中都在使用微软的Microsoft 365，但同样高B格的价格让很多中小企业望而却步，作者经过一年的测试发现，其实微软官方也是支持Microsoft 365 白嫖的。 ¶而且是使用时间无限，用户数量无限，存储空间无限，这可是真无限，真白嫖 ¶这要从疫情期间推出的Teams Exploratory版说起。 注意我们要说的不是Teams 免费版，那个功能缺失太多了 https://docs.microsoft.com/zh-cn/microsoftteams/manage-freemium 这个其实是 Teams 探索版 https://docs.microsoft.com/zh-cn/microsoftteams/teams-exploratory 二者区别可以参考官方文档 那 Teams Exploratory版里有什么呢，请看 •	Exchange Online（计划 1) •	Microsoft Teams •	SharePoint Online（计划 1，包括OneDrive） •	适用于 Microsoft 365 或 Office 365 的 Power...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="comment-switch"><span class="first-comment">Gitalk</span><span id="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/mcwqoPxpdhC6J5A.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info-name">zi4dbek</div><div class="author-info-description">zi4dbek的小破站</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zi4dbek"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">最近总能看到某应用的广告，声称可以挂载阿里云盘和115网盘进行使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%AD%EF%BC%9A%E7%BB%8F%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E8%B5%84%E6%96%99"><span class="toc-number">1.1.</span> <span class="toc-text">热：经常使用的资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B7%EF%BC%9A%E4%B8%8D%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E8%B5%84%E6%96%99"><span class="toc-number">1.2.</span> <span class="toc-text">冷：不常使用的资料</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AAzure-Repo/" title="免费图床：Azure Repo">免费图床：Azure Repo</a><time datetime="2024-08-25T15:06:54.000Z" title="发表于 2024-08-25 23:06:54">2024-08-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/Office-365-E5-%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%8F%8A%E6%B0%B8%E4%B9%85%E7%BB%AD%E6%9C%9F/" title="Office 365 E5 账号申请及永久续期">Office 365 E5 账号申请及永久续期</a><time datetime="2024-01-13T10:51:46.000Z" title="发表于 2024-01-13 18:51:46">2024-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/Hexo-%E5%BB%BA%E7%AB%99%E6%89%8B%E5%86%8C/" title="Hexo 建站手册">Hexo 建站手册</a><time datetime="2024-01-12T11:26:45.000Z" title="发表于 2024-01-12 19:26:45">2024-01-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AGitee/" title="免费图床：Gitee"><img src="https://fastly.jsdelivr.net/gh/zi4dbek-org/img/img/202408301911969.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="免费图床：Gitee"/></a><div class="content"><a class="title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AGitee/" title="免费图床：Gitee">免费图床：Gitee</a><time datetime="2023-12-16T10:54:00.000Z" title="发表于 2023-12-16 18:54:00">2023-12-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%9B%BE%E5%BA%8A%E6%9D%82%E8%B0%88%EF%BC%9APicGo-%E5%AE%89%E8%A3%85%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E6%8F%92%E4%BB%B6%EF%BC%8C%E5%87%8F%E5%B0%91%E5%9B%BE%E5%BA%8A%E5%8E%9F%E5%9B%BE%E5%A4%A7%E5%B0%8F/" title="图床杂谈：PicGo 安装图片压缩插件，减少图床原图大小">图床杂谈：PicGo 安装图片压缩插件，减少图床原图大小</a><time datetime="2023-10-13T15:35:00.000Z" title="发表于 2023-10-13 23:35:00">2023-10-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By zi4dbek</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/hexo-theme-butterfly@5.1.0/source/js/utils.min.js"></script><script src="https://cdn.jsdelivr.net/npm/hexo-theme-butterfly@5.1.0/source/js/main.min.js"></script><script src="https://cdn.jsdelivr.net/npm/hexo-theme-butterfly@5.1.0/source/js/tw_cn.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>(() => {
+  const panguFn = () => {
+    if (typeof pangu === 'object') pangu.autoSpacingPage()
+    else {
+      btf.getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+        .then(() => {
+          pangu.autoSpacingPage()
+        })
+    }
+  }
+
+  const panguInit = () => {
+    if (false){
+      GLOBAL_CONFIG_SITE.isPost && panguFn()
+    } else {
+      panguFn()
+    }
+  }
+
+  btf.addGlobalFn('pjaxComplete', panguInit, 'pangu')
+  document.addEventListener('DOMContentLoaded', panguInit)
+})()</script><div class="js-pjax"><script>(() => {
+  const initGitalk = () => {
+    const gitalk = new Gitalk(Object.assign({
+      clientID: '862f5508904d0d2252a0',
+      clientSecret: 'd915aba8d5b2e4a4a50c493748f77474a8b77fc7',
+      repo: 'zi4dbek.github.io',
+      owner: 'zi4dbek',
+      admin: ['zi4dbek'],
+      id: 'c0680d8c94f75e894cc688053e96dd39',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async() => {
+    if (typeof Gitalk === 'function') initGitalk()
+    else {
+      await btf.getCSS('https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.css')
+      await btf.getScript('https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.js')
+      initGitalk()
+    }
+  }
+  
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  if ('Gitalk' === 'Gitalk' || !true) {
+    if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script><script>(() => {
+  const disqus_config = function () {
+    this.page.url = 'https://zi4dbek.github.io/posts/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%B8%89%E8%AF%9D%EF%BC%9A%E6%97%A0%E9%99%90%E7%9A%84%E9%AD%94%E7%88%AA%E4%BC%B8%E5%90%91%E7%94%B5%E8%84%91%E7%A1%AC%E7%9B%98%EF%BC%8C%E5%88%A9%E7%94%A8OneDrive%E6%89%A9%E5%AE%B9%E4%BD%A0%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%8C%E5%B9%B6%E4%B8%94%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E5%88%86%E5%87%BA%E7%83%AD%E5%BA%93%E5%86%B7%E5%BA%93/'
+    this.page.identifier = '/posts/OneDrive-%E6%97%A0%E9%99%90%E5%AE%B9%E9%87%8F%E5%8F%98%E5%BD%A2%E8%AE%B0%E7%AC%AC%E4%B8%89%E8%AF%9D%EF%BC%9A%E6%97%A0%E9%99%90%E7%9A%84%E9%AD%94%E7%88%AA%E4%BC%B8%E5%90%91%E7%94%B5%E8%84%91%E7%A1%AC%E7%9B%98%EF%BC%8C%E5%88%A9%E7%94%A8OneDrive%E6%89%A9%E5%AE%B9%E4%BD%A0%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%8C%E5%B9%B6%E4%B8%94%E8%BF%98%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E5%88%86%E5%87%BA%E7%83%AD%E5%BA%93%E5%86%B7%E5%BA%93/'
+    this.page.title = 'OneDrive 无限容量变形记第三话：无限的魔爪伸向电脑硬盘，利用OneDrive扩容你的电脑，并且还可以根据需要分出热库冷库'
+  }
+
+  const disqusReset = () => {
+    window.DISQUS && window.DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  btf.addGlobalFn('themeChange', disqusReset, 'disqus')
+
+  const loadDisqus = () =>{
+    if (window.DISQUS) disqusReset()
+    else {
+      const script = document.createElement('script')
+      script.src = 'https://zi4dbekde-xiao-zhan.disqus.com/embed.js'
+      script.setAttribute('data-timestamp', +new Date())
+      document.head.appendChild(script)
+    }
+  }
+
+  const getCount = async() => {
+    try {
+      const eleGroup = document.querySelector('#post-meta .disqus-comment-count')
+      if (!eleGroup) return
+      const cleanedLinks = eleGroup.href.replace(/#post-comment$/, '')
+
+      const res = await fetch(`https://disqus.com/api/3.0/threads/set.json?forum=zi4dbekde-xiao-zhan&api_key=&thread:link=${cleanedLinks}`,{
+        method: 'GET'
+      })
+      const result = await res.json()
+
+      const count = result.response.length ? result.response[0].posts : 0
+      eleGroup.textContent = count
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  if ('Gitalk' === 'Disqus' || !true) {
+    if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+    else {
+      loadDisqus()
+      
+    }
+  } else {
+    window.loadOtherComment = loadDisqus
+  }
+})()</script></div></div></body></html>

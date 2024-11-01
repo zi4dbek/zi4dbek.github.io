@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>zi4dbek的小站</title><meta name="author" content="zi4dbek"><meta name="copyright" content="zi4dbek"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="zi4dbek的小破站">
+<meta property="og:type" content="website">
+<meta property="og:title" content="zi4dbek的小站">
+<meta property="og:url" content="https://zi4dbek.github.io/index.html">
+<meta property="og:site_name" content="zi4dbek的小站">
+<meta property="og:description" content="zi4dbek的小破站">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/mcwqoPxpdhC6J5A.gif">
+<meta property="article:author" content="zi4dbek">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/mcwqoPxpdhC6J5A.gif"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zi4dbek.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="stylesheet" href="/css/index.css?v=5.1.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-XDJBQ3FVPC"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-XDJBQ3FVPC')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-XDJBQ3FVPC', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;e6098f6756c1425498041b88f7cf4a0c&quot;}"></script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'zi4dbek的小站',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-11-01 21:33:03'
+}</script><meta name="referrer" content="same-origin"><link rel="stylesheet" href="https://fakecaptcha.netlify.app/fakeCAPTCHA/fakeCAPTCHA.css"><script src="https://fakecaptcha.netlify.app/fakeCAPTCHA/fakeCAPTCHA.js"></script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="zi4dbek的小站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/mcwqoPxpdhC6J5A.gif" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div><div class="menus_item"><a class="site-page" href="/Sponsor/"><i class="fa-fw fa-solid fa-circle-dollar-to-slot"></i><span> 捐助笔者</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202409071302228.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">zi4dbek的小站</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div><div class="menus_item"><a class="site-page" href="/Sponsor/"><i class="fa-fw fa-solid fa-circle-dollar-to-slot"></i><span> 捐助笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">zi4dbek的小站</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AAzure-Repo/" title="免费图床：Azure Repo">免费图床：Azure Repo</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-25T15:06:54.000Z" title="发表于 2024-08-25 23:06:54">2024-08-25</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.305Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/">图床</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a></span></div><div class="content">¶开始使用 ¶创建 在 https://dev.azure.com 创建组织并建立项目，在项目里创建 Repo，点击 Initialize.  访问 https://[组织名].visualstudio.com/_usersSettings/tokens 创建 Token.  ¶安装 使用安装命令安装此插件： 1picgo install azureimg ¶配置 使用配置命令配置插件： 123picgo set uploader azureimg #配置 azureimgpicgo use transformer #选择 pathpicgo use uploader #选择 azureimg 作为 uploader ¶文章转载于https://github.com/YukiCoco/picgo-plugin-azureimg/README.md,转载请标注出处 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/Office-365-E5-%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%8F%8A%E6%B0%B8%E4%B9%85%E7%BB%AD%E6%9C%9F/" title="Office 365 E5 账号申请及永久续期">Office 365 E5 账号申请及永久续期</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-13T10:51:46.000Z" title="发表于 2024-01-13 18:51:46">2024-01-13</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.305Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%AE%E8%BD%AF/">微软</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/">白嫖</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/E5%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%92%8C%E7%BB%AD%E6%9C%9F/">E5账号申请和续期</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%BE%AE%E8%BD%AF/">微软</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%99%BD%E5%AB%96/">白嫖</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/E5%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%92%8C%E7%BB%AD%E6%9C%9F/">E5账号申请和续期</a></span></div><div class="content"> ¶最新信息：微软收紧了申请政策，现在新加入的账号会提示没有资格加入，以前注册的不受影响。  ¶仓库安全警示 由于 GitHub 存在漏洞，攻击者可以通过 Pull Request 执行挖矿程序，因此建议您删除原先 Fork 的代码，并使用导入私有仓库的方法再运行 Action 任务。 ¶续订成功通知（示例）  Office 365 E5 是微软为开发者提供的一个临时管理账号服务，该服务可供任何人申请。此账号的最大优势在于可以分配 25 个子账号，每个子账号都拥有 5TB 的 OneDrive 存储空间 和完整的 Office 客户端 使用权限。 首次申请后，可以免费使用 90 天。到期后，利用微软的机制并通过 GitHub Action 或腾讯云函数等平台设置定时任务，可以实现 自动续期，从而达到长期使用的目的。 ¶申请步骤  打开 申请链接，使用您的微软账号进行登录。如果还没有账号，可以根据页面提示进行注册。    登录成功后，进入信息填写页面。选择 国家，随意填写 公司 名称，勾选 接受条款，然后点击 下一步。    进入个性化体验页面后，随意选择几个必选项，然后点击...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/Hexo-%E5%BB%BA%E7%AB%99%E6%89%8B%E5%86%8C/" title="Hexo 建站手册">Hexo 建站手册</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-12T11:26:45.000Z" title="发表于 2024-01-12 19:26:45">2024-01-12</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.304Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/%E5%8D%9A%E5%AE%A2/">博客</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Hexo/">Hexo</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a></span></div><div class="content">¶前期准备  安装 Node.js 和 Git：这是运行 Hexo 的必备条件。 Hexo 原理：Hexo 可以将 Markdown 文件转换为静态网页，并自动生成目录、标签等内容，简化博客管理。  ¶GitHub Pages 上搭建博客  创建 GitHub 仓库：新建一个 username.github.io 的仓库，用于托管博客，或新建任意仓库但访问地址会带有仓库名。 安装 Hexo：使用 npm install -g hexo 安装 Hexo。 Hexo 初始化：在本地创建一个文件夹并初始化 Hexo，生成站点结构。  ¶生成和预览博客  生成静态页面：使用 hexo g 生成静态网页文件。 本地预览：通过 hexo s 启动本地服务器，在浏览器中访问 http://localhost:4000 查看博客效果。  ¶修改主题   下载主题：通过 git clone 命令下载主题到 themes 目录下。以butterfly为例，在命令行输入以下代码： 1git clone -b master...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AGitee/" title="免费图床：Gitee"><img class="post-bg" src="https://fastly.jsdelivr.net/gh/zi4dbek-org/img/img/202408301911969.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="免费图床：Gitee"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AGitee/" title="免费图床：Gitee">免费图床：Gitee</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-16T10:54:00.000Z" title="发表于 2023-12-16 18:54:00">2023-12-16</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.305Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/">图床</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a></span></div><div class="content">¶在gitee中创建仓库 按照常规创建仓库的方式创建一个专门用于图床的仓库  ¶获取token  ¶在PicGO中安装gitee插件 ¶安装 ¶ ¶配置插件 这里需要注意的是repo的名字中大小写字母需要完全一致且是仓库路径。否则会报404错误。 ¶上传图片 至此，图床系统搭建完成。 文章参考自这里 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/%E5%9B%BE%E5%BA%8A%E6%9D%82%E8%B0%88%EF%BC%9APicGo-%E5%AE%89%E8%A3%85%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E6%8F%92%E4%BB%B6%EF%BC%8C%E5%87%8F%E5%B0%91%E5%9B%BE%E5%BA%8A%E5%8E%9F%E5%9B%BE%E5%A4%A7%E5%B0%8F/" title="图床杂谈：PicGo 安装图片压缩插件，减少图床原图大小">图床杂谈：PicGo 安装图片压缩插件，减少图床原图大小</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-13T15:35:00.000Z" title="发表于 2023-10-13 23:35:00">2023-10-13</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.304Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%9B%BE%E5%BA%8A/">图床</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">图片处理</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">图片压缩</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/">图片处理</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">图片压缩</a></span></div><div class="content">  ¶介绍 在使用 OSS 对象存储时，除了容量费用外，流量费用是另一个主要的开支。而图片上传到图床的大小直接影响流量费用。因此，在通过 PicGo 实时上传图片时，如果能在上传前对图片进行压缩，可以有效减少流量费用。PicGo 支持通过 compress 插件实现图片压缩，本文将介绍如何在 Windows 环境下安装该插件。 ¶2. 安装 Compress 插件 ¶2.1 第一步 - 安装 Node.js 16.14.2 在安装 picgo-plugin-compress 插件之前，需要先安装 Node.js。PicGo 依赖于 Node.js 运行插件，因此这是安装的必要步骤。  下载 Node.js：  访问 Node.js 的官网 Node.js。 选择 LTS（长期支持）版本进行安装，这是较为稳定的版本。   安装 Node.js：  安装过程中会提供可选组件，如 Python、Visual Studio Build Tools 和 Chocolatey。这些组件对于 Node.js...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AWeibo%E5%9B%BE%E5%BA%8A%E8%BD%AC%E7%A7%BB%E8%87%B3Github/" title="免费图床：Weibo图床转移至Github"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202408301903312.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="免费图床：Weibo图床转移至Github"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AWeibo%E5%9B%BE%E5%BA%8A%E8%BD%AC%E7%A7%BB%E8%87%B3Github/" title="免费图床：Weibo图床转移至Github">免费图床：Weibo图床转移至Github</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-02T14:52:00.000Z" title="发表于 2023-10-02 22:52:00">2023-10-02</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.304Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/">图床</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a></span></div><div class="content">¶前言 ¶微博图床在几年前开启了防盗链，导致大量引用图片全部遭殃，本站未受影响（未使用微博图床），但也给出搭建图床到GitHub的方式 ¶1.搭建过程 ¶1. 登录你的 GitHub 账号，创建一个新的仓库；  ¶2. 填写仓库信息，只需选择一个合适的仓库名，确保仓库设置为 public，其他设置保持默认即可；  ¶3. 创建成功后，你会看到如下界面，这意味着图床已经创建完成。接下来，我们来看看如何上传图片；  ¶2. 上传图片 虽然图床已经搭建完成，但通过传统方式向 GitHub 上传图片相对繁琐。这里推荐使用一个开源图床工具——PicGo，作为图片上传工具。 PicGo 的安装步骤简单明了，你可以前往其 官网 下载对应的版本并进行安装。接下来我们重点介绍如何使用 PicGo 上传图片。安装完成后，打开软件，其主界面如下：  ¶1. 首先，需要在 GitHub 上创建一个 token； 依次打开 Settings -&gt; Developer settings -&gt; Personal access tokens，然后点击 Generate new...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9ABackblaze-B2-Cloudflare%E5%9B%BE%E5%BA%8A/" title="免费图床：Backblaze B2+Cloudflare图床"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202410122144569.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="免费图床：Backblaze B2+Cloudflare图床"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9ABackblaze-B2-Cloudflare%E5%9B%BE%E5%BA%8A/" title="免费图床：Backblaze B2+Cloudflare图床">免费图床：Backblaze B2+Cloudflare图床</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-30T10:51:00.000Z" title="发表于 2023-09-30 18:51:00">2023-09-30</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.304Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/">图床</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a></span></div><div class="content">简介 Backblaze B2是一种经济实惠的云存储服务，允许用户在云中存储无限的数据。它的运作方式类似于Amazon S3和Microsoft Azure，但成本仅为它们的五分之一。 Backblaze B2提供一个免费套餐，包含以下优惠：     10GB的存储空间，适合存放一些重要文件或媒体资料。     每天1GB的流量，可便捷上传、下载数据或通过网络浏览文件。   S3兼容的API，方便将Backblaze B2集成到应用程序或服务中。   支持多种工具和软件，如Cloudflare CDN、Veeam备份、NAS设备等，提升数据的安全性、可用性及传输速度。     如果超出免费额度，Backblaze B2的费用仍然非常低廉：    每月$0.005/GB的存储费用，比Amazon S3和Microsoft Azure便宜超过80%。     每月$0.01/GB的下载费用，比Amazon S3和Microsoft Azure便宜逾88%。    因此，无论是用于开发应用、数据备份，还是存档媒体内容，Backblaze...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9ABilibili%E5%9B%BE%E5%BA%8A/" title="免费图床：Bilibili图床"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202409282153116.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="免费图床：Bilibili图床"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9ABilibili%E5%9B%BE%E5%BA%8A/" title="免费图床：Bilibili图床">免费图床：Bilibili图床</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-24T13:06:00.000Z" title="发表于 2023-09-24 21:06:00">2023-09-24</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.304Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/">图床</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a></span></div><div class="content">今天推荐一个免费的图床：哔哩哔哩（Bilibili图床） 它使用用户动态的图片上传API。填写SESSDATA和bli_jct即可，获取方式如下。 ¶获取B站SESSDATA  登录B站 按F12打开控制台 找到SESSDATA还有bli_jct复制即可   ¶然后进入下一环节： ¶安装   在线安装 打开 PicGo 详细窗口，选择插件设置，搜索bili安装， ~~ 然后重启应用即可 ~~无需重启应用即可使用。   离线安装 克隆该项目，复制项目到 以下目录：  Windows: %APPDATA%\picgo\ Linux: $XDG_CONFIG_HOME/picgo/ or ~/.config/picgo/ macOS: ~/Library/Application\ Support/picgo/  切换到新目录执行 npm install ./picgo-plugin-bilibili，然后重启应用即可。   ¶图片样式 例如原图：...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9A%E8%87%AA%E5%BB%BAAlist%E5%9B%BE%E5%BA%8A/" title="免费图床：自建Alist图床"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202409282143396.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="免费图床：自建Alist图床"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9A%E8%87%AA%E5%BB%BAAlist%E5%9B%BE%E5%BA%8A/" title="免费图床：自建Alist图床">免费图床：自建Alist图床</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-17T14:06:00.000Z" title="发表于 2023-09-17 22:06:00">2023-09-17</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.304Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/">图床</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a></span></div><div class="content">免费图床，免费图床，免费总有跑路的可能，自建图床不会跑路 自己想跑路就跑路（bushi 今天推荐一个图床：Alist 既然是免费图床，那就不可能花一分钱，把白嫖精神贯彻到底。 2024-1-6更新：Replit换了replit.dev域名，并且只能在编辑器访问，本文半废，请另外找平台部署。 我们使用免费的Replit来部署。 【1】新建repl ¶点击“Create”按钮  ¶选择Bash语言的Repl  【2】进入Repl ¶界面如下图：  ¶获取Alist主程序 点击此处下载。 或者直接执行如下命令（下载3.24.0版本的Alist）： 1wget https://github.com/alist-org/alist/releases/download/v3.24.0/alist-linux-musl-amd64.tar.gz 【3】处理主程序 ¶1.解压下载的压缩包 ¶2.将alist主程序改名，防止replit检测文件名封禁Repl。 ¶2.1.注：Replit现在已经可以检测可执行文件名来封禁Repl了，只要包含Alist就会封禁，出现“You Can’t Run...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AGitHub/" title="免费图床：GitHub"><img class="post-bg" src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/202409282153731.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="免费图床：GitHub"></a></div><div class="recent-post-info"><a class="article-title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AGitHub/" title="免费图床：GitHub">免费图床：GitHub</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-16T11:32:00.000Z" title="发表于 2023-09-16 19:32:00">2023-09-16</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-19T06:37:01.304Z" title="更新于 2024-10-19 14:37:01">2024-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/">图床</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/">免费图床</a><span class="article-meta-link">•</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a></span></div><div class="content">  ¶1. 前言 对于写博客的朋友来说，图床应该是个不陌生的概念，甚至可能在使用过程中遇到过不少麻烦。 如果你对图床不了解，我来简单介绍一下。图床可以被看作是一个在线相册，它允许用户将图片上传至网络，并生成一个公开的访问链接，其他人可以通过链接查看和下载这些图片。但编辑或删除图片的权限仅限于拥有者，类似于百度云中的公开分享。你可能会问，这和写博客有什么关系呢？  当我们写博客时，经常需要插入图片。在本地编写时，图片可以正常显示，但发布到网上时，如果图片没有提前上传到服务器，可能会遇到图片无法显示的问题。这时，图床的作用就显现出来了。当然，如果你直接在博客平台上编辑文章，这个问题通常不会出现，因为大多数平台会自动将图片上传到其服务器。 借助图床，我们可以在本地完成博客的撰写，然后无缝地将其发布到不同平台，而无需担心图片丢失。  今天的文章旨在分享一个免费搭建图床的教程，不仅为自己日后的使用提供方便，也希望能帮助到有相同需求的朋友。 ¶2. 准备工作 在正式开始之前，你需要准备以下工具：  一个 GitHub 账号   只要你有一个 GitHub...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/zi4dbek-org/img/img/mcwqoPxpdhC6J5A.gif" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info-name">zi4dbek</div><div class="author-info-description">zi4dbek的小破站</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zi4dbek"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AAzure-Repo/" title="免费图床：Azure Repo">免费图床：Azure Repo</a><time datetime="2024-08-25T15:06:54.000Z" title="发表于 2024-08-25 23:06:54">2024-08-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/Office-365-E5-%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%8F%8A%E6%B0%B8%E4%B9%85%E7%BB%AD%E6%9C%9F/" title="Office 365 E5 账号申请及永久续期">Office 365 E5 账号申请及永久续期</a><time datetime="2024-01-13T10:51:46.000Z" title="发表于 2024-01-13 18:51:46">2024-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/Hexo-%E5%BB%BA%E7%AB%99%E6%89%8B%E5%86%8C/" title="Hexo 建站手册">Hexo 建站手册</a><time datetime="2024-01-12T11:26:45.000Z" title="发表于 2024-01-12 19:26:45">2024-01-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AGitee/" title="免费图床：Gitee"><img src="https://fastly.jsdelivr.net/gh/zi4dbek-org/img/img/202408301911969.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="免费图床：Gitee"/></a><div class="content"><a class="title" href="/posts/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%EF%BC%9AGitee/" title="免费图床：Gitee">免费图床：Gitee</a><time datetime="2023-12-16T10:54:00.000Z" title="发表于 2023-12-16 18:54:00">2023-12-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/%E5%9B%BE%E5%BA%8A%E6%9D%82%E8%B0%88%EF%BC%9APicGo-%E5%AE%89%E8%A3%85%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E6%8F%92%E4%BB%B6%EF%BC%8C%E5%87%8F%E5%B0%91%E5%9B%BE%E5%BA%8A%E5%8E%9F%E5%9B%BE%E5%A4%A7%E5%B0%8F/" title="图床杂谈：PicGo 安装图片压缩插件，减少图床原图大小">图床杂谈：PicGo 安装图片压缩插件，减少图床原图大小</a><time datetime="2023-10-13T15:35:00.000Z" title="发表于 2023-10-13 23:35:00">2023-10-13</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"><span class="card-category-list-name">网站搭建</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/%E5%8D%9A%E5%AE%A2/"><span class="card-category-list-name">博客</span><span class="card-category-list-count">1</span></a></li></ul></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"><span class="card-category-list-name">免费图床</span><span class="card-category-list-count">8</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/"><span class="card-category-list-name">图床</span><span class="card-category-list-count">8</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9B%BE%E5%BA%8A/"><span class="card-category-list-name">图床</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"><span class="card-category-list-name">图片处理</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/"><span class="card-category-list-name">图片压缩</span><span class="card-category-list-count">1</span></a></li></ul></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BE%AE%E8%BD%AF/"><span class="card-category-list-name">微软</span><span class="card-category-list-count">5</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BE%AE%E8%BD%AF/OneDrive/"><span class="card-category-list-name">OneDrive</span><span class="card-category-list-count">3</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BE%AE%E8%BD%AF/OneDrive/%E7%99%BD%E5%AB%96/"><span class="card-category-list-name">白嫖</span><span class="card-category-list-count">3</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/"><span class="card-category-list-name">白嫖</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/E5%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%92%8C%E7%BB%AD%E6%9C%9F/"><span class="card-category-list-name">E5账号申请和续期</span><span class="card-category-list-count">1</span></a></li></ul></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Hexo/" style="font-size: 1.15em; color: rgb(186, 50, 154);">Hexo</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.15em; color: rgb(50, 66, 52);">博客</a><a href="/tags/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/" style="font-size: 1.15em; color: rgb(117, 50, 90);">网站搭建</a><a href="/tags/%E5%BE%AE%E8%BD%AF/" style="font-size: 1.3em; color: rgb(50, 52, 163);">微软</a><a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 1.3em; color: rgb(124, 107, 50);">白嫖</a><a href="/tags/E5%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%92%8C%E7%BB%AD%E6%9C%9F/" style="font-size: 1.15em; color: rgb(128, 176, 50);">E5账号申请和续期</a><a href="/tags/OneDrive/" style="font-size: 1.22em; color: rgb(58, 76, 150);">OneDrive</a><a href="/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/" style="font-size: 1.38em; color: rgb(50, 138, 50);">免费图床</a><a href="/tags/%E5%9B%BE%E5%BA%8A/" style="font-size: 1.45em; color: rgb(171, 77, 141);">图床</a><a href="/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/" style="font-size: 1.15em; color: rgb(136, 50, 190);">图片处理</a><a href="/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/" style="font-size: 1.15em; color: rgb(118, 116, 50);">图片压缩</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/08/">
+          <span class="card-archive-list-date">2024年08月</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/01/">
+          <span class="card-archive-list-date">2024年01月</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2023/12/">
+          <span class="card-archive-list-date">2023年12月</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2023/10/">
+          <span class="card-archive-list-date">2023年10月</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2023/09/">
+          <span class="card-archive-list-date">2023年09月</span>
+          <span class="card-archive-list-count">9</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">15</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-11-01T13:33:02.649Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By zi4dbek</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/hexo-theme-butterfly@5.1.0/source/js/utils.min.js"></script><script src="https://cdn.jsdelivr.net/npm/hexo-theme-butterfly@5.1.0/source/js/main.min.js"></script><script src="https://cdn.jsdelivr.net/npm/hexo-theme-butterfly@5.1.0/source/js/tw_cn.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>(() => {
+  const panguFn = () => {
+    if (typeof pangu === 'object') pangu.autoSpacingPage()
+    else {
+      btf.getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+        .then(() => {
+          pangu.autoSpacingPage()
+        })
+    }
+  }
+
+  const panguInit = () => {
+    if (false){
+      GLOBAL_CONFIG_SITE.isPost && panguFn()
+    } else {
+      panguFn()
+    }
+  }
+
+  btf.addGlobalFn('pjaxComplete', panguInit, 'pangu')
+  document.addEventListener('DOMContentLoaded', panguInit)
+})()</script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      if (true) {
+        const from = '出自 ' + data.from
+        const sub = []
+        sub.unshift(data.hitokoto, from)
+        typedJSFn.init(sub)
+      } else {
+        document.getElementById('subtitle').textContent = data.hitokoto
+      }
+    })
+}
+typedJSFn.run(subtitleType)
+</script></div></div></body></html>
