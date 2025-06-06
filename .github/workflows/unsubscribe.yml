@@ -1,0 +1,21 @@
+name: Unsubscribe commenters from issue
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  unsubscribe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unsubscribe user from issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 或替换成你的 PAT
+        run: |
+          ISSUE_ID=${{ github.event.issue.number }}
+          COMMENT_USER=${{ github.event.comment.user.login }}
+          
+          # 调用 GitHub API 取消订阅
+          curl -X DELETE \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_ID/subscription/$COMMENT_USER"
