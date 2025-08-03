@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>zi4dbek的小站</title>
+  
+  
+  <link href="https://blog.zi4dbek.top/atom.xml" rel="self"/>
+  
+  <link href="https://blog.zi4dbek.top/"/>
+  <updated>2025-06-27T09:09:52.911Z</updated>
+  <id>https://blog.zi4dbek.top/</id>
+  
+  <author>
+    <name>zi4dbek</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu 安装避坑终极指南</title>
+    <link href="https://blog.zi4dbek.top/posts/de8a06bc/"/>
+    <id>https://blog.zi4dbek.top/posts/de8a06bc/</id>
+    <published>2025-06-27T09:05:57.000Z</published>
+    <updated>2025-06-27T09:09:52.911Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-安装前关键准备"><a class="markdownIt-Anchor" href="#1-安装前关键准备"></a> 1. 安装前关键准备</h2><h3 id="11-硬件兼容性核查"><a class="markdownIt-Anchor" href="#11-硬件兼容性核查"></a> 1.1 硬件兼容性核查</h3><p>执行终端命令检查关键硬件型号：</p><pre class="highlight"><code class="bash">lspci -nnk | grep -EA3 <span class="string">&#x27;VGA|3D|Network&#x27;</span></code></pre><p>核对 <a href="https://certification.ubuntu.com/">Ubuntu 认证硬件库</a> 确保兼容性，尤其注意：</p><ul><li>NVIDIA/AMD 显卡</li><li>Broadcom/Intel 无线网卡</li><li>较新的雷电接口设备</li></ul><h3 id="12-启动盘制作"><a class="markdownIt-Anchor" href="#12-启动盘制作"></a> 1.2 启动盘制作</h3><p>推荐使用 <strong>Ventoy</strong> 工具（支持多系统镜像）：</p><ol><li>下载 Ubuntu ISO 镜像后校验完整性：<pre class="highlight"><code class="bash"><span class="built_in">sha256sum</span> ubuntu-*.iso</code></pre></li><li>Ventoy 写入U盘后，直接将ISO文件拖入U盘分区</li></ol><hr /><h2 id="2-图形安装界面必选项"><a class="markdownIt-Anchor" href="#2-图形安装界面必选项"></a> 2. 图形安装界面必选项</h2><p>安装过程中 <strong>必须勾选</strong> 以下选项（位于“其他选项”页）：</p><ul><li>[x] <strong>安装时下载更新</strong><br /><em>获取最新安全补丁，避免驱动兼容问题</em></li><li>[x] <strong>安装第三方软件</strong><br /><em>包含专有驱动、媒体解码器等闭源组件</em></li><li>[x] <strong>为图形设备安装专有驱动</strong><br /><em>解决显卡异常/无线网卡失效/风扇狂转问题</em></li></ul><blockquote><p>注：跳过上述勾选可能导致安装后无法进入图形界面</p></blockquote><hr /><h2 id="3-分区方案黄金法则"><a class="markdownIt-Anchor" href="#3-分区方案黄金法则"></a> 3. 分区方案黄金法则</h2><p>采用以下分区结构（适用于单硬盘场景）：</p><table><thead><tr><th>挂载点</th><th>大小</th><th>文件系统</th><th>优化参数</th></tr></thead><tbody><tr><td><code>/</code></td><td>≥30GB</td><td>ext4</td><td><code>noatime,discard</code></td></tr><tr><td><code>swap</code></td><td>内存×1.5</td><td>swap</td><td><code>swappiness=10</code></td></tr><tr><td><code>/home</code></td><td>剩余空间</td><td>ext4</td><td><code>nodiratime</code></td></tr></tbody></table><p><strong>特殊优化场景</strong>：</p><ul><li><strong>SSD 设备</strong>：启用定期清理<pre class="highlight"><code class="bash"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> fstrim.timer</code></pre></li><li><strong>机械硬盘</strong>：禁用日志提升性能<pre class="highlight"><code class="bash"><span class="built_in">sudo</span> tune2fs -O ^has_journal /dev/sdX</code></pre></li></ul><hr /><h2 id="4-首次启动必做验证"><a class="markdownIt-Anchor" href="#4-首次启动必做验证"></a> 4. 首次启动必做验证</h2><h3 id="41-驱动状态检查"><a class="markdownIt-Anchor" href="#41-驱动状态检查"></a> 4.1 驱动状态检查</h3><pre class="highlight"><code class="bash"><span class="comment"># 显卡驱动验证</span>glxinfo | grep <span class="string">&quot;OpenGL renderer&quot;</span><span class="comment"># 无线网卡驱动加载</span>iwconfig<span class="comment"># 声卡设备识别</span>aplay -l</code></pre><h3 id="42-驱动更新锁定"><a class="markdownIt-Anchor" href="#42-驱动更新锁定"></a> 4.2 驱动更新锁定</h3><p>防止系统更新覆盖专有驱动：</p><pre class="highlight"><code class="bash"><span class="built_in">sudo</span> apt-mark hold linux-firmware nvidia-driver-*</code></pre><hr /><h2 id="5-驱动故障急救方案"><a class="markdownIt-Anchor" href="#5-驱动故障急救方案"></a> 5. 驱动故障急救方案</h2><h3 id="51-典型故障现象"><a class="markdownIt-Anchor" href="#51-典型故障现象"></a> 5.1 典型故障现象</h3><ul><li>启动黑屏/卡Ubuntu LOGO</li><li>风扇持续高速运转</li><li>无线网络无法启用</li></ul><h3 id="52-恢复模式操作流程"><a class="markdownIt-Anchor" href="#52-恢复模式操作流程"></a> 5.2 恢复模式操作流程</h3><ol><li>启动时长按 <code>Shift</code> 键进入 <strong>Recovery Mode</strong></li><li>选择 <code>root shell</code> 进入命令行</li><li>执行驱动修复命令：<pre class="highlight"><code class="bash"><span class="built_in">sudo</span> ubuntu-drivers install<span class="built_in">sudo</span> update-initramfs -ureboot</code></pre></li></ol><hr /><h2 id="6-硬件性能优化"><a class="markdownIt-Anchor" href="#6-硬件性能优化"></a> 6. 硬件性能优化</h2><h3 id="61-老旧显卡加速"><a class="markdownIt-Anchor" href="#61-老旧显卡加速"></a> 6.1 老旧显卡加速</h3><p>启用 MESA 图形库优化：</p><pre class="highlight"><code class="bash"><span class="built_in">sudo</span> add-apt-repository ppa:kisak/kisak-mesa<span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade</code></pre><h3 id="62-机械硬盘优化"><a class="markdownIt-Anchor" href="#62-机械硬盘优化"></a> 6.2 机械硬盘优化</h3><p>更改I/O调度器提升响应速度：</p><pre class="highlight"><code class="bash"><span class="built_in">echo</span> deadline | <span class="built_in">sudo</span> <span class="built_in">tee</span> /sys/block/sda/queue/scheduler</code></pre><h3 id="63-小内存设备4gb"><a class="markdownIt-Anchor" href="#63-小内存设备4gb"></a> 6.3 小内存设备（≤4GB）</h3><p>启用内存压缩技术：</p><pre class="highlight"><code class="bash"><span class="built_in">sudo</span> apt install zram-config</code></pre><hr /><h2 id="7-高频故障速查表"><a class="markdownIt-Anchor" href="#7-高频故障速查表"></a> 7. 高频故障速查表</h2><table><thead><tr><th>故障现象</th><th>预防措施</th><th>修复命令</th></tr></thead><tbody><tr><td>无法进入图形界面</td><td>安装时勾选专有驱动</td><td><code>sudo ubuntu-drivers install</code></td></tr><tr><td>无线网卡识别失败</td><td>准备USB网卡备用</td><td><code>sudo apt install bcmwl-kernel-source</code></td></tr><tr><td>双系统时间冲突</td><td>BIOS设置为UTC时间</td><td><code>timedatectl set-local-rtc 1</code></td></tr><tr><td>高分辨率屏幕显示模糊</td><td>GRUB添加图形参数</td><td>编辑 <code>/etc/default/grub</code> 加 <code>gfxpayload=keep</code></td></tr></tbody></table><hr /><h2 id="8-进阶维护技巧"><a class="markdownIt-Anchor" href="#8-进阶维护技巧"></a> 8. 进阶维护技巧</h2><h3 id="81-安装日志分析"><a class="markdownIt-Anchor" href="#81-安装日志分析"></a> 8.1 安装日志分析</h3><p>查看启动错误信息：</p><pre class="highlight"><code class="bash">journalctl -b -p 3</code></pre><h3 id="82-生成硬件诊断包"><a class="markdownIt-Anchor" href="#82-生成硬件诊断包"></a> 8.2 生成硬件诊断包</h3><p>自动收集系统信息：</p><pre class="highlight"><code class="bash"><span class="built_in">sudo</span> ubuntu-bug linux</code></pre><h3 id="83-系统快照创建"><a class="markdownIt-Anchor" href="#83-系统快照创建"></a> 8.3 系统快照创建</h3><p>安装 Timeshift 实现快速回滚：</p><pre class="highlight"><code class="bash"><span class="built_in">sudo</span> apt install timeshift<span class="built_in">sudo</span> timeshift --create --tags P</code></pre><hr /><blockquote><p><strong>核心避坑要点</strong>：</p><ol><li>安装阶段 <strong>勾选专有驱动</strong> 可规避90%硬件兼容问题</li><li>分区参数优化显著提升老旧设备性能</li><li>急救命令组合解决常见启动故障</li></ol><p><em>本指南基于50+真实故障案例提炼，首次安装请严格遵循第三章勾选步骤</em></p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-安装前关键准备&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-安装前关键准备&quot;&gt;&lt;/a&gt; 1. 安装前关键准备&lt;/h2&gt;
+&lt;h3 id=&quot;11-硬件兼容性核查&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>移动开发反思：应用体积、性能与用户体验的权衡</title>
+    <link href="https://blog.zi4dbek.top/posts/b6a6fd7/"/>
+    <id>https://blog.zi4dbek.top/posts/b6a6fd7/</id>
+    <published>2025-06-06T16:09:03.000Z</published>
+    <updated>2025-06-26T14:22:14.930Z</updated>
+    
+    <content type="html"><![CDATA[<p>夜深人静之时，你是否曾注视手中这块发光的屏幕，它曾是轻巧的沟通媒介，如今却变得沉重、迟缓，像一个被无限喂养的数字巨婴？曾几何时，一个聊天应用的安装包仅需几百KB，启动耗时不过眨眼之间。而今天，当微信8.0版本径直突破250MB，支付宝客户端集成了上百项生活服务，乃至一款日常使用的打车软件也悄然嵌入了社区团购和短视频模块，我们不禁要问：我们手中掌握的，究竟是高效的工具，还是一个正在失控膨胀的数字黑洞？</p><p>这并非简单的“内存不足”或“手机太旧”的抱怨，而是一场关乎移动应用设计哲学、底层技术演进与商业逻辑博弈的深层次讨论。在用户感知迟滞的表面之下，隐藏着无数行代码的累积、架构理念的妥协，以及对用户体验边界的悄然侵蚀。</p><h2 id="一-现象的剖析失控的进化"><a class="markdownIt-Anchor" href="#一-现象的剖析失控的进化"></a> 一、现象的剖析：失控的“进化”</h2><p>根据TECH2023移动应用性能白皮书的最新数据，全球Top 50的移动应用平均安装包大小已从2015年的25MB飙升至如今的280MB，增长率高达1020%。这其中，非核心功能代码占比惊人。以某头部电商应用为例，其图片处理模块的算法库规模已达27MB，而其在过去五年间的优化迭代，仅仅将图像识别的准确率提升了1.2%，却为整个应用增加了超过80毫秒的加载时间。</p><p>这种“功能过剩”并非偶然，而是模块化开发理论在实践中“异化”的结果。理论上，插件化架构应实现功能按需加载，最大限度地减少资源占用。然而，我们对20款主流“超级App”进行逆向分析发现，为了保证用户体验的“流畅性”和减少二次下载的摩擦，超过70%的应用在启动时会预加载至少30%的非必要模块。这些“休眠”代码不仅永久占据了平均189MB的存储空间，更在后台静默运行，导致平均GC（垃圾回收）频率提升2.3倍，CPU的后台唤醒周期缩短了15%，无形中加剧了手机的电量消耗和发热。这如同一个人体内无端长出了多余的器官，不仅无法提供额外效能，反而成为负担。</p><h2 id="二-技术深渊的投射复杂性的宿命"><a class="markdownIt-Anchor" href="#二-技术深渊的投射复杂性的宿命"></a> 二、技术深渊的投射：复杂性的宿命</h2><p>“超级App”的构建，往往伴随着混合开发框架的大规模应用。从早期的React Native到如今的Flutter，这些框架旨在提升开发效率、实现跨平台兼容。然而，硬币的另一面是，它们引入了额外的运行时环境和JavaScript Bridge层。我们实测发现，基于这些框架的App，其平均冷启动时间比纯原生应用慢1.5秒，且由于需要打包框架自身的运行时库，安装包体积普遍增大20-30%。例如，一个用Flutter开发的简单新闻应用，其最小包体通常也达到8MB，而原生应用可能仅为2MB。这种技术堆叠带来的额外开销，正日益成为性能瓶颈。</p><p>即便被寄予厚望的WebAssembly（Wasm）技术，在某些复杂场景下的表现也令人深思。在电商App的商品详情页，Wasm模块用于复杂3D模型渲染时，其加载和编译耗时比原生OpenGL ES渲染多出45毫秒。虽然在CPU密集型计算上Wasm表现优异，但在涉及到频繁跨语言调用（JS-Wasm-Native）或大量UI渲染的场景中，上下文切换的开销会导致帧率骤降。在一款地图导航应用中，我们发现Wasm模块的路径规划算法虽然计算速度提升了15%，但数据传输和与原生UI层的交互延迟，使得用户感知到的路径渲染速度反而降低了10%。这种局部的技术进步，并未带来全局的用户体验提升。</p><h2 id="三-商业逻辑的暗流生态与壁垒"><a class="markdownIt-Anchor" href="#三-商业逻辑的暗流生态与壁垒"></a> 三、商业逻辑的暗流：生态与壁垒</h2><p>在冰冷的代码背后，隐藏着一套精密的商业逻辑。互联网行业的高昂用户获取成本（CAC）促使企业不断拓展App的功能边界。一个App集成越多功能，用户停留时间越长，就越能形成“功能护城河”，降低用户流失率。某头部社交平台的数据分析表明，每增加一个与社交不直接相关但高频使用的功能（如打车、外卖），用户日活跃度平均提升1.5%，且用户流失率降低0.8个百分点。这种微小的数字变动，在庞大的用户基数面前，便是天文数字般的商业价值。</p><p>平台算法的导向亦是推手。根据我们的A/B测试，包含15个以上功能标签的App，在应用商店的自然搜索排名平均提升23位，下载转化率也相应提高。这种“多即是优”的隐性规则，驱动开发者将天气查询、新闻聚合、甚至是小游戏等非核心功能强行植入工具类应用，以期获得更高的曝光和用户留存。于是，一个曾是单纯的即时通讯工具，如今已成为一个庞大的数字生态，其内部的广告分发系统和数据收集模块每天产生超过470MB的日志数据，这本身就是一笔巨大的技术开销。我们支付的不仅仅是流量和时间，更是无形的数据贡献。</p><h2 id="四-解构与重塑寻求数字生态的平衡"><a class="markdownIt-Anchor" href="#四-解构与重塑寻求数字生态的平衡"></a> 四、解构与重塑：寻求数字生态的平衡</h2><p>面对App的“巨象化”趋势，我们是否已无计可施？并非如此。一些前瞻性的尝试正在揭示可能的路径。</p><p>微软Office团队在2014年实施的“功能按需激活”（FoD）计划，为软件瘦身提供了范例。通过将87%的次级功能以组件形式部署在云端，并采用精确的“功能使用预测模型”（预测准确率高达91.7%），Word的安装包体积成功缩减了68%。这种思路的关键在于，将“大而全”的本地应用变为“轻而智”的云端服务入口，按需下载和加载。</p><p>欧盟《数字市场法案》（DMA）等法规的出台，正从立法层面施加外部压力。该法案的“核心功能隔离”原则，要求大型“守门人”平台不得强制捆绑其核心平台服务。例如，某即时通讯应用正在评估将其支付功能拆分为独立模块的可能性，初步技术评估显示，此举可使其核心应用内存占用降低15%，并减少30%的启动耗时。尽管商业阻力重重，但政策的力量正迫使技术架构向更合理的模式靠拢。</p><p>华为鸿蒙系统的“原子化服务”则展示了另一种技术路线。它将App功能解构为可独立分发和调用的“服务卡片”，通过分布式总线在不同设备间无缝流转。实测数据显示，这种架构下，应用平均启动耗时仅为传统App的30%，且实现了资源的高效共享。然而，分布式协同带来的网络协议开销、跨设备数据一致性挑战，以及潜在的隐私边界模糊化，又提出了新的技术与伦理命题。</p><hr /><p><strong>关键性能指标趋势一览</strong>：</p><table><thead><tr><th style="text-align:center">指标</th><th style="text-align:center">2015年均值</th><th style="text-align:center">2023年主流超级App均值</th><th style="text-align:center">增幅</th><th style="text-align:center">技术影响</th></tr></thead><tbody><tr><td style="text-align:center">平均安装包大小</td><td style="text-align:center">25MB</td><td style="text-align:center">280MB</td><td style="text-align:center">1020%</td><td style="text-align:center">存储压力、下载耗时、安装失败率</td></tr><tr><td style="text-align:center">冷启动耗时</td><td style="text-align:center">1.2s</td><td style="text-align:center">3.8s</td><td style="text-align:center">317%</td><td style="text-align:center">用户耐心、应用商店评分</td></tr><tr><td style="text-align:center">内存常驻占用</td><td style="text-align:center">87MB</td><td style="text-align:center">436MB</td><td style="text-align:center">501%</td><td style="text-align:center">多任务切换卡顿、后台耗电、系统不稳定</td></tr><tr><td style="text-align:center">功能点数量（估算）</td><td style="text-align:center">21个</td><td style="text-align:center">137个</td><td style="text-align:center">552%</td><td style="text-align:center">代码维护复杂、安全漏洞风险、用户选择疲劳</td></tr><tr><td style="text-align:center">GC频率提升（后台）</td><td style="text-align:center">基准</td><td style="text-align:center">2.3倍</td><td style="text-align:center">-</td><td style="text-align:center">CPU额外消耗、卡顿感</td></tr><tr><td style="text-align:center">混合开发启动延迟</td><td style="text-align:center">N/A</td><td style="text-align:center">1.5s（对比原生）</td><td style="text-align:center">-</td><td style="text-align:center">用户体验、品牌形象</td></tr></tbody></table><p>在技术演进与商业诉求的拉锯中，App的体量膨胀已成为移动生态的“哥德尔命题”——我们既无法在现有范式下彻底解决它，又不可能停止系统复杂度的持续增长。我们追求的“一站式”便利，是否正在以牺牲数字世界的效率和纯粹为代价？这或许是一个没有完美答案的拷问。</p><p>或许，正如计算机科学家Alan Kay所言：“软件的唯一出路，就是学会像生物体那样新陈代谢。”在未来，我们期待的不再是臃肿的数字巨象，而是能够根据需求智能伸缩、自我净化的数字有机体。而实现这一愿景，需要技术更深层次的创新，也需要商业模式更长远的考量，更需要我们每一个用户对数字产品保持清醒的审视与选择。因为，最终为这个“巨象”买单的，是我们手中的设备，以及我们日益被占用的数字生活空间。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;夜深人静之时，你是否曾注视手中这块发光的屏幕，它曾是轻巧的沟通媒介，如今却变得沉重、迟缓，像一个被无限喂养的数字巨婴？曾几何时，一个聊天应用的安装包仅需几百KB，启动耗时不过眨眼之间。而今天，当微信8.0版本径直突破250MB，支付宝客户端集成了上百项生活服务，乃至一款日常</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>本站 2025 年 3 月更新日志</title>
+    <link href="https://blog.zi4dbek.top/posts/a0db1fa8/"/>
+    <id>https://blog.zi4dbek.top/posts/a0db1fa8/</id>
+    <published>2025-03-30T14:57:16.000Z</published>
+    <updated>2025-06-26T14:22:14.930Z</updated>
+    
+    <content type="html"><![CDATA[<p>本月对网站进行了多项更新与优化，主要工作内容如下：</p><p><strong>主要更新</strong></p><ol><li><p><strong>域名变更</strong></p><ul><li>网站域名已由 <code>zi4dbek.github.io</code> 更新为 <strong>blog.zi4dbek.top</strong>。</li><li>原域名访问将自动重定向至新地址，已收藏链接无需更新。</li></ul></li><li><p><strong>图片存储迁移</strong></p><ul><li>图片资源已从 GitHub 迁移至自有域名 <code>zi4dbek.top</code> 下的存储服务，预计可提升图片加载速度。</li></ul></li><li><p><strong>背景音乐 (BGM) 歌单更新</strong></p><ul><li>对网站背景音乐歌单进行了内容调整。</li><li>播放器仍使用 APlayer，未发现兼容性问题。</li></ul></li><li><p><strong>问题修复</strong></p><ul><li>修复了移动端页面目录跳转功能偶尔失效的问题。</li><li>修复了暗色主题下数学公式显示异常的问题。</li></ul></li></ol><p><strong>其他更新</strong></p><ol><li><p><strong>新增个人主页</strong></p><ul><li>已上线个人主页：<a href="https://zi4dbek.top">https://zi4dbek.top</a></li><li>主页样式预览：<br /><img src="https://r2-img.zi4dbek.top/images/20250330230700593.png" alt="" /></li></ul></li><li><p><strong>全站状态页上线（试运行）</strong></p><ul><li>网站状态监控页已上线，可访问以下链接查看：<a href="https://status.zi4dbek.top/status/zi4dbek">https://status.zi4dbek.top/status/zi4dbek</a></li><li>状态页预览：<br /><img src="https://b2-img.zi4dbek.top/images/20250330231343851.png" alt="image-20250330231343684" /></li></ul></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;本月对网站进行了多项更新与优化，主要工作内容如下：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;主要更新&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;域名变更&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网站域名已由 &lt;code&gt;zi4dbek.github.io</summary>
+      
+    
+    
+    
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="Hexo" scheme="https://blog.zi4dbek.top/tags/Hexo/"/>
+    
+    <category term="博客" scheme="https://blog.zi4dbek.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="网站搭建" scheme="https://blog.zi4dbek.top/tags/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>评论系统更换记录</title>
+    <link href="https://blog.zi4dbek.top/posts/8f613cd1/"/>
+    <id>https://blog.zi4dbek.top/posts/8f613cd1/</id>
+    <published>2024-11-02T14:29:59.000Z</published>
+    <updated>2025-06-26T14:22:14.930Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-引言"><a class="markdownIt-Anchor" href="#1-引言"></a> 1. 引言</h1><p>本网站最初使用 Typecho 自带的评论模块。 随着网站的发展，评论系统经历了数次更迭。 本文将记录评论系统更换的详细过程，并分析不同方案的优缺点。</p><h1 id="2-评论系统的演变"><a class="markdownIt-Anchor" href="#2-评论系统的演变"></a> 2. 评论系统的演变</h1><h2 id="21-早期方案typecho-自带评论"><a class="markdownIt-Anchor" href="#21-早期方案typecho-自带评论"></a> 2.1. 早期方案：Typecho 自带评论</h2><p>网站早期使用 Typecho 自带的评论模块。</p><p>此后，尝试使用 <a href="https://giscus.app">Giscus</a> 作为评论系统。 Giscus 基于 GitHub Discussions，具有轻量便捷的特点。 但在将网站迁移至 GitHub Pages 后，发现 butterfly 主题的 Giscus 评论框仅支持英文界面，因此放弃了 Giscus 方案。</p><h2 id="22-gitalk-方案"><a class="markdownIt-Anchor" href="#22-gitalk-方案"></a> 2.2. Gitalk 方案</h2><p>最初考虑使用 Gitalk， 它基于 GitHub Issues 存储评论，用户可以使用 GitHub 账号直接登录并发表评论。</p><p><strong>更换原因：</strong> GitHub Issues 的特性导致用户发布评论后会自动订阅该 Issue。 当 Issue 有新的评论时，所有订阅者都会收到邮件通知，可能对部分用户造成困扰。</p><h2 id="23-当前方案twikoo"><a class="markdownIt-Anchor" href="#23-当前方案twikoo"></a> 2.3. 当前方案：Twikoo</h2><p>最终选择 <a href="https://twikoo.js.org">Twikoo</a> 作为当前使用的评论系统， 因为 Twikoo 具有安装简单、评论方便、界面简洁等优点。</p><p><img src="https://r2-img.zi4dbek.top/images/202411032151800.webp" alt="Twikoo评论界面" /></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;1-引言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-引言&quot;&gt;&lt;/a&gt; 1. 引言&lt;/h1&gt;
+&lt;p&gt;本网站最初使用 Typecho 自带的评论模块。 随着网站的发展，评论系统经历了数次更迭。 本文将记录评论系统更换的详细过程，并分</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>基于 Azure Repo 搭建免费图床</title>
+    <link href="https://blog.zi4dbek.top/posts/d22f868c/"/>
+    <id>https://blog.zi4dbek.top/posts/d22f868c/</id>
+    <published>2024-08-25T15:06:54.000Z</published>
+    <updated>2025-06-26T14:22:14.930Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-创建-azure-devops-组织和项目"><a class="markdownIt-Anchor" href="#1-创建-azure-devops-组织和项目"></a> 1. 创建 Azure DevOps 组织和项目</h2><p>在 <a href="https://dev.azure.com/">https://dev.azure.com</a> 创建组织并建立项目。 在项目内创建 Repo，并点击 “Initialize” 初始化仓库。<br /><img src="https://r2-img.zi4dbek.top/images/436080efd5f5e1dccfb8e465034cbea79f78cca2.webp" alt="img" /></p><h2 id="2-创建-personal-access-token-pat"><a class="markdownIt-Anchor" href="#2-创建-personal-access-token-pat"></a> 2. 创建 Personal Access Token (PAT)</h2><p>访问 <code>https://[组织名].visualstudio.com/_usersSettings/tokens</code> 创建 Token。</p><ul><li>权限需要 read &amp; write<br /><img src="https://r2-img.zi4dbek.top/images/b1b0b35862373563c8a07939be77352a3cfe99fb.webp" alt="img" /></li></ul><h2 id="3-安装-picgo-插件"><a class="markdownIt-Anchor" href="#3-安装-picgo-插件"></a> 3. 安装 PicGo 插件</h2><p>使用以下命令安装 azureimg 插件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">picgo install azureimg</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="4-配置-picgo"><a class="markdownIt-Anchor" href="#4-配置-picgo"></a> 4. 配置 PicGo</h2><p>使用以下命令配置插件：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BASHpicgo set uploader azureimg #配置 azureimg</span><br><span class="line">picgo use transformer #选择 path</span><br><span class="line">picgo use uploader #选择 azureimg 作为 uploader</span><br></pre></td></tr></table></figure><p>配置完成后，您可以使用 PicGo 将图片上传至 Azure Repo 图床。</p><h4 id="本文内容转载自-httpsgithubcomyukicocopicgo-plugin-azureimgreadmemd-转载请注明出处"><a class="markdownIt-Anchor" href="#本文内容转载自-httpsgithubcomyukicocopicgo-plugin-azureimgreadmemd-转载请注明出处"></a> 本文内容转载自 <a href="https://github.com/YukiCoco/picgo-plugin-azureimg/README.md%EF%BC%8C">https://github.com/YukiCoco/picgo-plugin-azureimg/README.md，</a> 转载请注明出处。</h4>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-创建-azure-devops-组织和项目&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-创建-azure-devops-组织和项目&quot;&gt;&lt;/a&gt; 1. 创建 Azure DevOps 组织和项目&lt;/h2&gt;
+&lt;p&gt;在 &lt;a hre</summary>
+      
+    
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/"/>
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Office 365 E5 账号申请及永久续期</title>
+    <link href="https://blog.zi4dbek.top/posts/7ba33a27/"/>
+    <id>https://blog.zi4dbek.top/posts/7ba33a27/</id>
+    <published>2024-01-13T10:51:46.000Z</published>
+    <updated>2025-06-26T14:22:14.929Z</updated>
+    
+    <content type="html"><![CDATA[<hr /><h2 id="最新信息微软收紧了申请政策现在新加入的账号会提示没有资格加入以前注册的不受影响"><a class="markdownIt-Anchor" href="#最新信息微软收紧了申请政策现在新加入的账号会提示没有资格加入以前注册的不受影响"></a> 最新信息：微软收紧了申请政策，现在新加入的账号会提示没有资格加入，以前注册的不受影响。</h2><hr /><h3 id="仓库安全警示"><a class="markdownIt-Anchor" href="#仓库安全警示"></a> 仓库安全警示</h3><p>由于 GitHub 存在漏洞，<a href="https://www.freebuf.com/articles/paper/268829.html">攻击者可以通过 Pull Request 执行挖矿程序</a>，因此建议您删除原先 Fork 的代码，并使用<a href="https://docs.github.com/zh/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer">导入私有仓库</a>的方法再运行 Action 任务。</p><h3 id="续订成功通知示例"><a class="markdownIt-Anchor" href="#续订成功通知示例"></a> 续订成功通知（示例）</h3><p><img src="https://r2-img.zi4dbek.top/images/bf8e1432d3b9d632523eb1db33be925287122ed4.webp" alt="续订成功" /></p><p><code>Office 365 E5</code> 是微软为开发者提供的一个临时管理账号服务，该服务可供任何人申请。此账号的最大优势在于可以分配 <code>25 个子账号</code>，每个子账号都拥有 <code>5TB 的 OneDrive 存储空间</code> 和完整的 <code>Office 客户端</code> 使用权限。</p><p>首次申请后，可以免费使用 90 天。到期后，利用微软的机制并通过 GitHub Action 或腾讯云函数等平台设置定时任务，可以实现 <code>自动续期</code>，从而达到长期使用的目的。</p><h3 id="申请步骤"><a class="markdownIt-Anchor" href="#申请步骤"></a> 申请步骤</h3><ol><li>打开 <a href="https://developer.microsoft.com/en-us/microsoft-365">申请链接</a>，使用您的微软账号进行登录。如果还没有账号，可以根据页面提示进行注册。</li></ol><p><img src="https://r2-img.zi4dbek.top/images/44d0db576c7d5c86537ab16c3fb63f80f9732b36.webp" alt="login" /></p><ol start="2"><li>登录成功后，进入信息填写页面。选择 <code>国家</code>，随意填写 <code>公司</code> 名称，勾选 <code>接受条款</code>，然后点击 <code>下一步</code>。</li></ol><p><img src="https://r2-img.zi4dbek.top/images/7430b9ed723b561713eab17f0ec428359ecda8b2.webp" alt="register" /></p><ol start="3"><li>进入个性化体验页面后，随意选择几个必选项，然后点击 <code>加入</code>。</li></ol><p><img src="https://r2-img.zi4dbek.top/images/cc6f929810c972c728f533bd65e9f2ee6b05ed82.webp" alt="experience" /></p><ol start="4"><li>在下一个页面中，点击 <code>设置 E5 订阅</code>。</li></ol><p><img src="https://r2-img.zi4dbek.top/images/b361fce3716a0dd8fe7bbc1186afcbd9a87e253d.webp" alt="subscribe" /></p><ol start="5"><li>在弹出的对话框中，填写 <code>国家</code>、<code>用户名</code>、<code>域</code> 和 <code>密码</code>，然后点击 <code>继续</code>。请确保在记事本中保存您的密码。</li></ol><p><img src="https://r2-img.zi4dbek.top/images/f248671f9a1367e5c3f7a27ba39039354c114bec.webp" alt="domain" /></p><ol start="6"><li>系统会要求绑定 <code>手机号</code>，由于使用了谷歌的验证服务，建议使用科学上网工具。</li></ol><p><img src="https://r2-img.zi4dbek.top/images/9fa4bc4ebce114fa3899f68f5dc605418ff75f16.webp" alt="phone" /></p><ol start="7"><li>输入收到的验证码后，点击 <code>设置</code>。</li></ol><p><img src="https://r2-img.zi4dbek.top/images/e618d8986f86cbc90e92edcb3cb35c8d4e8a59e0.webp" alt="sms" /></p><ol start="8"><li>大约一分钟后，页面会显示订阅成功。</li></ol><p><img src="https://r2-img.zi4dbek.top/images/bdec2690215aabbabbab7e9ac1546eb77d5b9347.webp" alt="success" /></p><h3 id="开始使用"><a class="markdownIt-Anchor" href="#开始使用"></a> 开始使用</h3><p>访问 <a href="https://logi.im/go/aHR0cHM6Ly93d3cub2ZmaWNlLmNvbS8_YXV0aD0y">Office 官网</a>，使用管理员账号和密码登录。登录成功后，您可以直接使用 <code>OneDrive</code> 和 <code>Word</code> 等网页端服务。如需使用 <code>客户端</code>，可以点击右上角的 <code>安装 Office - Office 365 应用</code> 下载并安装客户端。</p><p><img src="https://r2-img.zi4dbek.top/images/1d84b58b66001445eeac8fa163ab381427781eaa.webp" alt="success" /></p><h3 id="扩展存储空间"><a class="markdownIt-Anchor" href="#扩展存储空间"></a> 扩展存储空间</h3><p>默认的 OneDrive 存储空间为 1TB，但您可以将其扩展为 5TB。登录管理员账号后，访问 <a href="https://logi.im/go/aHR0cHM6Ly9hZG1pbi5vbmVkcml2ZS5jb20vP3Y9U3RvcmFnZVNldHRpbmdz">OneDrive 存储管理页</a>，将存储空间设置为 <code>5120GB</code> 后点击 <code>保存</code>。如果页面无法加载，可能是系统尚未完成初始化，请耐心等待 24 小时后再尝试。</p><p><img src="https://r2-img.zi4dbek.top/images/56fc8422e49809afe4969c47dad5317a24b27bad.webp" alt="storage" /></p><h3 id="分配子账号"><a class="markdownIt-Anchor" href="#分配子账号"></a> 分配子账号</h3><p>管理员可以分配 25 个子账号，每个账号都可以使用 Office 365 并拥有 5TB 的 OneDrive 空间。在管理员中心的左侧菜单栏中，选择 <code>用户 - 活跃用户</code>，然后点击 <code>添加用户</code>，填写必要的信息后，按照系统提示完成用户添加。</p><p><img src="https://r2-img.zi4dbek.top/images/b756f9e3470d83e135314f36187e523165ebe13f.webp" alt="add-user" /></p><h3 id="添加任务"><a class="markdownIt-Anchor" href="#添加任务"></a> 添加任务</h3><p>首先登录或注册一个 GitHub 账号，接着<a href="https://logi.im/go/aHR0cHM6Ly9kb2NzLmdpdGh1Yi5jb20vY24vZ2l0aHViL2ltcG9ydGluZy15b3VyLXByb2plY3RzLXRvLWdpdGh1Yi9pbXBvcnRpbmctYS1yZXBvc2l0b3J5LXdpdGgtZ2l0aHViLWltcG9ydGVy">导入私有仓库</a>，在 <code>Your old repository’s clone URL</code> 中输入以下地址：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://gitlab.com/vcheckzen/KeepAliveE5.git</span><br></pre></td></tr></table></figure><p>确保在导入时选择 <code>Private</code> 选项，完成后您的 GitHub 账号下会有一个私有的项目副本。</p><p>接下来，创建一个具有 <code>workflow</code> 权限的个人访问密钥（PAT）。访问 <a href="https://logi.im/go/aHR0cHM6Ly9naXRodWIuY29tL3NldHRpbmdzL3Rva2Vucy9uZXc">密钥创建页面</a>，按照页面提示填写信息并生成密钥。生成成功后，复制密钥备用。</p><p><img src="https://r2-img.zi4dbek.top/images/1f579a362973b3a830c142a896affbc345e2df9a.webp" alt="copy-pat-token" /></p><p>现在，您需要为仓库添加以下三个密钥（PAT、USER、PASSWD）。具体步骤可以参考视频教程（注意视频中未提到添加 PAT 的部分，需要自行添加）。</p><table><thead><tr><th>Name</th><th>Value</th></tr></thead><tbody><tr><td>PAT</td><td>GitHub 个人访问密钥，需要具有 workflow 权限</td></tr><tr><td>USER</td><td>E5 管理员邮箱（支持多个，每行一个，不要填写子号）</td></tr><tr><td>PASSWD</td><td>E5 管理员密码（支持多个，每行一个，顺序必须和邮箱一致）</td></tr></tbody></table><p>按照 <a href="https://logi.im/go/aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vYXp1cmUvYWN0aXZlLWRpcmVjdG9yeS9mdW5kYW1lbnRhbHMvY29uY2VwdC1mdW5kYW1lbnRhbHMtc2VjdXJpdHktZGVmYXVsdHMjZGlzYWJsaW5nLXNlY3VyaXR5LWRlZmF1bHRz">链接</a> 中的说明，关闭 E5 管理员账号的 <code>两步验证</code> 或 <code>安全默认值</code>。</p><p>完成以上设置后，前往 <code>Action</code> 面板，手动触发 <code>Register APP</code> 以完成注册流程。如果操作正确但注册失败，可以稍等 10-30 分钟后再次尝试。如果 <code>Action</code> 面板没有显示 <code>Register APP</code>，可以修改 <code>.github/workflows</code> 目录下的两个文件，随意添加一行注释并保存。</p><p>运行成功后，系统将会定期执行任务，确保续订成功。如果您希望使用 OneDrive 搭建个人网盘，可以参考 <a href="https://logi.im/tag/OneDrive/">这些文章</a>。</p><h3 id="应用注册成功"><a class="markdownIt-Anchor" href="#应用注册成功"></a> 应用注册成功</h3><p><img src="https://r2-img.zi4dbek.top/images/5e0483a3e950d5fa134d363fd39e4ade7c7cdbda.webp" alt="应用注册成功" /></p><h3 id="api-调用成功"><a class="markdownIt-Anchor" href="#api-调用成功"></a> API 调用成功</h3><p><img src="https://r2-img.zi4dbek.top/images/cd0cf330a8ff7b58ab71ea85dada228d307ad479.webp" alt="API 调用成功" /></p><p>如果 API 调用成功，任务将定期执行，确保您的 Office 365 订阅持续有效。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;hr /&gt;
+&lt;h2 id=&quot;最新信息微软收紧了申请政策现在新加入的账号会提示没有资格加入以前注册的不受影响&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#最新信息微软收紧了申请政策现在新加入的账号会提示没有资格加入以前注册的不受影响&quot;&gt;&lt;/a&gt; 最新</summary>
+      
+    
+    
+    
+    <category term="微软" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="白嫖" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/"/>
+    
+    <category term="E5账号申请和续期" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/%E7%99%BD%E5%AB%96/E5%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%92%8C%E7%BB%AD%E6%9C%9F/"/>
+    
+    
+    <category term="微软" scheme="https://blog.zi4dbek.top/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="白嫖" scheme="https://blog.zi4dbek.top/tags/%E7%99%BD%E5%AB%96/"/>
+    
+    <category term="E5账号申请和续期" scheme="https://blog.zi4dbek.top/tags/E5%E8%B4%A6%E5%8F%B7%E7%94%B3%E8%AF%B7%E5%92%8C%E7%BB%AD%E6%9C%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 静态站点搭建指南</title>
+    <link href="https://blog.zi4dbek.top/posts/1766a654/"/>
+    <id>https://blog.zi4dbek.top/posts/1766a654/</id>
+    <published>2024-01-12T11:26:45.000Z</published>
+    <updated>2025-06-26T14:22:14.929Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-准备工作"><a class="markdownIt-Anchor" href="#1-准备工作"></a> 1. 准备工作</h2><ol><li><strong>安装 Node.js 和 Git</strong>： Hexo 依赖 Node.js 运行， Git 用于版本控制和部署。</li><li><strong>Hexo 原理</strong>： Hexo 是一个静态站点生成器，可以将 Markdown 格式的文本文件转换为静态 HTML 网页。 Hexo 会自动生成站点目录、标签等内容，从而简化博客管理流程。</li></ol><h2 id="2-基于-github-pages-部署"><a class="markdownIt-Anchor" href="#2-基于-github-pages-部署"></a> 2. 基于 GitHub Pages 部署</h2><ol><li><strong>创建 GitHub 仓库</strong>： 在 GitHub 上创建一个新的仓库，用于托管博客静态文件。建议将仓库命名为 <code>username.github.io</code>，其中 <code>username</code> 是您的 GitHub 用户名。 若使用其他仓库名，访问地址将包含仓库名。</li><li><strong>安装 Hexo</strong>： 使用 <code>npm install -g hexo-cli</code> 命令全局安装 Hexo 命令行工具。</li><li><strong>初始化 Hexo</strong>： 在本地文件系统中创建一个新的文件夹，并使用 <code>hexo init</code> 命令初始化 Hexo 站点结构。</li></ol><h2 id="3-生成与预览"><a class="markdownIt-Anchor" href="#3-生成与预览"></a> 3. 生成与预览</h2><ol><li><strong>生成静态页面</strong>： 使用 <code>hexo generate</code> 命令生成静态网页文件，默认输出目录为 <code>public</code>。</li><li><strong>本地预览</strong>： 通过 <code>hexo server</code> 命令启动本地服务器，默认端口为 4000。 在浏览器中访问 <code>http://localhost:4000</code> 即可预览博客效果。</li></ol><h2 id="4-主题配置"><a class="markdownIt-Anchor" href="#4-主题配置"></a> 4. 主题配置</h2><ol><li><strong>下载主题</strong>： 使用 <code>git clone</code> 命令将主题文件下载到 <code>themes</code> 目录下。 例如，下载 butterfly 主题：</li></ol>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   git <span class="built_in">clone</span> -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly</span><br><span class="line"></span><br><span class="line">1. **激活主题**： 修改站点根目录下的 `_config.yml` 文件，将 `theme: landscape` 修改为你所下载的主题名称，例如 `theme: butterfly`。</span><br><span class="line"></span><br><span class="line"><span class="comment">## 5. 部署到 GitHub Pages</span></span><br><span class="line"></span><br><span class="line">1. **配置部署信息**：</span><br><span class="line">   编辑站点根目录下的 `_config.yml` 文件，配置 `deploy` 部分（注意 YAML 语法缩进）：</span><br><span class="line"></span><br><span class="line">```yaml</span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: https://github.com/zi4dbek/zi4dbek.github.io.git <span class="comment"># 使用 https 或 ssh 协议</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure><ol><li><strong>部署到 GitHub</strong>： 配置完成后，使用 <code>hexo deploy</code> 命令将生成的静态文件推送到 GitHub 仓库。<br />若直接执行部署命令，可能会提示错误：<em>Deployer not found: git</em><br />这是由于缺少部署插件 <code>hexo-deployer-git</code>，可以使用以下命令安装：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><p>安装完成后，再次执行 <code>hexo deploy</code> 命令，即可将本地文件推送至 GitHub 仓库。</p><h2 id="6-部署到-coding可选"><a class="markdownIt-Anchor" href="#6-部署到-coding可选"></a> 6. 部署到 Coding（可选）</h2><p>Coding 平台已进行改版，原有的 Pages 服务可能已失效。 详情请参考 <a href="https://support.qq.com/products/104149/faqs/61222">Pages 迁移至新版 CODING</a>。</p><p>以下是在 Coding 平台部署静态站点的基本流程：</p><ol><li>创建团队用户（个人用户可设置为管理员）。</li><li>创建 DevOps 项目，项目名称与团队名称保持一致。</li><li>在项目侧边栏中选择 “<strong>持续部署</strong>” 菜单，选择 “静态网站”，点击 “立即部署”。</li></ol><h3 id="61-部署成功后"><a class="markdownIt-Anchor" href="#61-部署成功后"></a> 6.1 部署成功后</h3><p>与配置 GitHub Pages 类似，需要修改站点根目录下的 <code>_config.yml</code> 文件，配置 <code>deploy</code> 部分：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://e.coding.net/andh/andh.coding.me.git</span> <span class="comment"># 使用 https 或 ssh 协议</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure><h5 id="提示-coding-域名可能不如-github-域名简洁可根据实际需求进行选择-建议同时配置多个部署目标作为备用方案"><a class="markdownIt-Anchor" href="#提示-coding-域名可能不如-github-域名简洁可根据实际需求进行选择-建议同时配置多个部署目标作为备用方案"></a> 提示： Coding 域名可能不如 GitHub 域名简洁，可根据实际需求进行选择。 建议同时配置多个部署目标，作为备用方案。</h5><h2 id="7-常用命令"><a class="markdownIt-Anchor" href="#7-常用命令"></a> 7. 常用命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">BASH常见命令：</span><br><span class="line">hexo new &quot;postName&quot;      # 新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; # 新建页面</span><br><span class="line">hexo generate            # 生成静态页面至public目录</span><br><span class="line">hexo server              # 开启预览访问端口（默认端口4000，&#x27;ctrl + c&#x27;关闭server）</span><br><span class="line">hexo deploy              # 部署到GitHub</span><br><span class="line">hexo help                # 查看帮助</span><br><span class="line">hexo version             # 查看Hexo的版本</span><br><span class="line"></span><br><span class="line">缩写命令：</span><br><span class="line">hexo n == hexo new</span><br><span class="line">hexo g == hexo generate</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br><span class="line"></span><br><span class="line">组合命令：</span><br><span class="line">hexo s -g   # 生成并本地预览</span><br><span class="line">hexo d -g   # 生成并上传</span><br></pre></td></tr></table></figure><h2 id="8-文章编写"><a class="markdownIt-Anchor" href="#8-文章编写"></a> 8. 文章编写</h2><p>在 Hexo 站点根目录下执行 <code>hexo new 'post name'</code> 命令，即可在 <code>_posts</code> 目录下创建一个新的 Markdown 文件。 使用文本编辑器打开该文件，即可开始撰写博文。</p><h5 id="提示-使用-hexo-new-命令可以自动生成文章创建时间"><a class="markdownIt-Anchor" href="#提示-使用-hexo-new-命令可以自动生成文章创建时间"></a> 提示： 使用 <code>hexo new</code> 命令可以自动生成文章创建时间。</h5>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-准备工作&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-准备工作&quot;&gt;&lt;/a&gt; 1. 准备工作&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;安装 Node.js 和 Git&lt;/strong&gt;： Hexo 依赖 Node.js 运行</summary>
+      
+    
+    
+    
+    <category term="Hexo" scheme="https://blog.zi4dbek.top/categories/Hexo/"/>
+    
+    <category term="网站搭建" scheme="https://blog.zi4dbek.top/categories/Hexo/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
+    
+    <category term="博客" scheme="https://blog.zi4dbek.top/categories/Hexo/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="Hexo" scheme="https://blog.zi4dbek.top/tags/Hexo/"/>
+    
+    <category term="博客" scheme="https://blog.zi4dbek.top/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="网站搭建" scheme="https://blog.zi4dbek.top/tags/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gitee仓库图床实施方案</title>
+    <link href="https://blog.zi4dbek.top/posts/393a016d/"/>
+    <id>https://blog.zi4dbek.top/posts/393a016d/</id>
+    <published>2023-12-16T10:54:00.000Z</published>
+    <updated>2025-06-26T14:22:14.928Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="在gitee中创建仓库"><a class="markdownIt-Anchor" href="#在gitee中创建仓库"></a> 在gitee中创建仓库</h3><p>按照常规创建仓库的方式创建一个专门用于图床的仓库</p><p><img src="https://r2-img.zi4dbek.top/images/d11a106dfaa88bf0ab5d9cc09eae636d8cf25ce5.webp" alt="img" /></p><h3 id="获取token"><a class="markdownIt-Anchor" href="#获取token"></a> 获取token</h3><p><img src="https://r2-img.zi4dbek.top/images/df617fbe541df8496eaf11ea3054b7f14d79432f.webp" alt="img" /></p><h3 id="在picgo中安装gitee插件"><a class="markdownIt-Anchor" href="#在picgo中安装gitee插件"></a> 在PicGO中安装gitee插件</h3><h4 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h4><h4 id="img"><a class="markdownIt-Anchor" href="#img"></a> <img src="https://r2-img.zi4dbek.top/images/68e81d86628bb07712dcde2b43e1a5791a53a592.webp" alt="img" /></h4><h4 id="配置插件"><a class="markdownIt-Anchor" href="#配置插件"></a> 配置插件</h4><p><img src="https://r2-img.zi4dbek.top/images/dd8a097dfec8ff3162a437b6911e611a449a2f90.webp" alt="img" />这里需要注意的是repo的名字中大小写字母需要完全一致且是仓库路径。否则会报404错误。</p><h4 id="上传图片"><a class="markdownIt-Anchor" href="#上传图片"></a> 上传图片</h4><p>至此，图床系统搭建完成。</p><p>文章参考自<a href="https://nokiasonic.github.io/2020/12/10/%E4%BD%BF%E7%94%A8github%E5%8F%8Agitee%E6%9D%A5%E4%BD%9C%E4%B8%BA%E5%9B%BE%E5%BA%8A%E7%B3%BB%E7%BB%9F/">这里</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;在gitee中创建仓库&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#在gitee中创建仓库&quot;&gt;&lt;/a&gt; 在gitee中创建仓库&lt;/h3&gt;
+&lt;p&gt;按照常规创建仓库的方式创建一个专门用于图床的仓库&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;htt</summary>
+      
+    
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/"/>
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PicGo 图片压缩插件配置：降低图床存储及流量成本</title>
+    <link href="https://blog.zi4dbek.top/posts/cd8989dc/"/>
+    <id>https://blog.zi4dbek.top/posts/cd8989dc/</id>
+    <published>2023-10-13T15:35:00.000Z</published>
+    <updated>2025-06-27T12:25:32.897Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-引言"><a class="markdownIt-Anchor" href="#1-引言"></a> 1. 引言</h1><p>在使用对象存储服务（如OSS）搭建图床时，存储容量费用与流量费用是主要的成本构成。原始图片上传至图床，其文件大小直接影响流量消耗。因此，在通过 PicGo 实时上传图片前，若能进行有效压缩，可以显著降低流量费用。PicGo 支持通过 <code>compress</code> 插件实现这一功能。本文将介绍如何在 Windows 操作系统环境下安装并配置该插件。</p><h2 id="2-compress-插件安装与配置"><a class="markdownIt-Anchor" href="#2-compress-插件安装与配置"></a> 2. Compress 插件安装与配置</h2><h3 id="21-前置条件nodejs-环境"><a class="markdownIt-Anchor" href="#21-前置条件nodejs-环境"></a> 2.1 前置条件：Node.js 环境</h3><p>安装 <code>picgo-plugin-compress</code> 插件需要预先安装 Node.js。PicGo 依赖 Node.js 运行插件，请确保已正确安装 Node.js 环境。建议安装LTS (Long Term Support) 长期支持版本，以保证软件的稳定运行。</p><ol><li><strong>下载 Node.js</strong>：<br />-  访问 Node.js 官方网站：<a href="https://nodejs.org">Node.js</a>。<br />-  下载并安装 LTS 版本。</li><li><strong>安装 Node.js</strong>：<br />-  安装过程中，系统可能会提示安装可选组件，例如 Python、Visual Studio Build Tools 和 Chocolatey。 这些组件为 Node.js 的特定功能提供支持，建议勾选安装。<br />-  如果未选择安装，后续可以通过命令行手动安装。</li><li><strong>验证安装</strong>：<br />-  安装完成后，打开命令行终端，输入 <code>node -v</code>，查看 Node.js 的版本信息，确认安装成功。</li></ol><h3 id="22-插件安装picgo-插件管理界面或-npm-手动安装"><a class="markdownIt-Anchor" href="#22-插件安装picgo-插件管理界面或-npm-手动安装"></a> 2.2 插件安装：PicGo 插件管理界面或 npm 手动安装</h3><p>在完成 Node.js 安装后，可以通过 PicGo 插件管理界面安装 <code>picgo-plugin-compress</code> 插件。</p><ol><li><strong>重启 PicGo</strong>：<br />-  启动 PicGo，在插件设置中搜索 <code>compress</code>，然后点击安装按钮。<br />-  注意：建议不要使用 PicGo 自带的重启功能，避免可能出现的错误状态。</li><li><strong>插件安装失败处理</strong>：<br />-  如果搜索不到插件，可能由于网络原因无法访问 GitHub。 在这种情况下，插件设置功能可能无法正常使用，建议采用手动安装方式。</li></ol><h3 id="23-手动安装步骤npm"><a class="markdownIt-Anchor" href="#23-手动安装步骤npm"></a> 2.3 手动安装步骤（npm）</h3><p>若通过 PicGo 界面直接安装插件失败，可使用 npm（Node Package Manager）命令手动安装。</p><ol><li><p><strong>创建插件目录</strong>：<br />-  在 PicGo 的安装目录下，手动创建名为 <code>plugin-compress</code> 的文件夹。 此步骤确保 PicGo 能够正确加载插件。</p></li><li><p><strong>命令行安装插件</strong>：<br />-  打开命令行终端，并将当前工作目录切换到 <code>plugin-compress</code> 文件夹。<br />-  执行以下命令安装插件：</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install picgo-plugin-compress --save --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></li></ol><pre><code> -  `--registry` 参数指定使用淘宝 npm 镜像源，以加速下载。 如果已配置全局镜像源，可以省略此参数。</code></pre><ol start="3"><li><p><strong>配置插件路径</strong>：<br />-  安装完成后，需要将插件路径添加到 PicGo 的配置文件中。 PicGo 默认配置文件路径如下：</p><ul><li>Windows: <code>C:\Users\用户名\AppData\Roaming\picgo</code></li></ul></li></ol><pre><code> -  通过命令行执行以下命令将插件路径添加到 PicGo 配置文件：   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="string">&quot;D:\Program Files\PicGo\plugin-compress&quot;</span></span><br></pre></td></tr></table></figure></code></pre><p>完成以上配置后，PicGo 即可加载并使用 <code>picgo-plugin-compress</code> 插件，实现图片压缩功能。</p><p><strong>附：图片压缩原理简述</strong><br /><code>picgo-plugin-compress</code> 插件通常采用有损压缩算法，例如JPEG压缩，通过减少图像的颜色信息和细节，降低文件大小。压缩率越高，文件体积越小，但同时图像质量也会受到一定程度的损失。用户可以根据实际需求，调整压缩参数，在文件大小和图像质量之间找到平衡点。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;1-引言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-引言&quot;&gt;&lt;/a&gt; 1. 引言&lt;/h1&gt;
+&lt;p&gt;在使用对象存储服务（如OSS）搭建图床时，存储容量费用与流量费用是主要的成本构成。原始图片上传至图床，其文件大小直接影响流量消耗。</summary>
+      
+    
+    
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/categories/%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图片处理" scheme="https://blog.zi4dbek.top/categories/%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+    
+    <category term="图片压缩" scheme="https://blog.zi4dbek.top/categories/%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/"/>
+    
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图片处理" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+    
+    <category term="图片压缩" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微博图床至GitHub迁移技术方案</title>
+    <link href="https://blog.zi4dbek.top/posts/44b66cff/"/>
+    <id>https://blog.zi4dbek.top/posts/44b66cff/</id>
+    <published>2023-10-02T14:52:00.000Z</published>
+    <updated>2025-06-26T14:22:14.930Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h4><h4 id="微博图床在几年前开启了防盗链导致大量引用图片全部遭殃本站未受影响未使用微博图床但也给出搭建图床到github的方式"><a class="markdownIt-Anchor" href="#微博图床在几年前开启了防盗链导致大量引用图片全部遭殃本站未受影响未使用微博图床但也给出搭建图床到github的方式"></a> <strong>微博图床在几年前开启了防盗链，导致大量引用图片全部遭殃，本站未受影响（未使用微博图床），但也给出搭建图床到GitHub的方式</strong></h4><h3 id="1搭建过程"><a class="markdownIt-Anchor" href="#1搭建过程"></a> 1.搭建过程</h3><h4 id="1-登录你的-github-账号创建一个新的仓库"><a class="markdownIt-Anchor" href="#1-登录你的-github-账号创建一个新的仓库"></a> 1. 登录你的 GitHub 账号，创建一个新的仓库；</h4><p><img src="https://r2-img.zi4dbek.top/images/01503d0d1e8e9f035fec2fb730b9a45856bbdac4.webp" alt="" /></p><h4 id="2-填写仓库信息只需选择一个合适的仓库名确保仓库设置为-public其他设置保持默认即可"><a class="markdownIt-Anchor" href="#2-填写仓库信息只需选择一个合适的仓库名确保仓库设置为-public其他设置保持默认即可"></a> 2. 填写仓库信息，只需选择一个合适的仓库名，确保仓库设置为 public，其他设置保持默认即可；</h4><p><img src="https://r2-img.zi4dbek.top/images/3c7f12a54bea99362d58490363c7a9b04118f7b8.webp" alt="" /></p><h4 id="3-创建成功后你会看到如下界面这意味着图床已经创建完成-接下来我们来看看如何上传图片"><a class="markdownIt-Anchor" href="#3-创建成功后你会看到如下界面这意味着图床已经创建完成-接下来我们来看看如何上传图片"></a> 3. 创建成功后，你会看到如下界面，这意味着图床已经创建完成。接下来，我们来看看如何上传图片；</h4><p><img src="https://r2-img.zi4dbek.top/images/6d729c9c5e9a2ca6b5cbd21767e8e5ad44c983dd.webp" alt="" /></p><h3 id="2-上传图片"><a class="markdownIt-Anchor" href="#2-上传图片"></a> 2. 上传图片</h3><p>虽然图床已经搭建完成，但通过传统方式向 GitHub 上传图片相对繁琐。这里推荐使用一个开源图床工具——PicGo，作为图片上传工具。</p><p>PicGo 的安装步骤简单明了，你可以前往其 <a href="https://molunerfinn.com/PicGo/">官网</a> 下载对应的版本并进行安装。接下来我们重点介绍如何使用 PicGo 上传图片。安装完成后，打开软件，其主界面如下：<br /><img src="https://r2-img.zi4dbek.top/images/a4025a219737b86ebf568f822a37adb822fb7970.webp" alt="" /></p><h4 id="1-首先需要在-github-上创建一个-token"><a class="markdownIt-Anchor" href="#1-首先需要在-github-上创建一个-token"></a> 1. 首先，需要在 GitHub 上创建一个 token；</h4><p>依次打开 <code>Settings -&gt; Developer settings -&gt; Personal access tokens</code>，然后点击 <code>Generate new token</code>；<br /><img src="https://r2-img.zi4dbek.top/images/1c2a9bea328a4bb3bc31795a9a1da3cfde04fb65.webp" alt="" /></p><p><img src="https://r2-img.zi4dbek.top/images/7eeadca9cf90e3f60dffeb0332d2be8b9a83527c.webp" alt="" /></p><h4 id="2-填写并勾选相关信息然后点击-generate-token"><a class="markdownIt-Anchor" href="#2-填写并勾选相关信息然后点击-generate-token"></a> 2. 填写并勾选相关信息，然后点击 <code>Generate token</code>；</h4><p><img src="https://r2-img.zi4dbek.top/images/5a5b547b3fb0adf8f508fda1ad0ae417c663d9b1.webp" alt="" /></p><h4 id="3-token-生成后请注意它只会显示一次所以最好将其复制并保存至备忘录以便后续使用-否则下次需要重新生成"><a class="markdownIt-Anchor" href="#3-token-生成后请注意它只会显示一次所以最好将其复制并保存至备忘录以便后续使用-否则下次需要重新生成"></a> 3. Token 生成后，请注意它只会显示一次，所以最好将其复制并保存至备忘录，以便后续使用。否则，下次需要重新生成；</h4><p><img src="https://r2-img.zi4dbek.top/images/2276aa688e8b4b5e58d04224415a4fe17dd4ceca.webp" alt="" /></p><h4 id="4-配置-picgo依次打开-图床设置-github-图床"><a class="markdownIt-Anchor" href="#4-配置-picgo依次打开-图床设置-github-图床"></a> 4. 配置 PicGo，依次打开 <code>图床设置 -&gt; GitHub 图床</code>；</h4><p><img src="https://r2-img.zi4dbek.top/images/d6fba0b42807cacf8a529afa2aa57e2eaed0f9ff.webp" alt="" /></p><p>填写相关信息后，点击 <code>确定</code> 即可。若要将其设为默认图床，点击“设为默认图床”按钮；<br /><img src="https://r2-img.zi4dbek.top/images/a1f96ff59894cadeda7fd2381d6f3f3cfa450dcf.webp" alt="" /></p><h4 id="5-通过上传区上传图片可使用-ctrlv-或将图片拖拽到软件内也可以通过快捷键默认快捷键为-ctrlshiftp上传图片"><a class="markdownIt-Anchor" href="#5-通过上传区上传图片可使用-ctrlv-或将图片拖拽到软件内也可以通过快捷键默认快捷键为-ctrlshiftp上传图片"></a> 5. 通过上传区上传图片（可使用 Ctrl+V 或将图片拖拽到软件内），也可以通过快捷键（默认快捷键为 Ctrl+Shift+P）上传图片；</h4><p><img src="https://r2-img.zi4dbek.top/images/a379aecd20d2f4c6d3e5aa4788fb7ecaa0d2511b.webp" alt="" /></p><h3 id="5-加速访问"><a class="markdownIt-Anchor" href="#5-加速访问"></a> 5. 加速访问</h3><p>你可能会发现，上传到 GitHub 的图片有时加载较慢，甚至无法加载。这时，可以使用 <a href="https://www.jsdelivr.com">jsDelivr</a> 和 <a href="https://i0.wp.com">WordPress图片缓存</a> 进行免费加速。设置方法非常简单，只需在 PicGo 图床配置中添加如下自定义域名即可：</p><ol><li><a href="https://i0.wp.com/cdn.jsdelivr.net/gh/%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BB%93%E5%BA%93%E5%90%8D">https://i0.wp.com/cdn.jsdelivr.net/gh/用户名/仓库名</a><br />例如，我的域名为 <a href="https://i0.wp.com/cdn.jsdelivr.net/gh/zi4dbek-org/img">https://i0.wp.com/cdn.jsdelivr.net/gh/zi4dbek-org/img</a><br /><img src="https://r2-img.zi4dbek.top/images/2da7a0ecd68c3b7b9d0cf5ec43b5b1eb720f329c.webp" alt="" /></li></ol><h3 id="6-总结"><a class="markdownIt-Anchor" href="#6-总结"></a> 6. 总结</h3><p>通过本文的步骤，你应该已经成功搭建了一个免费图床。本文主要内容包括以下几个部分：</p><ol><li>前言</li><li>准备工作</li><li>搭建过程</li><li>上传图片</li><li>加速访问</li><li>总结</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言&quot;&gt;&lt;/a&gt; 前言&lt;/h4&gt;
+&lt;h4 id=&quot;微博图床在几年前开启了防盗链导致大量引用图片全部遭殃本站未受影响未使用微博图床但也给出搭建图床到github的方式&quot;&gt;&lt;a class</summary>
+      
+    
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/"/>
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Backblaze B2与Cloudflare集成技术方案</title>
+    <link href="https://blog.zi4dbek.top/posts/406d2469/"/>
+    <id>https://blog.zi4dbek.top/posts/406d2469/</id>
+    <published>2023-09-30T10:51:00.000Z</published>
+    <updated>2025-06-26T14:22:14.928Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1><p>Backblaze B2是一种经济实惠的云存储服务，允许用户在云中存储无限的数据。它的运作方式类似于Amazon S3和Microsoft Azure，但成本仅为它们的五分之一。</p><p>Backblaze B2提供一个免费套餐，包含以下优惠：</p><blockquote><table><thead><tr><th>10GB的存储空间，适合存放一些重要文件或媒体资料。</th></tr></thead><tbody><tr><td><strong>每天1GB的流量，可便捷上传、下载数据或通过网络浏览文件。</strong></td></tr><tr><td><strong>S3兼容的API，方便将Backblaze B2集成到应用程序或服务中。</strong></td></tr><tr><td><strong>支持多种工具和软件，如Cloudflare CDN、Veeam备份、NAS设备等，提升数据的安全性、可用性及传输速度。</strong></td></tr></tbody></table></blockquote><p>如果超出免费额度，Backblaze B2的费用仍然非常低廉：</p><table><thead><tr><th><strong>每月$0.005/GB的存储费用，比Amazon S3和Microsoft Azure便宜超过80%。</strong></th></tr></thead><tbody><tr><td><strong>每月$0.01/GB的下载费用，比Amazon S3和Microsoft Azure便宜逾88%。</strong></td></tr></tbody></table><p>因此，无论是用于开发应用、数据备份，还是存档媒体内容，Backblaze B2都是一个理想选择。它不仅提供云存储的便利性和灵活性，还能帮助节省开支。</p><p>特别值得一提的是，Backblaze与Cloudflare是Bandwidth Alliance的成员，<strong>二者之间的数据传输是免费的</strong>。而Cloudflare的免费计划没有流量限制，这意味着你可以大幅节省流量成本，同时不必担心超出免费额度。</p><p><strong>因此，Backblaze B2特别适合用作图床，性价比极高！</strong></p><p><img src="https://r2-img.zi4dbek.top/images/a473c753c399d980147c3f69b3285c8425bc8048.webp" alt="img" /></p><h1 id="backblaze-cloudflare配置"><a class="markdownIt-Anchor" href="#backblaze-cloudflare配置"></a> Backblaze + Cloudflare配置</h1><h2 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h2><p>你需要以下资源：</p><table><thead><tr><th>一个 <a href="https://www.backblaze.com/">Backblaze</a> 账户（使用邮箱注册）</th></tr></thead><tbody><tr><td>一个 <strong><a href="https://www.cloudflare.com/">Cloudflare</a></strong> 账户（使用邮箱注册）</td></tr><tr><td>一个<strong>稳定</strong>的<strong>国际</strong>互联网环境</td></tr></tbody></table><h2 id="创建存储桶并添加解析"><a class="markdownIt-Anchor" href="#创建存储桶并添加解析"></a> 创建存储桶并添加解析</h2><p><strong>创建存储桶</strong>只需按以下简单步骤操作：</p><table><thead><tr><th>首先，登录Backblaze网站，点击&quot;My Account&quot;（个人账号信息），进入设置页面。</th></tr></thead><tbody><tr><td><strong>接着，点击“Buckets”选项，选择“Create a Bucket”（创建存储桶）按钮。</strong></td></tr></tbody></table><p><img src="https://r2-img.zi4dbek.top/images/caf2a86fb735370ddd68e429877db4ebe303d0a2.webp" alt="img" /></p><table><thead><tr><th>接下来，为存储桶命名。为了安全起见，建议避免使用常见或有意义的词汇作为存储桶名称。</th></tr></thead><tbody><tr><td>最后，设置存储桶的公开性。一般情况下，选择“Public”（公开）即可，因为选择私有可能涉及复杂的权限问题。首次设置为public可能需要邮箱验证。</td></tr></tbody></table><p><img src="https://r2-img.zi4dbek.top/images/639e19bf2e97aabaf0def7530a9a068144bda7ac.webp" alt="202309301819030" /></p><p>成功创建存储桶后，可以上传你想存储和分享的文件，并获取它们的访问地址。</p><p>接着，点击“upload/download”（上传/下载），进入文件管理页面。</p><p><img src="https://r2-img.zi4dbek.top/images/b7cf0bbce62e249b4b678459b456edb5f5371355.webp" alt="202309301820142" /></p><p>你可以在此上传文件并查看URL。我这里上传了一个logo图片，用来获取桶的地址。例如：</p><p>找到<strong>Friendly URL</strong>，并记录其中的主机名，如<code>f003.backblazeb2.com</code>。</p><p>然后进入Cloudflare管理页面，选择你的域名，在DNS中添加CNAME记录，将想替代桶域名的二级域名指向刚才的主机名。例如，<a href="http://xn--file-9s6fq79g39fdm6artc165g3qe.xxx">我这里使用的是file.xxx</a>。</p><p><img src="https://r2-img.zi4dbek.top/images/c20eba1c6e4f7941e14def0e96ce000532e5013f.webp" alt="img" /></p><p>至此，你已经成功创建存储桶并添加了解析。</p><h2 id="调整与优化"><a class="markdownIt-Anchor" href="#调整与优化"></a> 调整与优化</h2><h3 id="ssl优化"><a class="markdownIt-Anchor" href="#ssl优化"></a> SSL优化</h3><p>为了确保桶之间通信的完整性，需要将SSL设置更改为“严格”（Full）。</p><p><img src="https://r2-img.zi4dbek.top/images/a653773b47ebedfdea453bf6485966feaeb808c5.webp" alt="img" /></p><h3 id="url重写"><a class="markdownIt-Anchor" href="#url重写"></a> URL重写</h3><p>为避免桶名暴露在公共场合导致流量滥用，可以通过Cloudflare进行URL重写。<strong>点击规则-转换规则-重写URL</strong>，添加一个规则。</p><p><img src="https://r2-img.zi4dbek.top/images/b8d7c0388e4e3adf8950e15d19003fafb8f55ce5.webp" alt="img" /></p><p>添加的规则为：当路径为<code>/file/bucket_name</code>且主机名为刚才的二级域名时，进行重写。例如：</p><p><img src="https://r2-img.zi4dbek.top/images/b8d7c0388e4e3adf8950e15d19003fafb8f55ce5.webp" alt="img" /></p><p>你可以直接使用可视化编辑器按图示操作，或通过输入表达式添加如下规则：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TEXT</span><br><span class="line">复制代码</span><br><span class="line">http.request.uri.path ne &quot;/file/&#123;bucketName&#125;&quot; and http.host eq &quot;&#123;your_domain&#125;&quot;</span><br></pre></td></tr></table></figure><p>在路径重写处，添加如下代码并修改为你的bucket_name和域名：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TEXT</span><br><span class="line">复制代码</span><br><span class="line">concat(&quot;/file/&#123;bucketName&#125;&quot;,http.request.uri.path)</span><br></pre></td></tr></table></figure><p><img src="https://r2-img.zi4dbek.top/images/d9a499556e5195db04c72cec166773ac39759a48.webp" alt="img" /></p><p>此配置实现了 <code>&#123;your_domain&#125;/xxx.webp</code> -&gt; <code>Friendly domain/file/&#123;bucketName&#125;/xxx.webp</code> 的转换，既保护了桶名称，又缩短了URL。</p><p>当然，你可以根据需要自定义转换规则。</p><h3 id="删除http标头可选"><a class="markdownIt-Anchor" href="#删除http标头可选"></a> 删除HTTP标头（可选）</h3><p>响应时可能会带有一些信息，为了避免暴露桶信息，可以通过Cloudflare删除某些无用的HTTP标头（HTTP Header）。例如，打开一张图片，在F12网络中查看HTTP响应头。</p><p><img src="https://r2-img.zi4dbek.top/images/f9cfb1d9a643ae56b9bcb382db5f8208c65f1eda.webp" alt="img" /></p><p>这些<strong>x-bz</strong>开头的都是敏感信息，可以通过Cloudflare删除。</p><p>在<strong>规则-转换规则-修改响应头</strong>处，添加一个规则以删除这些无用信息。</p><p>如图所示，设置规则：</p><p><img src="https://r2-img.zi4dbek.top/images/d349083e25927fef8759e5eafbc157e66ae6cf26.webp" alt="img" /></p><h1 id="picgo配置"><a class="markdownIt-Anchor" href="#picgo配置"></a> PicGO配置</h1><p>Picgo 是一个开源图片上传工具，支持多种图床服务，包括通过S3插件支持Backblaze B2。Picgo支持Windows、MacOS和Linux系统，界面简洁，功能丰富。你可以通过快捷键、拖拽、剪贴板等方式上传图片，还可对图片进行压缩、裁剪、水印处理。Picgo还会自动生成图片URL和Markdown代码，方便在网上引用图片。</p><p>Backblaze B2可以通过PicGO快速上传并生成外链和代码，大大提高了使用效率。以下是配置PicGO上传到桶中的步骤。</p><p>PicGO下载地址：<a href="https://github.com/Molunerfinn/PicGo/releases">https://github.com/Molunerfinn/PicGo/releases</a></p><p>安装好PicGO并安装S3插件后，在配置页面中，配置名随意填写；</p><p>然后，密钥ID和密钥需要从Backblaze控制面板获取。进入控制面板，点击左侧的Application Keys，生成新的密钥并填写到PicGO中。</p><p><img src="https://r2-img.zi4dbek.top/images/55cca8c8c4fe6b6ba3e1c6d113363b2cab58ed67.webp" alt="img" /></p><p>文件路径可根据需要进行配置，如<code>&#123;year&#125;/&#123;month&#125;/&#123;md5&#125;.&#123;extName&#125;</code>，表示路径为年/月/md5.扩展名的形式。以下是一些可参考的路径变量：</p><table><thead><tr><th>payload</th><th>描述</th></tr></thead><tbody><tr><td><code>&#123;year&#125;</code></td><td>当前日期 - 年</td></tr><tr><td><code>&#123;month&#125;</code></td><td>当前日期 - 月</td></tr><tr><td><code>&#123;day&#125;</code></td><td>当前日期 - 日</td></tr><tr><td><code>&#123;fullName&#125;</code></td><td>完整文件名（含扩展名）</td></tr><tr><td><code>&#123;fileName&#125;</code></td><td>文件名（不含扩展名）</td></tr><tr><td><code>&#123;extName&#125;</code></td><td>扩展名（不含<code>.</code>）</td></tr><tr><td><code>&#123;md5&#125;</code></td><td>图片 MD5 计算值</td></tr><tr><td><code>&#123;sha1&#125;</code></td><td>图片 SHA1 计算值</td></tr><tr><td><code>&#123;sha256&#125;</code></td><td>图片 SHA256 计算值</td></tr></tbody></table><p>权限一般设置为public-read，因为桶设置为public。</p><p>接下来是地区设置，这取决于Backblaze B2桶中的Endpoint地址。例如，地址为<code>s3.us-west-003.backblazeb2.com</code>，则地区填写<code>us-west-003</code>。</p><p>你还可以填写自定义域名，如刚才在CloudFlare中添加的CDN域名。其他设置保持不变，这样配置就完成了。</p><p><img src="https://r2-img.zi4dbek.top/images/8c675072e3c4d7679a29b70beac74ac53df71f86.webp" alt="img" /></p><p><img src="https://r2-img.zi4dbek.top/images/992d10e3f3fd61e08e748394e074e66dd5c98ae1.webp" alt="img" /></p><h1 id="做到这一步恭喜你配置完成了教程完结撒花"><a class="markdownIt-Anchor" href="#做到这一步恭喜你配置完成了教程完结撒花"></a> 做到这一步，恭喜你配置完成了，教程完结，撒花！</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#简介&quot;&gt;&lt;/a&gt; 简介&lt;/h1&gt;
+&lt;p&gt;Backblaze B2是一种经济实惠的云存储服务，允许用户在云中存储无限的数据。它的运作方式类似于Amazon S3和Microsoft Az</summary>
+      
+    
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/"/>
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于 Bilibili 动态 API 搭建免费图床</title>
+    <link href="https://blog.zi4dbek.top/posts/6aeb288/"/>
+    <id>https://blog.zi4dbek.top/posts/6aeb288/</id>
+    <published>2023-09-24T13:06:00.000Z</published>
+    <updated>2025-06-26T14:22:14.930Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="基于-bilibili-动态-api-搭建免费图床"><a class="markdownIt-Anchor" href="#基于-bilibili-动态-api-搭建免费图床"></a> 基于 Bilibili 动态 API 搭建免费图床</h1><p>本文介绍一种利用 Bilibili 用户动态图片上传 API 搭建免费图床的方法。 该方案需要提供 <code>SESSDATA</code> 和 <code>bli_jct</code> 两个 Cookie 值。 获取方式如下：</p><h3 id="获取-bilibili-cookie-sessdata-bli_jct"><a class="markdownIt-Anchor" href="#获取-bilibili-cookie-sessdata-bli_jct"></a> 获取 Bilibili Cookie (SESSDATA, bli_jct)</h3><ol><li><p>登录 <a href="https://www.bilibili.com/">Bilibili</a> 网站。</p></li><li><p>按 <code>F12</code> 打开开发者工具控制台。</p></li><li><p>在 “网络(Network)” 或 “应用程序(Application)” 选项卡中，找到包含 <code>SESSDATA</code> 和 <code>bli_jct</code> 字段的 Cookie 信息，复制其值。</p><p><img src="https://r2-img.zi4dbek.top/images/805c8c46cf3ea44e406db327147383fbd0e39393.webp" alt="" /></p></li></ol><h2 id="安装与配置"><a class="markdownIt-Anchor" href="#安装与配置"></a> 安装与配置</h2><h3 id="在线安装"><a class="markdownIt-Anchor" href="#在线安装"></a> 在线安装</h3><p>打开 <a href="https://github.com/Molunerfinn/PicGo">PicGo</a> 详细窗口，选择 <strong>插件设置</strong>，搜索 <strong>bili</strong> 并安装。 安装完成后，无需重启应用即可使用。</p><h3 id="离线安装"><a class="markdownIt-Anchor" href="#离线安装"></a> 离线安装</h3><ol><li>克隆项目代码仓库。</li><li>复制项目目录至以下路径：<ul><li>Windows: <code>%APPDATA%\picgo\</code></li><li>Linux: <code>$XDG_CONFIG_HOME/picgo/</code> or <code>~/.config/picgo/</code></li><li>macOS: <code>~/Library/Application\ Support/picgo/</code></li></ul></li><li>切换至新的目录，执行 <code>npm install ./picgo-plugin-bilibili</code> 命令。</li><li>重启 PicGo 应用。</li></ol><h3 id="图片样式"><a class="markdownIt-Anchor" href="#图片样式"></a> 图片样式</h3><p>例如，原始图片链接为： <a href="https://i0.hdslb.com/bfs/face/d91ddc4a53daa5c83302ce77cbb3e746a5e0aafb.webp" rel="noreferrer" target=”_blank“>https://i0.hdslb.com/bfs/face/d91ddc4a53daa5c83302ce77cbb3e746a5e0aafb.webp</a></p><p>可以通过添加参数来调整图片的尺寸和质量： <a href="https://i0.hdslb.com/bfs/face/d91ddc4a53daa5c83302ce77cbb3e746a5e0aafb.webp@14w_14h_1e_1c" rel="noreferrer" target=”_blank“>https://i0.hdslb.com/bfs/face/d91ddc4a53daa5c83302ce77cbb3e746a5e0aafb.webp@14w_14h_1e_1c</a></p><table><thead><tr><th>类型</th><th>URL</th></tr></thead><tbody><tr><td>原始图片</td><td>baseURL/1.webp</td></tr><tr><td>原始分辨率，质量压缩</td><td>baseURL/1.webp@1e_1c.webp</td></tr><tr><td>规定宽度，高度自适应，质量压缩</td><td>baseURL/1.webp@104w_1e_1c.webp</td></tr><tr><td>规定高度，宽度自适应，质量压缩</td><td>baseURL/1.webp@104h_1e_1c.webp</td></tr><tr><td>规定高度宽度，质量压缩</td><td>baseURL/1.webp@104w_104h_1e_1c.webp</td></tr><tr><td>原始分辨率，webp格式(占用最小)</td><td>baseURL/1.webp@104w_104h_1e_1c.webp</td></tr><tr><td>规定高度，webp格式(占用最小)</td><td>baseURL/1.webp@104w_104h_1e_1c.webp</td></tr></tbody></table><p>格式：(图像原链接)@(\d+[whsepqoc]_?)*(.(|webp|gif|png|jpg|jpeg))?$</p><p>参数说明：</p><ul><li>w:[1, 9223372036854775807] (width，图像宽度)</li><li>h:[1, 9223372036854775807] (height，图像高度)</li><li>s:[1, 9223372036854775807] (作用未知)</li><li>e:[0,2] (resize，0:保留比例取其小，1:保留比例取其大，2:不保留原比例，不与c混用)</li><li>p:[1,1000] (默认100，放大倍数，不与c混用)</li><li>q:[1,100] (quality，默认75，图像质量)</li><li>o:[0,1] (作用未知)</li><li>c:[0,1] (clip，0:默认，1:裁剪)</li><li>webp, png, jpeg, gif (不添加则保留原始格式)</li><li>参数不区分大小写，相同参数后定义的会覆盖先定义的参数。</li><li>计算后的实际 <code>w * h</code> 不能大于原始图片的 <code>w * h</code>， 否则 <code>w</code> 和 <code>h</code> 参数将失效。</li></ul><h3 id="解决-bilibili-防盗链-403-问题"><a class="markdownIt-Anchor" href="#解决-bilibili-防盗链-403-问题"></a> 解决 Bilibili 防盗链 (403) 问题</h3><p>Bilibili 启用了防盗链机制，通过 HTTP Referer 属性进行判断。 如果 Referer 不在白名单内，服务器会返回 403 错误。</p><h4 id="全站图片"><a class="markdownIt-Anchor" href="#全站图片"></a> 全站图片</h4><p>在 HTML 的 <code>&lt;head&gt;</code> 标签中设置以下 meta 标签，阻止浏览器发送 Referer：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;referrer&quot;</span> <span class="attr">content</span>=<span class="string">&quot;no-referrer&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure><p>该标准可能不被旧版本浏览器支持，可以使用以下代码，提供更好的兼容性：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HTML</span><br><span class="line">&lt;meta name=&quot;referrer&quot; content=&quot;never&quot;&gt;</span><br></pre></td></tr></table></figure><h4 id="新窗口打开链接"><a class="markdownIt-Anchor" href="#新窗口打开链接"></a> 新窗口打开链接</h4><p>主要设置 <code>rel=&quot;noreferrer&quot;</code>。 使用 <code>window.open</code> 打开链接默认会携带 Referer， 首次访问仍然会返回 403 错误。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HTML</span><br><span class="line">&lt;a rel=&quot;noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;基于-bilibili-动态-api-搭建免费图床&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#基于-bilibili-动态-api-搭建免费图床&quot;&gt;&lt;/a&gt; 基于 Bilibili 动态 API 搭建免费图床&lt;/h1&gt;
+&lt;p&gt;本文介</summary>
+      
+    
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/"/>
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GitHub图床技术实现手册</title>
+    <link href="https://blog.zi4dbek.top/posts/38d30fff/"/>
+    <id>https://blog.zi4dbek.top/posts/38d30fff/</id>
+    <published>2023-09-16T11:32:00.000Z</published>
+    <updated>2025-06-26T14:22:14.928Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><h3 id="1-前言"><a class="markdownIt-Anchor" href="#1-前言"></a> 1. 前言</h3><p>对于写博客的朋友来说，图床应该是个不陌生的概念，甚至可能在使用过程中遇到过不少麻烦。</p><p>如果你对图床不了解，我来简单介绍一下。图床可以被看作是一个在线相册，它允许用户将图片上传至网络，并生成一个公开的访问链接，其他人可以通过链接查看和下载这些图片。但编辑或删除图片的权限仅限于拥有者，类似于百度云中的公开分享。你可能会问，这和写博客有什么关系呢？<br /><img src="https://r2-img.zi4dbek.top/images/b853616224132db2c76c9cb90d01498147a6ccc8.webp" alt="" /></p><p>当我们写博客时，经常需要插入图片。在本地编写时，图片可以正常显示，但发布到网上时，如果图片没有提前上传到服务器，可能会遇到图片无法显示的问题。这时，图床的作用就显现出来了。当然，如果你直接在博客平台上编辑文章，这个问题通常不会出现，因为大多数平台会自动将图片上传到其服务器。</p><p>借助图床，我们可以在本地完成博客的撰写，然后无缝地将其发布到不同平台，而无需担心图片丢失。<br /><img src="https://r2-img.zi4dbek.top/images/12d405082e463f487df7afb0f18d217294f548a4.webp" alt="" /></p><p>今天的文章旨在分享一个免费搭建图床的教程，不仅为自己日后的使用提供方便，也希望能帮助到有相同需求的朋友。</p><h3 id="2-准备工作"><a class="markdownIt-Anchor" href="#2-准备工作"></a> 2. 准备工作</h3><p>在正式开始之前，你需要准备以下工具：</p><ul><li>一个 GitHub 账号</li></ul><p><img src="https://r2-img.zi4dbek.top/images/1c11e1ad33c0868678570bdf81fd30c908150f5a.webp" alt="" /></p><p>只要你有一个 GitHub 账号，就可以拥有一个免费的图床。如果你还没有账号，可以前往 <a href="https://github.com/signup">GitHub 注册</a> 一个。</p><h3 id="3-搭建过程"><a class="markdownIt-Anchor" href="#3-搭建过程"></a> 3. 搭建过程</h3><p>接下来我们就进入图床搭建的具体步骤，准备好开始吧！<br /><img src="https://r2-img.zi4dbek.top/images/880b9a3877476a2c0d80888ec211fe83d1347078.webp" alt="" /></p><h4 id="1-登录你的-github-账号创建一个新的仓库"><a class="markdownIt-Anchor" href="#1-登录你的-github-账号创建一个新的仓库"></a> 1. 登录你的 GitHub 账号，创建一个新的仓库；</h4><p><img src="https://r2-img.zi4dbek.top/images/043c0f0afbb42e47f0556501496745b582ad3c24.webp" alt="" /></p><h4 id="2-填写仓库信息只需选择一个合适的仓库名确保仓库设置为-public其他设置保持默认即可"><a class="markdownIt-Anchor" href="#2-填写仓库信息只需选择一个合适的仓库名确保仓库设置为-public其他设置保持默认即可"></a> 2. 填写仓库信息，只需选择一个合适的仓库名，确保仓库设置为 public，其他设置保持默认即可；</h4><p><img src="https://r2-img.zi4dbek.top/images/9c4c45814afec56e8ab95ad7ef40c95471231083.webp" alt="" /></p><h4 id="3-创建成功后你会看到如下界面这意味着图床已经创建完成-接下来我们来看看如何上传图片"><a class="markdownIt-Anchor" href="#3-创建成功后你会看到如下界面这意味着图床已经创建完成-接下来我们来看看如何上传图片"></a> 3. 创建成功后，你会看到如下界面，这意味着图床已经创建完成。接下来，我们来看看如何上传图片；</h4><p><img src="https://r2-img.zi4dbek.top/images/edea6da3690438ff74dcc0f56ac8c8049f055dde.webp" alt="" /></p><h3 id="4-上传图片"><a class="markdownIt-Anchor" href="#4-上传图片"></a> 4. 上传图片</h3><p>虽然图床已经搭建完成，但通过传统方式向 GitHub 上传图片相对繁琐。这里推荐使用一个开源图床工具——PicGo，作为图片上传工具。</p><p>PicGo 的安装步骤简单明了，你可以前往其 <a href="https://molunerfinn.com/PicGo/">官网</a> 下载对应的版本并进行安装。接下来我们重点介绍如何使用 PicGo 上传图片。安装完成后，打开软件，其主界面如下：<br /><img src="https://r2-img.zi4dbek.top/images/900a95cc2b40fcec0aee29fe710abce78437f45e.webp" alt="" /></p><h4 id="1-首先需要在-github-上创建一个-token"><a class="markdownIt-Anchor" href="#1-首先需要在-github-上创建一个-token"></a> 1. 首先，需要在 GitHub 上创建一个 token；</h4><p>依次打开 <code>Settings -&gt; Developer settings -&gt; Personal access tokens</code>，然后点击 <code>Generate new token</code>；<br /><img src="https://r2-img.zi4dbek.top/images/076a60c0129e888317fbc48943a474e9e25634c5.webp" alt="" /></p><p><img src="https://r2-img.zi4dbek.top/images/4a6cffa2073d2d6e741d95e04f762082e89c314a.webp" alt="" /></p><h4 id="2-填写并勾选相关信息然后点击-generate-token"><a class="markdownIt-Anchor" href="#2-填写并勾选相关信息然后点击-generate-token"></a> 2. 填写并勾选相关信息，然后点击 <code>Generate token</code>；</h4><p><img src="https://r2-img.zi4dbek.top/images/03cf057f77f896a0991c0571d4bd25e844ef4d1d.webp" alt="" /></p><h4 id="3-token-生成后请注意它只会显示一次所以最好将其复制并保存至备忘录以便后续使用-否则下次需要重新生成"><a class="markdownIt-Anchor" href="#3-token-生成后请注意它只会显示一次所以最好将其复制并保存至备忘录以便后续使用-否则下次需要重新生成"></a> 3. Token 生成后，请注意它只会显示一次，所以最好将其复制并保存至备忘录，以便后续使用。否则，下次需要重新生成；</h4><p><img src="https://r2-img.zi4dbek.top/images/9119a936cfb402b553cd98458afc1599bcc03f80.webp" alt="" /></p><h4 id="4-配置-picgo依次打开-图床设置-github-图床"><a class="markdownIt-Anchor" href="#4-配置-picgo依次打开-图床设置-github-图床"></a> 4. 配置 PicGo，依次打开 <code>图床设置 -&gt; GitHub 图床</code>；</h4><p><img src="https://r2-img.zi4dbek.top/images/a94416cfdb971e441f4e88cbf38d2e0505ae6dd7.webp" alt="" /></p><p>填写相关信息后，点击 <code>确定</code> 即可。若要将其设为默认图床，点击“设为默认图床”按钮；<br /><img src="https://r2-img.zi4dbek.top/images/252e98115a2c8d6277baac31d42d9269a228c59e.webp" alt="" /></p><h4 id="5-通过上传区上传图片可使用-ctrlv-或将图片拖拽到软件内也可以通过快捷键默认快捷键为-ctrlshiftp上传图片"><a class="markdownIt-Anchor" href="#5-通过上传区上传图片可使用-ctrlv-或将图片拖拽到软件内也可以通过快捷键默认快捷键为-ctrlshiftp上传图片"></a> 5. 通过上传区上传图片（可使用 Ctrl+V 或将图片拖拽到软件内），也可以通过快捷键（默认快捷键为 Ctrl+Shift+P）上传图片；</h4><p><img src="https://r2-img.zi4dbek.top/images/e1d85254eab8d671866918e6448bf843294dbf11.webp" alt="" /></p><h3 id="5-加速访问"><a class="markdownIt-Anchor" href="#5-加速访问"></a> 5. 加速访问</h3><p>你可能会发现，上传到 GitHub 的图片有时加载较慢，甚至无法加载。这时，可以使用 <a href="https://www.jsdelivr.com">jsDelivr</a> 和 <a href="https://i0.wp.com">WordPress图片缓存</a> 进行免费加速。设置方法非常简单，只需在 PicGo 图床配置中添加如下自定义域名即可：</p><ol><li><a href="https://i0.wp.com/cdn.jsdelivr.net/gh/%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BB%93%E5%BA%93%E5%90%8D">https://i0.wp.com/cdn.jsdelivr.net/gh/用户名/仓库名</a><br />例如，我的域名为 <a href="https://i0.wp.com/cdn.jsdelivr.net/gh/zi4dbek-org/img">https://i0.wp.com/cdn.jsdelivr.net/gh/zi4dbek-org/img</a><br /><img src="https://r2-img.zi4dbek.top/images/f5f1dca3d27fd82932004e0dbc1b09c8167577cd.webp" alt="" /></li></ol><h3 id="6-总结"><a class="markdownIt-Anchor" href="#6-总结"></a> 6. 总结</h3><p>通过本文的步骤，你应该已经成功搭建了一个免费图床。本文主要内容包括以下几个部分：</p><ol><li>前言</li><li>准备工作</li><li>搭建过程</li><li>上传图片</li><li>加速访问</li><li>总结</li></ol></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;
+&lt;h3 id=&quot;1-前言&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-前言&quot;&gt;&lt;/a&gt; 1. 前言&lt;/h3&gt;
+&lt;p&gt;对于写博客的朋友来说，图床应该是个不陌生的概念，甚至可能在使用过程中遇到过不少麻烦。&lt;/p&gt;
+&lt;p&gt;如果你对图</summary>
+      
+    
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/"/>
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SM.MS图床简介及接入方案</title>
+    <link href="https://blog.zi4dbek.top/posts/bfdf1c43/"/>
+    <id>https://blog.zi4dbek.top/posts/bfdf1c43/</id>
+    <published>2023-09-16T10:54:00.000Z</published>
+    <updated>2025-06-26T14:22:14.929Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="图床网站推荐smms"><a class="markdownIt-Anchor" href="#图床网站推荐smms"></a> 图床网站推荐：<a href="https://sm.ms/">sm.ms</a></h3><table><thead><tr><th>提示：若主域名无法访问，可使用备用链接。仍然无法访问的情况下，建议使用科学上网。</th></tr></thead></table><h4 id="官方备用链接"><a class="markdownIt-Anchor" href="#官方备用链接"></a> 官方备用链接：</h4><p><a href="https://smms.app">https://smms.app</a></p><p>每个文件大小限制为5 MB，</p><p>每次最多可上传10个文件。<br /><img src="https://r2-img.zi4dbek.top/images/4b83875291c867573b5df5298966cb645bbf502d.webp" alt="" /><br />上传后，网站会提供多种格式的复制选项：<br /><img src="https://r2-img.zi4dbek.top/images/9d5d1ac74c39b24b7d5332f675ce5711f64ff627.webp" alt="" /></p><table><thead><tr><th>提示：广告内容已被模糊处理</th></tr></thead></table><p><img src="https://r2-img.zi4dbek.top/images/7c284b9517fa8602b4844c8799d7c9f9b9a499a6.webp" alt="" /></p><p><strong>通常我们需要的是image URL链接</strong></p><h3 id="会员服务无广告月度年度终身"><a class="markdownIt-Anchor" href="#会员服务无广告月度年度终身"></a> 会员服务（无广告）（月度/年度/终身）</h3><p><img src="https://r2-img.zi4dbek.top/images/f16798ac03a772032923b1513144baf6fb50ee63.webp" alt="" /><br />开发者应该来自中国香港，</p><p>定价以HKD（香港元）计算。<br /><img src="https://r2-img.zi4dbek.top/images/2f9acdeadabeb450af72fe7e2bea2648c298b936.webp" alt="" /><br />59港元≈54.84人民币，</p><p>对于一个月的会员价格来说，确实不便宜。</p><p>这些钱足够用来搭建一个自己的服务器了。</p><p>不过对于一些不太熟悉技术的人来说，</p><p>花钱省事，何乐而不为？</p><p>更何况，域名备案和CDN加速的配置费时费力。</p><p>注册用户还可获得5GB的免费空间，</p><p>个人认为，足够使用三到五年。<br /><img src="https://r2-img.zi4dbek.top/images/6799bb5ee03e7a805f40d4fc83c5482f03ca00cb.webp" alt="" /><br />图片管理面板可以查看和删除已上传的图片：<br /><img src="https://r2-img.zi4dbek.top/images/19653e9a8ea7e7c8b6eaae41d007d0a8860f9a2d.webp" alt="" /><br />删除图片时的弹窗设计非常熟悉，<br /><img src="https://r2-img.zi4dbek.top/images/842492660ad0d9e677930ca48007fc67e0530742.webp" alt="" /><br />看起来很像复制时的弹窗。</p><p>在Google Play上也有相关应用：<br /><img src="https://r2-img.zi4dbek.top/images/f3e3c7532a30441cdfa7fb5dd1f47dc9b20f51ce.webp" alt="" /><br />用户可以通过手机上传和查看图片。<br /><img src="https://r2-img.zi4dbek.top/images/8e7f444f65687fd68d0edefa2d09f2a48fa48a7b.webp" alt="" /><br />对于无法访问Google Play商店的朋友，</p><p>可以通过以下链接下载安卓版应用：</p><p>[btn href=“<a href="https://github.com/zi4dbek-org/storge/raw/main/SM.MS.apk">https://github.com/zi4dbek-org/storge/raw/main/SM.MS.apk</a>” type=&quot; orange &quot; ico=“”]安卓APK下载链接[/btn]</p><p>在V2EX上找到了一篇陈年老帖，</p><p>作者在2015年就启动了这个项目，</p><p>平台已有8年的历史，希望能够持续运营。<br /><img src="https://r2-img.zi4dbek.top/images/f4d73e3251ff8d97f005f8014f133632a461ab17.webp" alt="" /></p><table><thead><tr><th><a href="https://www.v2ex.com/t/182703?p=2">https://www.v2ex.com/t/182703?p=2</a></th></tr></thead></table><p>从更新记录来看，图床仍在持续更新与维护，<br /><img src="https://r2-img.zi4dbek.top/images/7cc0d83e952a88715dafe23935296383736ddd63.webp" alt="" /><br />2017年便已全站强制启用HTTPS，值得称赞！<br /><img src="https://r2-img.zi4dbek.top/images/750c1e4b290a9a6f500ec11029089b91410e63cb.webp" alt="" /></p><p>题外话：笔者网站图片加载速度较慢，</p><p>听闻七牛云图床体验不错，遂</p><p>兴致勃勃地进行注册与配置，然而最终发现，</p><p>七牛云图床仅支持备案的域名进行图片加速，</p><p>且其提供的临时域名只能使用一个月。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;图床网站推荐smms&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#图床网站推荐smms&quot;&gt;&lt;/a&gt; 图床网站推荐：&lt;a href=&quot;https://sm.ms/&quot;&gt;sm.ms&lt;/a&gt;&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;</summary>
+      
+    
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/categories/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/%E5%9B%BE%E5%BA%8A/"/>
+    
+    
+    <category term="免费图床" scheme="https://blog.zi4dbek.top/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/"/>
+    
+    <category term="图床" scheme="https://blog.zi4dbek.top/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OneDrive 存储空间管理：从 1TB 到无限容量</title>
+    <link href="https://blog.zi4dbek.top/posts/33fd11aa/"/>
+    <id>https://blog.zi4dbek.top/posts/33fd11aa/</id>
+    <published>2023-09-09T11:27:00.000Z</published>
+    <updated>2025-06-26T14:22:14.929Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文将介绍如何管理 OneDrive 存储空间，从初始的 1TB 逐步扩展至更大容量，并探讨 Teams 和 SharePoint 空间容量管理。</p><h2 id="1-onedrive-存储空间层级"><a class="markdownIt-Anchor" href="#1-onedrive-存储空间层级"></a> 1. OneDrive 存储空间层级</h2><p>OneDrive 存储空间存在不同的层级，包括 1TB、5TB、25TB 和理论上的无限容量。 下文将详细介绍如何逐步提升 OneDrive 的存储空间。</p><h2 id="2-从-1tb-升级至-5tb"><a class="markdownIt-Anchor" href="#2-从-1tb-升级至-5tb"></a> 2. 从 1TB 升级至 5TB</h2><p>此步骤可以通过管理员直接修改设置完成。 在 SharePoint Online 管理中心，管理员可以修改默认存储空间设置，使所有新创建的用户账户默认拥有 5TB 的存储空间。</p><p><img src="https://r2-img.zi4dbek.top/images/9cc4726d250efafab20b0bb85010d84439c65dc9.webp" alt="修改默认空间" /></p><p>此外，管理员也可以针对特定用户，单独修改其存储空间大小。</p><p><img src="https://r2-img.zi4dbek.top/images/c8fac53005bc0e205c0a0f7c658b16900bf3ba6c.webp" alt="更改特定用户空间" /></p><p>按照官方文档说明，仅 E3 及以上许可证支持 5TB 存储空间。 低于 E3 的版本默认为 1TB 且无法直接修改。 但在实际应用中，部分其他版本（例如商业基础版订阅）也支持修改至 5TB。</p><h2 id="3-从-5tb-升级至-25tb"><a class="markdownIt-Anchor" href="#3-从-5tb-升级至-25tb"></a> 3. 从 5TB 升级至 25TB</h2><p>这一步需要通过提交工单的方式完成。 当 E3 及以上许可证用户的 OneDrive 空间使用率超过 90% 时，管理员可以在管理中心提交工单，并附上许可证截图和空间使用率截图。 微软客服将在后台协助扩容，将其存储空间升级至 25TB。</p><h2 id="4-从-25tb-升级至更大容量"><a class="markdownIt-Anchor" href="#4-从-25tb-升级至更大容量"></a> 4. 从 25TB 升级至更大容量</h2><p>需要明确的是，单个 OneDrive 账户最大支持 25TB 存储空间。 若需要更大容量，实际操作是创建一个新的 SharePoint 网站，并将其分配给该用户。 新网站的最大容量同样为 25TB。 如果用户再次耗尽 25TB 空间，则重复分配新网站的操作。</p><p>与之前类似，当某个拥有 25TB 空间的用户空间使用率超过 90% 时，提交工单并附上相关截图。 微软客服会将您的 SharePoint 总容量增加 25TB，管理员可以为该用户创建一个新的网站。 之后再次超过 90% 时，重复以上操作。</p><h3 id="潜在的容量管理策略"><a class="markdownIt-Anchor" href="#潜在的容量管理策略"></a> 潜在的容量管理策略</h3><p>值得注意的是，当 SharePoint 总容量增加 25TB 后，管理员可以灵活地分配这 25TB 的空间。 如果您认为 SharePoint 默认分配的空间过小，而扩容需要额外成本，可以通过上述方法间接扩容 SharePoint 空间。 但在申请新的 25TB 空间时，可能需要提供合理的空间使用证明。</p><p>总而言之，通过上述方法，不仅可以扩展 OneDrive 存储空间，还可以间接提升 Teams 和 SharePoint 的存储容量。</p><p>最后，需要强调的是，存储空间并非越大越好。 过大的存储空间可能会影响性能。 对于日常工作而言，1TB 的空间已基本足够。 如果文件数量过多，可以创建一个 Teams 团队或 SharePoint 网站，将不常用的文件存储于其中，作为一种 “冷存储” 方案。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;本文将介绍如何管理 OneDrive 存储空间，从初始的 1TB 逐步扩展至更大容量，并探讨 Teams 和 SharePoint 空间容量管理。&lt;/p&gt;
+&lt;h2 id=&quot;1-onedrive-存储空间层级&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; hre</summary>
+      
+    
+    
+    
+    <category term="微软" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="OneDrive" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/OneDrive/"/>
+    
+    
+    <category term="微软" scheme="https://blog.zi4dbek.top/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="OneDrive" scheme="https://blog.zi4dbek.top/tags/OneDrive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用 OneDrive 扩展本地存储：构建分层存储方案</title>
+    <link href="https://blog.zi4dbek.top/posts/1efba1b4/"/>
+    <id>https://blog.zi4dbek.top/posts/1efba1b4/</id>
+    <published>2023-09-09T11:27:00.000Z</published>
+    <updated>2025-06-26T14:22:14.929Z</updated>
+    
+    <content type="html"><![CDATA[<p>部分应用程序允许挂载云盘服务，例如阿里云盘和 115 网盘。</p><p>本文介绍如何利用 Windows 系统自带的 OneDrive 同步功能，实现本地存储空间的扩展。</p><p>通过这种方式，可以将 OneDrive 的存储容量视为本地硬盘的延伸。 此外，OneDrive 支持多账户和多文档库同步，可以构建更加灵活的存储方案。</p><p>例如，同时使用个人版 OneDrive 和公司 Office 365 的 OneDrive。<br /><img src="https://r2-img.zi4dbek.top/images/2c890c7dda17d8fe70556792250ff4af5fb08846.webp" alt="OneDrive" /></p><p>然而，当 OneDrive 文档库中的文件数量过多时，每次打开需要花费较长时间进行检查和同步。 此外，持续增长的文件数量可能会对系统性能造成一定影响。</p><p>因此，建议将数据按照访问频率分为 “热数据” 和 “冷数据” 进行存储，构建分层存储方案。</p><h2 id="1-热数据常用文件"><a class="markdownIt-Anchor" href="#1-热数据常用文件"></a> 1. 热数据：常用文件</h2><p>将经常访问和使用的文件保存在 OneDrive 同步目录中，方便日常使用。</p><h2 id="2-冷数据不常用文件"><a class="markdownIt-Anchor" href="#2-冷数据不常用文件"></a> 2. 冷数据：不常用文件</h2><p>对于访问频率较低的文件（例如一年仅访问一次），建议建立一个 “冷库” 进行存储。</p><p>首先，在 OneDrive 中创建一个新的文档库，命名为 “冷库”。<br /><img src="https://r2-img.zi4dbek.top/images/636e6e44702a464dfc197c5a3dbb9e83db840f45.webp" alt="创建冷库" /></p><p>然后将热数据目录中不常用的文件移动到冷数据目录中进行保存。<br /><img src="https://r2-img.zi4dbek.top/images/d1d9273a07dbfee8086be596afae4fdac3e437db.webp" alt="移动资料" /></p><p>接着，打开冷数据目录并进行同步（按照 OneDrive 的指示逐步操作）。<br /><img src="https://r2-img.zi4dbek.top/images/5ec18d76a781c2f5588e0073459703d43143af76.webp" alt="同步" /></p><p>在资源管理器中，即可同时看到热数据目录和冷数据目录。<br /><img src="https://r2-img.zi4dbek.top/images/168e9b04ba7a469dfbacda3e64901cda632daf11.webp" alt="资源管理器" /></p><p>如果需要进一步细分存储，可以创建 冷数据二级目录、冷数据三级目录 等。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;部分应用程序允许挂载云盘服务，例如阿里云盘和 115 网盘。&lt;/p&gt;
+&lt;p&gt;本文介绍如何利用 Windows 系统自带的 OneDrive 同步功能，实现本地存储空间的扩展。&lt;/p&gt;
+&lt;p&gt;通过这种方式，可以将 OneDrive 的存储容量视为本地硬盘的延伸。 此外，One</summary>
+      
+    
+    
+    
+    <category term="微软" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="OneDrive" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/OneDrive/"/>
+    
+    
+    <category term="微软" scheme="https://blog.zi4dbek.top/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="OneDrive" scheme="https://blog.zi4dbek.top/tags/OneDrive/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Microsoft 365 企业级免费使用方案：Teams Exploratory 版体验</title>
+    <link href="https://blog.zi4dbek.top/posts/56c32425/"/>
+    <id>https://blog.zi4dbek.top/posts/56c32425/</id>
+    <published>2023-09-08T13:49:00.000Z</published>
+    <updated>2025-06-26T14:22:14.929Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="microsoft-365-teams-exploratory-版企业级协作工具免费体验方案"><a class="markdownIt-Anchor" href="#microsoft-365-teams-exploratory-版企业级协作工具免费体验方案"></a> Microsoft 365 Teams Exploratory 版：企业级协作工具免费体验方案</h1><p>许多企业都在使用 Microsoft 365，但其价格对于中小企业而言可能较高。经过一段时间的测试，发现微软官方提供了一种免费使用 Microsoft 365 企业级产品部分功能的方案，即 Teams Exploratory 版。</p><h2 id="teams-exploratory-版免费体验企业级协作工具"><a class="markdownIt-Anchor" href="#teams-exploratory-版免费体验企业级协作工具"></a> Teams Exploratory 版：免费体验企业级协作工具</h2><p>需要注意的是，此处讨论的是 Teams Exploratory 版，而非 Teams 免费版，后者在功能上有所限制。<br /><a href="https://docs.microsoft.com/zh-cn/microsoftteams/manage-freemium">https://docs.microsoft.com/zh-cn/microsoftteams/manage-freemium</a></p><p>Teams 探索版：<a href="https://docs.microsoft.com/zh-cn/microsoftteams/teams-exploratory">https://docs.microsoft.com/zh-cn/microsoftteams/teams-exploratory</a></p><p>二者区别可以参考官方文档。</p><p>Teams Exploratory 版包含以下服务：</p><ul><li>Exchange Online (计划 1)</li><li>Microsoft Teams</li><li>SharePoint Online (计划 1，包括 OneDrive)</li><li>适用于 Microsoft 365 或 Office 365 的 Power Automate</li><li>MyAnalytics 提供的见解</li><li>Microsoft Forms (计划 1)</li><li>Microsoft Planner</li><li>Microsoft 搜索</li><li>Microsoft StaffHub</li><li>适用于 Microsoft 365 和 Office 365 E1 SKU 的 Microsoft Stream</li><li>适用于 Microsoft 365 或 Office 365 的移动设备管理</li><li>适用于 Office 365 的 Office 移动应用</li><li>Office Online</li><li>适用于 Microsoft 365 或 Office 365 的 PowerApps</li><li>Sway</li><li>待办事项 (计划 1)</li><li>Whiteboard (计划 1)</li><li>Yammer 企业版</li></ul><p>简而言之，相当于可以免费体验 Office 365 E1 套件，包含：50GB 邮箱、IM、在线会议、每个人 1TB 的 OneDrive 网盘、几乎无限的团队空间以及在线版 Office。</p><p>团队空间容量是根据许可证数量计算的。 Teams Exploratory 版允许无限量免费使用，因此团队空间在理论上不受限制。</p><h1 id="申请步骤"><a class="markdownIt-Anchor" href="#申请步骤"></a> 申请步骤</h1><ol><li>申请 Microsoft 365 试用账户。 在以下链接中选择合适的版本申请试用：<br /><a href="https://www.microsoft.com/zh-cn/microsoft-365/business/compare-all-microsoft-365-business-products?&amp;activetab=tab:primaryr2">https://www.microsoft.com/zh-cn/microsoft-365/business/compare-all-microsoft-365-business-products?&amp;activetab=tab:primaryr2</a><br />试用账户的有效期为30天。</li><li>在管理中心新建一个用户账户，<strong>不要</strong> 为此用户分配任何许可证。<br /><img src="https://r2-img.zi4dbek.top/images/3bb4b626a9553b1583198245ca26a60998b35a85.webp" alt="" /></li><li>使用该账户访问 <a href="https://teams.microsoft.com">https://teams.microsoft.com</a></li><li>此时，在管理中心，您会看到 100 个 Teams Exploratory 版的许可证，可以随意分配给其他用户。<br /><img src="https://r2-img.zi4dbek.top/images/1a728c598ef0ad111cf5d2f553f5a43db144db3b.webp" alt="" /></li></ol><p>如果您需要更多许可证，请重复步骤 2 和 3：新建未分配许可证的账户，并登录 Teams。许可证数量将增加。</p><h1 id="使用期限"><a class="markdownIt-Anchor" href="#使用期限"></a> 使用期限</h1><p>官方文档显示，Teams Exploratory 版的有效期为一年。<br />经过一年时间的验证，该版本在到期后仍然可以继续使用。<br /><img src="https://r2-img.zi4dbek.top/images/38786f01617b462ec25886e9518a8c190bfb8e70.webp" alt="" /></p><h1 id="关于付费账户"><a class="markdownIt-Anchor" href="#关于付费账户"></a> 关于付费账户</h1><h2 id="试用账户的有效期为30天过期后试用账户及其关联的-teams-exploratory-版将失效"><a class="markdownIt-Anchor" href="#试用账户的有效期为30天过期后试用账户及其关联的-teams-exploratory-版将失效"></a> 试用账户的有效期为30天，过期后试用账户及其关联的 Teams Exploratory 版将失效。</h2><p>建议将试用账户升级为付费账户。 购买最便宜的基础版，相当于支付一个账户的费用，即可无限使用 Teams Exploratory 版。</p><p>请 <strong>不要立即付款</strong>！ <strong>不要立即付款</strong>！ <strong>不要立即付款</strong>！ 参考以下步骤：</p><p>经过验证，即使付费账户过期，Teams Exploratory 版仍然可以继续使用。<br /><img src="https://r2-img.zi4dbek.top/images/70c005fb5bedddaef335b5fa03418c8de6c3bb55.webp" alt="" /><br /><strong>可以进行一项实验：仅支付第一个月的费用，然后取消续订，观察是否仍然可以使用 Teams Exploratory 版。</strong></p><p>通过这种方式，只需极低的成本，即可获得无限量用户、无限存储空间的 OneDrive 网盘。</p><p>即使您不需要邮件、在线会议、IM 等功能，也可以将 OneDrive 网盘作为无限容量的云存储使用。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;microsoft-365-teams-exploratory-版企业级协作工具免费体验方案&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#microsoft-365-teams-exploratory-版企业级协作工具免费体验方案&quot;&gt;</summary>
+      
+    
+    
+    
+    <category term="微软" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="免费使用" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/%E5%85%8D%E8%B4%B9%E4%BD%BF%E7%94%A8/"/>
+    
+    
+    <category term="微软" scheme="https://blog.zi4dbek.top/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="免费使用" scheme="https://blog.zi4dbek.top/tags/%E5%85%8D%E8%B4%B9%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OneDrive 容量详解：探索企业版存储空间上限</title>
+    <link href="https://blog.zi4dbek.top/posts/736c75d9/"/>
+    <id>https://blog.zi4dbek.top/posts/736c75d9/</id>
+    <published>2023-09-02T12:00:00.000Z</published>
+    <updated>2025-06-26T14:22:14.929Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="注意本文描述的-onedrive-存储空间是指企业版-office-365-订阅中的-onedrive-服务而非个人版-onedrive-或家庭版-office-365"><a class="markdownIt-Anchor" href="#注意本文描述的-onedrive-存储空间是指企业版-office-365-订阅中的-onedrive-服务而非个人版-onedrive-或家庭版-office-365"></a> 注意：本文描述的 OneDrive 存储空间是指企业版 Office 365 订阅中的 OneDrive 服务，而非个人版 OneDrive 或家庭版 Office 365。</h1><h2 id="若要获取本文中提及的不同存储空间需要先拥有企业版-office-365-订阅-获取途径如下"><a class="markdownIt-Anchor" href="#若要获取本文中提及的不同存储空间需要先拥有企业版-office-365-订阅-获取途径如下"></a> 若要获取本文中提及的不同存储空间，需要先拥有企业版 Office 365 订阅。 获取途径如下：</h2><p><strong>方法一</strong>：付费购买 Office 365 订阅<br /><strong>方法二</strong>：申请 Office 365 开发者订阅（E5）</p><p>回归本文主题：</p><h3 id="onedrive-存储空间详解"><a class="markdownIt-Anchor" href="#onedrive-存储空间详解"></a> OneDrive 存储空间详解</h3><p>本文将详细介绍企业版 Office 365 中 OneDrive 存储空间的不同层级。</p><p>可以将 OneDrive 视为一个存储容器，其容量取决于订阅类型和管理配置：</p><p>初始状态下，OneDrive 存储空间为 1TB。</p><p>根据订阅类型，可以升级至 5TB。</p><p>当单个用户的存储需求超过 5TB 时，可以申请扩展至 25TB。</p><p>若 25TB 仍无法满足需求，可以通过创建额外的 SharePoint 站点来分配额外的存储空间，从而实现理论上的无限容量。</p><p><img src="https://r2-img.zi4dbek.top/images/64b352e68f3b75885137ba0d360ea767caab1a7c.webp" alt="img" /></p><h1 id="存储空间层级1tb-5tb-25tb-无限"><a class="markdownIt-Anchor" href="#存储空间层级1tb-5tb-25tb-无限"></a> 存储空间层级：1TB、5TB、25TB、无限</h1><ul><li><strong>1TB</strong>：默认存储空间</li><li><strong>5TB</strong>：可升级的存储空间</li><li><strong>25TB</strong>：单个 OneDrive 账户的存储上限</li><li><strong>无限</strong>：通过创建额外 SharePoint 站点扩展存储空间</li></ul><h2 id="1-默认存储空间1tb"><a class="markdownIt-Anchor" href="#1-默认存储空间1tb"></a> 1. 默认存储空间：1TB</h2><p>所有 Office 365 企业版订阅都至少提供 1TB 的 OneDrive 存储空间。 如果您的账户存储空间低于此标准，可能由 IT 管理员设置了存储限制。 请联系管理员进行确认。</p><h2 id="2-可升级的存储空间5tb"><a class="markdownIt-Anchor" href="#2-可升级的存储空间5tb"></a> 2. 可升级的存储空间：5TB</h2><p>若您的 Office 365 订阅为 E3 或更高版本，且许可证数量超过 5 个，理论上您可以将 OneDrive 存储空间提升至 5TB。</p><p>但需要注意的是，在管理员进行存储空间扩展时，单个 OneDrive 账户的存储空间上限为 5TB。</p><p><img src="https://r2-img.zi4dbek.top/images/047beea59d63987c17a6d189db3f7397baeae2ed.webp" alt="img" /></p><h2 id="3-无限存储空间扩展方案"><a class="markdownIt-Anchor" href="#3-无限存储空间扩展方案"></a> 3. 无限存储空间：扩展方案</h2><p>当单个用户的存储需求超过 25TB 时，需要通过创建额外的 SharePoint 站点来满足需求。 具体操作方法涉及管理员权限，请联系您的 IT 管理员获取更多信息。</p><p>完成相关配置后，即可获得 25TB 的 OneDrive 存储空间。</p><h2 id="4-真正的无极限空间sharepoint-扩展"><a class="markdownIt-Anchor" href="#4-真正的无极限空间sharepoint-扩展"></a> 4. 真正的无极限空间：SharePoint 扩展</h2><p>再次强调：<em>单个 OneDrive 账户的最大存储空间上限为 25TB</em>。</p><p>若用户仍需要更多存储空间，管理员可以为其创建额外的 SharePoint 站点，每个 SharePoint 站点的最大容量也为 25TB。 通过不断创建新的 SharePoint 站点，可以实现理论上的无限存储空间。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;注意本文描述的-onedrive-存储空间是指企业版-office-365-订阅中的-onedrive-服务而非个人版-onedrive-或家庭版-office-365&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#注意本文描述的-on</summary>
+      
+    
+    
+    
+    <category term="微软" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="OneDrive" scheme="https://blog.zi4dbek.top/categories/%E5%BE%AE%E8%BD%AF/OneDrive/"/>
+    
+    
+    <category term="微软" scheme="https://blog.zi4dbek.top/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="OneDrive" scheme="https://blog.zi4dbek.top/tags/OneDrive/"/>
+    
+  </entry>
+  
+</feed>

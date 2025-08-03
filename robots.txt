@@ -1,0 +1,80 @@
+User-agent: Googlebot
+Allow:
+
+User-agent: Bingbot
+Allow:
+
+User-agent: DuckDuckBot
+Allow:
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: Baiduspider-image
+Disallow: /
+
+User-agent: 360Spider
+Disallow: /
+
+User-agent: Sogou spider
+Disallow: /
+
+User-agent: Sogou web spider
+Disallow: /
+
+User-agent: Sogou inst spider
+Disallow: /
+
+User-agent: Sogou News Spider
+Disallow: /
+
+User-agent: YisouSpider
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: ToutiaoSpider
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: JikeSpider
+Disallow: /
+
+User-agent: EasouSpider
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: CSDNSpider
+Disallow: /
+
+User-agent: CNBlogsBot
+Disallow: /
+
+User-agent: ZhihuSpider
+Disallow: /
+
+User-agent: Bilibili-Spider
+Disallow: /
+
+User-agent: WeChatSpider
+Disallow: /
+
+User-agent: WeiboBot
+Disallow: /
+
+User-agent: *
+Allow: /

@@ -1,0 +1,321 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Ubuntu 安装避坑终极指南 | zi4dbek的小站</title><meta name="author" content="zi4dbek"><meta name="copyright" content="zi4dbek"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. 安装前关键准备  1.1 硬件兼容性核查 执行终端命令检查关键硬件型号： lspci -nnk | grep -EA3 &#x27;VGA|3D|Network&#x27;  核对 Ubuntu 认证硬件库 确保兼容性，尤其注意：  NVIDIA&#x2F;AMD 显卡 Broadcom&#x2F;Intel 无线网卡 较新的雷电接口设备   1.2 启动盘制作 推荐使用 Ventoy 工具（支持多系统镜像）"><meta property="og:type" content="article"><meta property="og:title" content="Ubuntu 安装避坑终极指南"><meta property="og:url" content="https://blog.zi4dbek.top/posts/de8a06bc/index.html"><meta property="og:site_name" content="zi4dbek的小站"><meta property="og:description" content="1. 安装前关键准备  1.1 硬件兼容性核查 执行终端命令检查关键硬件型号： lspci -nnk | grep -EA3 &#x27;VGA|3D|Network&#x27;  核对 Ubuntu 认证硬件库 确保兼容性，尤其注意：  NVIDIA&#x2F;AMD 显卡 Broadcom&#x2F;Intel 无线网卡 较新的雷电接口设备   1.2 启动盘制作 推荐使用 Ventoy 工具（支持多系统镜像）"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zi4dbek/zi4dbek.github.io@img/images/20250126132028648.webp"><meta property="article:published_time" content="2025-06-27T09:05:57.000Z"><meta property="article:modified_time" content="2025-06-27T09:09:52.911Z"><meta property="article:author" content="zi4dbek"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zi4dbek/zi4dbek.github.io@img/images/20250126132028648.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blog.zi4dbek.top/posts/de8a06bc/index.html"><link rel="preconnect" href="//cdnjs.cloudflare.com"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdnjs.cloudflare.com/ajax/libs/egjs-infinitegrid/4.11.1/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"Ubuntu 安装避坑终极指南",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2025-06-27 17:09:52"}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="referrer" content="never"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="zi4dbek的小站" type="application/atom+xml"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/zi4dbek/zi4dbek.github.io@img/images/20250126132028648.webp" onerror='onerror=null,src="/img/404.jpg"' alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="zi4dbek的小站"><span class="site-name">zi4dbek的小站</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Ubuntu 安装避坑终极指南</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-27T09:05:57.000Z" title="发表于 2025-06-27 17:05:57">2025-06-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-27T09:09:52.911Z" title="更新于 2025-06-27 17:09:52">2025-06-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title="Ubuntu 安装避坑终极指南"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-安装前关键准备"><a class="markdownIt-Anchor" href="#1-安装前关键准备"></a> 1. 安装前关键准备</h2><h3 id="11-硬件兼容性核查"><a class="markdownIt-Anchor" href="#11-硬件兼容性核查"></a> 1.1 硬件兼容性核查</h3><p>执行终端命令检查关键硬件型号：</p><pre class="highlight"><code class="bash">lspci -nnk | grep -EA3 <span class="string">&#x27;VGA|3D|Network&#x27;</span>
+</code></pre><p>核对 <a target="_blank" rel="noopener" href="https://certification.ubuntu.com/">Ubuntu 认证硬件库</a> 确保兼容性，尤其注意：</p><ul><li>NVIDIA/AMD 显卡</li><li>Broadcom/Intel 无线网卡</li><li>较新的雷电接口设备</li></ul><h3 id="12-启动盘制作"><a class="markdownIt-Anchor" href="#12-启动盘制作"></a> 1.2 启动盘制作</h3><p>推荐使用 <strong>Ventoy</strong> 工具（支持多系统镜像）：</p><ol><li>下载 Ubuntu ISO 镜像后校验完整性：<pre class="highlight"><code class="bash"><span class="built_in">sha256sum</span> ubuntu-*.iso
+</code></pre></li><li>Ventoy 写入U盘后，直接将ISO文件拖入U盘分区</li></ol><hr><h2 id="2-图形安装界面必选项"><a class="markdownIt-Anchor" href="#2-图形安装界面必选项"></a> 2. 图形安装界面必选项</h2><p>安装过程中 <strong>必须勾选</strong> 以下选项（位于“其他选项”页）：</p><ul><li>[x] <strong>安装时下载更新</strong><br><em>获取最新安全补丁，避免驱动兼容问题</em></li><li>[x] <strong>安装第三方软件</strong><br><em>包含专有驱动、媒体解码器等闭源组件</em></li><li>[x] <strong>为图形设备安装专有驱动</strong><br><em>解决显卡异常/无线网卡失效/风扇狂转问题</em></li></ul><blockquote><p>注：跳过上述勾选可能导致安装后无法进入图形界面</p></blockquote><hr><h2 id="3-分区方案黄金法则"><a class="markdownIt-Anchor" href="#3-分区方案黄金法则"></a> 3. 分区方案黄金法则</h2><p>采用以下分区结构（适用于单硬盘场景）：</p><table><thead><tr><th>挂载点</th><th>大小</th><th>文件系统</th><th>优化参数</th></tr></thead><tbody><tr><td><code>/</code></td><td>≥30GB</td><td>ext4</td><td><code>noatime,discard</code></td></tr><tr><td><code>swap</code></td><td>内存×1.5</td><td>swap</td><td><code>swappiness=10</code></td></tr><tr><td><code>/home</code></td><td>剩余空间</td><td>ext4</td><td><code>nodiratime</code></td></tr></tbody></table><p><strong>特殊优化场景</strong>：</p><ul><li><strong>SSD 设备</strong>：启用定期清理<pre class="highlight"><code class="bash"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> fstrim.timer
+</code></pre></li><li><strong>机械硬盘</strong>：禁用日志提升性能<pre class="highlight"><code class="bash"><span class="built_in">sudo</span> tune2fs -O ^has_journal /dev/sdX
+</code></pre></li></ul><hr><h2 id="4-首次启动必做验证"><a class="markdownIt-Anchor" href="#4-首次启动必做验证"></a> 4. 首次启动必做验证</h2><h3 id="41-驱动状态检查"><a class="markdownIt-Anchor" href="#41-驱动状态检查"></a> 4.1 驱动状态检查</h3><pre class="highlight"><code class="bash"><span class="comment"># 显卡驱动验证</span>
+glxinfo | grep <span class="string">&quot;OpenGL renderer&quot;</span>
+
+<span class="comment"># 无线网卡驱动加载</span>
+iwconfig
+
+<span class="comment"># 声卡设备识别</span>
+aplay -l
+</code></pre><h3 id="42-驱动更新锁定"><a class="markdownIt-Anchor" href="#42-驱动更新锁定"></a> 4.2 驱动更新锁定</h3><p>防止系统更新覆盖专有驱动：</p><pre class="highlight"><code class="bash"><span class="built_in">sudo</span> apt-mark hold linux-firmware nvidia-driver-*
+</code></pre><hr><h2 id="5-驱动故障急救方案"><a class="markdownIt-Anchor" href="#5-驱动故障急救方案"></a> 5. 驱动故障急救方案</h2><h3 id="51-典型故障现象"><a class="markdownIt-Anchor" href="#51-典型故障现象"></a> 5.1 典型故障现象</h3><ul><li>启动黑屏/卡Ubuntu LOGO</li><li>风扇持续高速运转</li><li>无线网络无法启用</li></ul><h3 id="52-恢复模式操作流程"><a class="markdownIt-Anchor" href="#52-恢复模式操作流程"></a> 5.2 恢复模式操作流程</h3><ol><li>启动时长按 <code>Shift</code> 键进入 <strong>Recovery Mode</strong></li><li>选择 <code>root shell</code> 进入命令行</li><li>执行驱动修复命令：<pre class="highlight"><code class="bash"><span class="built_in">sudo</span> ubuntu-drivers install
+<span class="built_in">sudo</span> update-initramfs -u
+reboot
+</code></pre></li></ol><hr><h2 id="6-硬件性能优化"><a class="markdownIt-Anchor" href="#6-硬件性能优化"></a> 6. 硬件性能优化</h2><h3 id="61-老旧显卡加速"><a class="markdownIt-Anchor" href="#61-老旧显卡加速"></a> 6.1 老旧显卡加速</h3><p>启用 MESA 图形库优化：</p><pre class="highlight"><code class="bash"><span class="built_in">sudo</span> add-apt-repository ppa:kisak/kisak-mesa
+<span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade
+</code></pre><h3 id="62-机械硬盘优化"><a class="markdownIt-Anchor" href="#62-机械硬盘优化"></a> 6.2 机械硬盘优化</h3><p>更改I/O调度器提升响应速度：</p><pre class="highlight"><code class="bash"><span class="built_in">echo</span> deadline | <span class="built_in">sudo</span> <span class="built_in">tee</span> /sys/block/sda/queue/scheduler
+</code></pre><h3 id="63-小内存设备4gb"><a class="markdownIt-Anchor" href="#63-小内存设备4gb"></a> 6.3 小内存设备（≤4GB）</h3><p>启用内存压缩技术：</p><pre class="highlight"><code class="bash"><span class="built_in">sudo</span> apt install zram-config
+</code></pre><hr><h2 id="7-高频故障速查表"><a class="markdownIt-Anchor" href="#7-高频故障速查表"></a> 7. 高频故障速查表</h2><table><thead><tr><th>故障现象</th><th>预防措施</th><th>修复命令</th></tr></thead><tbody><tr><td>无法进入图形界面</td><td>安装时勾选专有驱动</td><td><code>sudo ubuntu-drivers install</code></td></tr><tr><td>无线网卡识别失败</td><td>准备USB网卡备用</td><td><code>sudo apt install bcmwl-kernel-source</code></td></tr><tr><td>双系统时间冲突</td><td>BIOS设置为UTC时间</td><td><code>timedatectl set-local-rtc 1</code></td></tr><tr><td>高分辨率屏幕显示模糊</td><td>GRUB添加图形参数</td><td>编辑 <code>/etc/default/grub</code> 加 <code>gfxpayload=keep</code></td></tr></tbody></table><hr><h2 id="8-进阶维护技巧"><a class="markdownIt-Anchor" href="#8-进阶维护技巧"></a> 8. 进阶维护技巧</h2><h3 id="81-安装日志分析"><a class="markdownIt-Anchor" href="#81-安装日志分析"></a> 8.1 安装日志分析</h3><p>查看启动错误信息：</p><pre class="highlight"><code class="bash">journalctl -b -p 3
+</code></pre><h3 id="82-生成硬件诊断包"><a class="markdownIt-Anchor" href="#82-生成硬件诊断包"></a> 8.2 生成硬件诊断包</h3><p>自动收集系统信息：</p><pre class="highlight"><code class="bash"><span class="built_in">sudo</span> ubuntu-bug linux
+</code></pre><h3 id="83-系统快照创建"><a class="markdownIt-Anchor" href="#83-系统快照创建"></a> 8.3 系统快照创建</h3><p>安装 Timeshift 实现快速回滚：</p><pre class="highlight"><code class="bash"><span class="built_in">sudo</span> apt install timeshift
+<span class="built_in">sudo</span> timeshift --create --tags P
+</code></pre><hr><blockquote><p><strong>核心避坑要点</strong>：</p><ol><li>安装阶段 <strong>勾选专有驱动</strong> 可规避90%硬件兼容问题</li><li>分区参数优化显著提升老旧设备性能</li><li>急救命令组合解决常见启动故障</li></ol><p><em>本指南基于50+真实故障案例提炼，首次安装请严格遵循第三章勾选步骤</em></p></blockquote></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.zi4dbek.top">zi4dbek</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.zi4dbek.top/posts/de8a06bc/">https://blog.zi4dbek.top/posts/de8a06bc/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.zi4dbek.top" target="_blank">zi4dbek的小站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/zi4dbek/zi4dbek.github.io@img/images/20250126132028648.webp" data-sites="facebook,twitter,wechat,weibo,qq,qzone"></div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/b6a6fd7/" title="移动开发反思：应用体积、性能与用户体验的权衡"><div class="cover" style="background:var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">移动开发反思：应用体积、性能与用户体验的权衡</div></div></a></div></nav><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="comment-switch"><span class="first-comment">Twikoo</span><span id="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/zi4dbek/zi4dbek.github.io@img/images/20250126132028648.webp" onerror='this.onerror=null,this.src="/img/404.jpg"' alt="avatar"></div><div class="author-info__name">zi4dbek</div><div class="author-info__description">zi4dbek的小破站</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zi4dbek"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E5%89%8D%E5%85%B3%E9%94%AE%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">1. 安装前关键准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E7%A1%AC%E4%BB%B6%E5%85%BC%E5%AE%B9%E6%80%A7%E6%A0%B8%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 硬件兼容性核查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E5%90%AF%E5%8A%A8%E7%9B%98%E5%88%B6%E4%BD%9C"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 启动盘制作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9B%BE%E5%BD%A2%E5%AE%89%E8%A3%85%E7%95%8C%E9%9D%A2%E5%BF%85%E9%80%89%E9%A1%B9"><span class="toc-number">2.</span> <span class="toc-text">2. 图形安装界面必选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%86%E5%8C%BA%E6%96%B9%E6%A1%88%E9%BB%84%E9%87%91%E6%B3%95%E5%88%99"><span class="toc-number">3.</span> <span class="toc-text">3. 分区方案黄金法则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%A6%96%E6%AC%A1%E5%90%AF%E5%8A%A8%E5%BF%85%E5%81%9A%E9%AA%8C%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">4. 首次启动必做验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E9%A9%B1%E5%8A%A8%E7%8A%B6%E6%80%81%E6%A3%80%E6%9F%A5"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 驱动状态检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E9%A9%B1%E5%8A%A8%E6%9B%B4%E6%96%B0%E9%94%81%E5%AE%9A"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 驱动更新锁定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%A9%B1%E5%8A%A8%E6%95%85%E9%9A%9C%E6%80%A5%E6%95%91%E6%96%B9%E6%A1%88"><span class="toc-number">5.</span> <span class="toc-text">5. 驱动故障急救方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#51-%E5%85%B8%E5%9E%8B%E6%95%85%E9%9A%9C%E7%8E%B0%E8%B1%A1"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 典型故障现象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#52-%E6%81%A2%E5%A4%8D%E6%A8%A1%E5%BC%8F%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 恢复模式操作流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%A1%AC%E4%BB%B6%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text">6. 硬件性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#61-%E8%80%81%E6%97%A7%E6%98%BE%E5%8D%A1%E5%8A%A0%E9%80%9F"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 老旧显卡加速</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#62-%E6%9C%BA%E6%A2%B0%E7%A1%AC%E7%9B%98%E4%BC%98%E5%8C%96"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 机械硬盘优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#63-%E5%B0%8F%E5%86%85%E5%AD%98%E8%AE%BE%E5%A4%874gb"><span class="toc-number">6.3.</span> <span class="toc-text">6.3 小内存设备（≤4GB）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%AB%98%E9%A2%91%E6%95%85%E9%9A%9C%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">7.</span> <span class="toc-text">7. 高频故障速查表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%BF%9B%E9%98%B6%E7%BB%B4%E6%8A%A4%E6%8A%80%E5%B7%A7"><span class="toc-number">8.</span> <span class="toc-text">8. 进阶维护技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#81-%E5%AE%89%E8%A3%85%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 安装日志分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82-%E7%94%9F%E6%88%90%E7%A1%AC%E4%BB%B6%E8%AF%8A%E6%96%AD%E5%8C%85"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 生成硬件诊断包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-%E7%B3%BB%E7%BB%9F%E5%BF%AB%E7%85%A7%E5%88%9B%E5%BB%BA"><span class="toc-number">8.3.</span> <span class="toc-text">8.3 系统快照创建</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/de8a06bc/" title="Ubuntu 安装避坑终极指南">Ubuntu 安装避坑终极指南</a><time datetime="2025-06-27T09:05:57.000Z" title="发表于 2025-06-27 17:05:57">2025-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b6a6fd7/" title="移动开发反思：应用体积、性能与用户体验的权衡">移动开发反思：应用体积、性能与用户体验的权衡</a><time datetime="2025-06-06T16:09:03.000Z" title="发表于 2025-06-07 00:09:03">2025-06-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/a0db1fa8/" title="本站 2025 年 3 月更新日志">本站 2025 年 3 月更新日志</a><time datetime="2025-03-30T14:57:16.000Z" title="发表于 2025-03-30 22:57:16">2025-03-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/8f613cd1/" title="评论系统更换记录">评论系统更换记录</a><time datetime="2024-11-02T14:29:59.000Z" title="发表于 2024-11-02 22:29:59">2024-11-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/d22f868c/" title="基于 Azure Repo 搭建免费图床">基于 Azure Repo 搭建免费图床</a><time datetime="2024-08-25T15:06:54.000Z" title="发表于 2024-08-25 23:06:54">2024-08-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By zi4dbek</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.33/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.8.8/lazyload.iife.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://71612925-8f9e-46ae-95bd-d8eeff716cc1.netlify.app/.netlify/functions/twikoo',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://71612925-8f9e-46ae-95bd-d8eeff716cc1.netlify.app/.netlify/functions/twikoo',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdnjs.cloudflare.com/ajax/libs/twikoo/1.6.31/twikoo.all.min.js').then(init)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><script>(() => {
+  const initGitalk = () => {
+    const gitalk = new Gitalk(Object.assign({
+      clientID: '862f5508904d0d2252a0',
+      clientSecret: 'd915aba8d5b2e4a4a50c493748f77474a8b77fc7',
+      repo: 'zi4dbek.github.io',
+      owner: 'zi4dbek',
+      admin: ['zi4dbek'],
+      id: '6c846c37642c59e818c28dfdcdbf0a28',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async() => {
+    if (typeof Gitalk === 'function') initGitalk()
+    else {
+      await getCSS('https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.css')
+      await getScript('https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js')
+      initGitalk()
+    }
+  }
+  
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  if ('Twikoo' === 'Gitalk' || !true) {
+    if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="13202442334" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"></div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" media="print" onload='this.media="all"'><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="https://vercount.one/js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span> 数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
